@@ -15,13 +15,13 @@ require('./modules/menu.php');
 switch($paginanr)
 {
 	case 0:
-	require('./views/home.php');
+	require('./controllers/home.php');
 	break;
 	case 1:
 	require('./controllers/zoeken.php');
 	break;
 	case 2:
-	require('./views/gids.php');
+	require('./controllers/gids.php');
 	break;
 	case 50:
 	require('./controllers/inloggen.php');

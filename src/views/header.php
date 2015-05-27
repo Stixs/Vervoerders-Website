@@ -7,4 +7,5 @@
 		<link href="./style/stylet.php" type="text/css" rel="stylesheet" />
 	</head>
 	<body>
-		
+		<header>
+		</header>
