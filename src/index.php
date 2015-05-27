@@ -12,6 +12,8 @@ else
 require('./views/header.php');
 require('./views/menu.php');
 
+echo '<div id="content">';
+
 switch($paginanr)
 {
 	case 0:
@@ -31,6 +33,8 @@ switch($paginanr)
 	break;
 }
 
-require('./views/footer.php')
+require('./views/footer.php');
+
+echo '</div>';
 
 ?>

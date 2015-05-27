@@ -5,6 +5,11 @@
 		<title>Vervoeders Website</title>
 		<link href="./style/stylej.css" type="text/css" rel="stylesheet" />
 		<link href="./style/stylet.css" type="text/css" rel="stylesheet" />
-		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ek+Mukta">
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 	</head>
 	<body>
+		<header>
+			
+		</header>
+		
+		asd
