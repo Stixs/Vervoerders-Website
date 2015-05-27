@@ -1,0 +1,30 @@
+*
+{
+	padding: 0px;
+	margin: 0px;
+}
+
+#bar
+{
+	height: 50px;
+	width: 100%;
+	background-color: #1F3A93;
+	z-index: 0;
+	position: relative
+}
+
+nav
+{
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+nav > ul > li
+{
+	float: left;
+	list-style-type: none;
+	display: block;
+	width: 100px;
+	color:
+}
