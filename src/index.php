@@ -6,7 +6,7 @@ if(isset($_GET['paginanr']))
 }
 else
 {
-	$paginanr = 2;
+	$paginanr = 1;
 }
 
 require('./views/header.php');
@@ -16,14 +16,14 @@ echo '<div id="content">';
 
 switch($paginanr)
 {
-	case 0:
-	require('./controllers/home.php');
-	break;
 	case 1:
-	require('./controllers/zoeken.php');
+	require('./controllers/home.php');
 	break;
 	case 2:
 	require('./controllers/gids.php');
+	break;
+	case 3:
+	require('./controllers/zoeken.php');
 	break;
 	case 50:
 	require('./controllers/inloggen.php');
