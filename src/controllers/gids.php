@@ -1,5 +1,8 @@
 <div class="bedrijfsp">
-	<table id="bedrijfsinfo">
+	<div class="info">
+		informatie
+	</div>
+	<table class="contact">
 		<th colspan="2">(Naam bedrijf)</th>
 		<tr>
 			<td>Land:</td>
