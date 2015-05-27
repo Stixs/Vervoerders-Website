@@ -6,7 +6,7 @@ if(isset($_GET['paginanr']))
 }
 else
 {
-	$paginanr = 0;
+	$paginanr = 2;
 }
 
 require('./views/header.php');
