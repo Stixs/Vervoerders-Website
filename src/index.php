@@ -1,5 +1,5 @@
 <?php
-require('configuratie.php');
+require('./controllers/functies.php');
 if(isset($_GET['paginanr']))
 {
 	$paginanr = $_GET['paginanr'];
@@ -9,8 +9,8 @@ else
 	$paginanr = 0;
 }
 
-require('./modules/header.php');
-require('./modules/menu.php');
+require('./views/header.php');
+require('./views/menu.php');
 
 switch($paginanr)
 {
@@ -31,6 +31,6 @@ switch($paginanr)
 	break;
 }
 
-require('./modules/footer.php')
+require('./views/footer.php')
 
 ?>
