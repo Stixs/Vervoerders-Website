@@ -1,14 +1,5 @@
 <?php
 require('configuratie.php');
-
-
-require('./modules/header.php');
-
-require('./modules/menu.php');
-
-
-require('./modules/footer.php')
-
 if(isset($_GET['paginanr']))
 {
 	$paginanr = $_GET['paginanr'];
@@ -17,22 +8,29 @@ else
 {
 	$paginanr = 0;
 }
+
+require('./modules/header.php');
+require('./modules/menu.php');
+
 switch($paginanr)
 {
 	case 0:
-	require('./modules/home.php');
+	require('./views/home.php');
 	break;
 	case 1:
-	require('./modules/zoeken.php');
+	require('./controllers/zoeken.php');
 	break;
 	case 2:
-	require('./modules/gids.php');
+	require('./views/gids.php');
 	break;
 	case 50:
-	require('./modules/inloggen.php');
+	require('./controllers/inloggen.php');
 	break;
 	case 51:
-	require('./modules/uitloggen.php');
+	require('./controllers/uitloggen.php');
 	break;
 }
+
+require('./modules/footer.php')
+
 ?>
