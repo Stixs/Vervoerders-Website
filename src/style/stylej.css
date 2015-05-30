@@ -2,10 +2,22 @@
 {
 	margin: 10px;
 	padding:5px;
+	display:inline-block;
+}
+.naam
+{
+	font-size:26px;
+	text-align:center;
+	width:100%;
+	float:left;
+	margin-bottom:10px
 }
 .contact
 {
-	float:left;
+	float:right;
+	border:1px solid gray;
+	border-radius:3px;
+	padding:10px;
 }
 .contact  tr  td
 {
@@ -14,5 +26,5 @@
 .info
 {
 	float:left;
-	width:65%
+	width:65%;
 }
