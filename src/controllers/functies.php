@@ -2,7 +2,7 @@
 
 function ConnectDB()
 {
-	$pdo = new PDO("mysql:host=localhost;dbname=vervoerders", 'root', '');
+	$pdo = new PDO("mysql:host=192.168.2.198;dbname=vervoerders", 'root', '');
 	return $pdo;
 }
 
