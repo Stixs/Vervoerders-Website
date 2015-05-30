@@ -1,5 +1,8 @@
 <?php
 require('./controllers/functies.php');
+
+$pdo = ConnectDB();
+
 if(isset($_GET['paginanr']))
 {
 	$paginanr = $_GET['paginanr'];
@@ -8,6 +11,7 @@ else
 {
 	$paginanr = 1;
 }
+
 
 require('./views/header.php');
 require('./views/menu.php');
@@ -29,7 +33,7 @@ switch($paginanr)
 	require('./controllers/inloggen.php');
 	break;
 	case 51:
-	require('./controllers/uitloggen.php');
+	require('./controllers/registreren.php');
 	break;
 }
 
