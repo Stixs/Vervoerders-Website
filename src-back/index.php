@@ -15,14 +15,14 @@ else
 
 
 require('./views/header.php');
-require('./controllers/menu.php');
+require('./views/menu.php');
 
 echo '<div id="content">';
 
 switch($paginanr)
 {
 	case 1:
-	require('./views/home.php');
+	require('./controllers/home.php');
 	break;
 	case 2:
 	require('./controllers/gids.php');
@@ -35,9 +35,6 @@ switch($paginanr)
 	break;
 	case 51:
 	require('./controllers/registreren.php');
-	break;
-	case 52:
-	require('./controllers/uitloggen.php');
 	break;
 }
 

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.0.4
 -- http://www.phpmyadmin.net
 --
--- Machine: 127.0.0.1
--- Gegenereerd op: 11 jun 2015 om 10:06
--- Serverversie: 5.6.17
--- PHP-versie: 5.5.12
+-- Machine: localhost
+-- Genereertijd: 10 jun 2015 om 09:57
+-- Serverversie: 5.6.12-log
+-- PHP-versie: 5.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Databank: `vervoerders`
 --
+CREATE DATABASE IF NOT EXISTS `vervoerders` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `vervoerders`;
 
 -- --------------------------------------------------------
 
@@ -71,23 +73,16 @@ CREATE TABLE IF NOT EXISTS `bedrijfgegevens` (
 --
 
 CREATE TABLE IF NOT EXISTS `gebruikers` (
-  `gebruiker_id` int(11) NOT NULL AUTO_INCREMENT,
-  `bedrijfs_id` int(11) NOT NULL,
-  `inlognaam` varchar(55) NOT NULL,
-  `email` varchar(55) NOT NULL,
+  `gebruiker-id` int(11) NOT NULL AUTO_INCREMENT,
+  `bedrijfs-id` int(11) NOT NULL,
+  `naam` varchar(55) NOT NULL,
+  `e-mail` varchar(55) NOT NULL,
   `wachtwoord` char(128) NOT NULL,
   `salt` char(128) NOT NULL,
   `level` int(11) NOT NULL,
-  PRIMARY KEY (`gebruiker_id`),
-  UNIQUE KEY `bedrijf-id` (`bedrijfs_id`,`inlognaam`,`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- Gegevens worden geëxporteerd voor tabel `gebruikers`
---
-
-INSERT INTO `gebruikers` (`gebruiker_id`, `bedrijfs_id`, `inlognaam`, `email`, `wachtwoord`, `salt`, `level`) VALUES
-(1, 0, 'admin', '', '11cd68dd995a00caf08f5304de746d965a610190acd5490e037dd8980f37478e94f1ac80e9667801f867c43ad74cb8507be07b07606f599b29ffb9b17139e569', '958cb0fee5486a62c9e742b940856e784d190d9dd71601f868e5ea282e591d28eefc2a64aea41c55ff4334b3a6187676e246dc1dd6278e57e74c529007c9abf3', 1);
+  PRIMARY KEY (`gebruiker-id`),
+  UNIQUE KEY `bedrijf-id` (`bedrijfs-id`,`naam`,`e-mail`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -96,19 +91,21 @@ INSERT INTO `gebruikers` (`gebruiker_id`, `bedrijfs_id`, `inlognaam`, `email`, `
 --
 
 CREATE TABLE IF NOT EXISTS `menu` (
-  `paginanr` int(11) NOT NULL,
+  `pagina-nr` int(11) NOT NULL,
   `tekst` varchar(10) NOT NULL,
   `level` int(11) NOT NULL,
-  PRIMARY KEY (`paginanr`)
+  PRIMARY KEY (`pagina-nr`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `menu`
+-- Gegevens worden uitgevoerd voor tabel `menu`
 --
 
-INSERT INTO `menu` (`paginanr`, `tekst`, `level`) VALUES
+INSERT INTO `menu` (`pagina-nr`, `tekst`, `level`) VALUES
+(1, 'Home', 0),
 (2, 'Gids', 0),
-(3, 'Zoeken', 0);
+(3, 'Zoeken', 0),
+(50, 'inloggen', 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

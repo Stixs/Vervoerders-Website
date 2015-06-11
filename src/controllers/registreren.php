@@ -1,47 +1,60 @@
 <?php
 //init fields
-$bedrijf_naam = $adres = $postcode = $plaats = $land = $telefoon = $fax = $type = $naar = $specialiteit = $bedrijf_email = $gebruikersnaam = $wachtwoord = $email = NULL;
+$FirstName = $LastName = $Adres = $ZipCode = $City = $TelNr = $Email = $Username = 	$Password = $RetypePassword = NULL;
 
 //init error fields
-//= NULL;
+$FnameErr = $LnameErr = $ZipErr = $CityErr = $TelErr = $MailErr = $UserErr = $PassErr = $RePassErr = NULL;
 
-if(isset($_POST['Registreerbedrijf']))
+if(isset($_POST['Registreren']))
 {
 	$CheckOnErrors = false;
+
+	$FirstName = $_POST['FirstName'];
+	$LastName = $_POST['LastName'];
+	$Adres = $_POST['Adres'];
+	$ZipCode = $_POST['ZipCode'];
+	$City = $_POST['City'];
+	$TelNr = $_POST['TelNr'];
+	$Email = $_POST['Email'];
 	
-	$gebruikersnaam = $_POST["gebruikersnaam"];
-	$wachtwoord = $_POST["wachtwoord"];
-	$email = $_POST["email"];
-	
-	if($CheckOnErrors == true) 
+	$Username = $_POST['Username'];
+	$Password = $_POST['Password'];
+	$RPassword = $_POST['RetypePassword'];
+
+
+	if($CheckOnErrors) //aanvullen
 	{
-	require('./views/RegistreerBedrijfForm.php');
+		require('./views/RegistrerenForm.php');	
 	}
 	else
 	{
 		//formulier is succesvol gevalideerd
 
 		//maak unieke salt
-		$salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
+		$Salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
 
 		//hash het paswoord met de Salt
-		$wachtwoord = hash('sha512', $wachtwoord . $salt);
-
+		$Password = hash('sha512', $Password . $Salt);
 		
-		$parameters = array(':gebruikersnaam'=>$gebruikersnaam,
-							':email'=>$email,
-							':wachtwoord'=>$wachtwoord,
-							':salt'=>$salt,
-							':level'=>5
-							);
-		$sth = $pdo->prepare('INSERT INTO gebruikers (gebruikersnaam, email, wachtwoord, salt, level) VALUES (:gebruikersnaam, :email, :wachtwoord, :salt, :level)');
-		$sth->execute($parameters);
-		echo 'test';
+		$parameters = array
+		(
+			':Inlognaam' => $Username,
+			':Paswoord' => $Password,
+			':Salt' => $Salt,
+			':Level' => 1
+		);
+		
+		$sth = $pdo->prepare('INSERT INTO gebruikers (inlognaam, wachtwoord, salt, level)VALUES(:Inlognaam, :Paswoord, :Salt, :Level)');
+		
+		$sth->execute($parameters); 
+
+		echo'U bent succesvol geregistreed.';
+      
+	    RedirectNaarPagina();
 	}
 }
 else
 {
-	require('./views/RegistreerBedrijfForm.php');
+	require('./views/RegistrerenForm.php');
 }
-
 ?>
