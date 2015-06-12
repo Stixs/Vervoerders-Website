@@ -109,13 +109,11 @@ nav > ul > li > a:hover
 	
 }
 
-
-
-
-
-
-
-
+#registreren table
+{
+	display: inline-block;
+	vertical-align: text-top;
+}
 
 
 
