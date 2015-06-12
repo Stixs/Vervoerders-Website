@@ -1,10 +1,22 @@
 <?php
-	$sth = $pdo->prepare('select * from gebruikers where gebruiker_id = :gebruiker_id');
+
+	$userid = $_SESSION['user_id'];
+	$parameters = array(':gebruiker_id'=>$userid);
+	$sth = $pdo->prepare('select inlognaam from gebruikers where gebruiker_id = :gebruiker_id');
+	$sth->execute($parameters);
 	
-	$sth->execute($parameter)
+	$bedrijfs_id = $row['bedrijfs_id'];
+	echo $row['inlognaam'];
+	echo'test';
+	
+	$parameters = array(':bedrijfs_id'=>$bedrijfs_id);
+	$sth = $pdo->prepare('select * from bedrijfgegevens where bedrijfs_id = :bedrijfs_id');
+	$sth->execute($parameters);
+	
+	echo $row['postcode'];
 	
 	
-	if(isset($_POST['Wijzigenbedrijf']))
+/*	if(isset($_POST['Wijzigenbedrijf']))
 {
 	$CheckOnErrors = false;
 	
@@ -18,28 +30,12 @@
 	}
 	else
 	{
-		//formulier is succesvol gevalideerd
 
-		//maak unieke salt
-		$salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
-
-		//hash het paswoord met de Salt
-		$wachtwoord = hash('sha512', $wachtwoord . $salt);
-
-		
-		$parameters = array(':gebruikersnaam'=>$gebruikersnaam,
-							':email'=>$email,
-							':wachtwoord'=>$wachtwoord,
-							':salt'=>$salt,
-							':level'=>5
-							);
-		$sth = $pdo->prepare('INSERT INTO gebruikers (gebruikersnaam, email, wachtwoord, salt, level) VALUES (:gebruikersnaam, :email, :wachtwoord, :salt, :level)');
-		$sth->execute($parameters);
-		echo 'test';
 	}
 }
 else
 {
 	require('./views/WijzigenBedrijfForm.php');
 }
+*/
 ?>
