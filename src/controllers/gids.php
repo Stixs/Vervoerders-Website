@@ -1,8 +1,12 @@
 <?php
-$parameter = array(':Status'=>'Verwacht');
-$sth = $pdo->prepare('select * from films where Status = :Status');
+/*
+$bedrijfsid = $_GET['bedrijfsid'];
+
+$parameter = array(':bedrijfs_id'=>$bedrijfsid);
+$sth = $pdo->prepare('select * from bedrijfgegevens where bedrijfs_id = :bedrijfs_id');
 
 $sth->execute($parameter);
+*/
 ?>
 <div class="bedrijfsp">
 	<span class="naam"><?php echo $row['bedrijfsnaam']; ?></span>
