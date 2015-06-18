@@ -30,6 +30,9 @@ switch($paginanr)
 	case 3:
 	require('./controllers/zoeken.php');
 	break;
+	case 48:
+	require('./controllers/profiel.php');
+	break;
 	case 49:
 	require('./controllers/wijzigen.php');
 	break;
