@@ -3,7 +3,7 @@
 $bedrijfsnaam = $beschrijving = $adres = $postcode = $plaats = $provincie = $telefoon = $fax = $bedrijfs_email = $specialiteit = $type = $bereik = $transport_manager = $aantal = $rechtsvorm = $vergunning = $geldig_tot = NULL;
 
 //init error fields
-$NameErr = $AdresErr = $ZipErr = $CityErr = $TelErr = $FaxErr = $MailErr = NULL;
+$NameErr = $AdresErr = $ZipErr = $CityErr = $TelErr = $FaxErr = $MailErr = $TransportErr = $GeldigErr = NULL;
 
 
 	$userid = $_SESSION['user_id'];
@@ -34,7 +34,7 @@ $NameErr = $AdresErr = $ZipErr = $CityErr = $TelErr = $FaxErr = $MailErr = NULL;
 	$type = $row['type'];
 	$bereik = $row['bereik'];
 	$transport_manager = $row['transport_manager'];
-	$aantal = $row['aanta;'];
+	$aantal = $row['aantal'];
 	$rechtsvorm = $row['rechtsvorm'];
 	$vergunning = $row['vergunning'];
 	$geldigtot = $row['geldig_tot'];
@@ -63,7 +63,7 @@ $NameErr = $AdresErr = $ZipErr = $CityErr = $TelErr = $FaxErr = $MailErr = NULL;
 	$rechtsvorm = $_POST['rechtsvorm'];
 	$vergunning = $_POST['vergunning'];
 	$geldigtot = $_POST['geldigtot'];
-	$bedrijfs_email = $_POST['bedrijf_mail'];
+	$bedrijfs_email = $_POST['bedrijfs_mail'];
 	$beschrijving = $_POST['beschrijving'];
 	
 	//begin controlles
@@ -72,15 +72,48 @@ $NameErr = $AdresErr = $ZipErr = $CityErr = $TelErr = $FaxErr = $MailErr = NULL;
 		$NameErr = 'U moet een naam van uw bedrijf invullen';
 		$CheckOnErrors = true;
 	}
-	if(!isset
-	
 	if($CheckOnErrors == true) 
 	{
 	require('./views/WijzigenBedrijfForm.php');
 	}
 	else
 	{
-
+		$parameters = array(':bedrijfs_id'=>$bedrijfs_id,
+							':bedrijfsnaam'=>$bedrijf_naam,
+							':beschrijving'=>$beschrijving,
+							':adres'=>$adres,
+							':postcode'=>$postcode,
+							':plaats'=>$plaats,
+							':provincie'=>$provincie,
+							':telefoon'=>$telefoon,
+							':specialiteit'=>$specialiteit,
+							':type'=>$type,
+							':bereik'=>$bereik,
+							':transport_manager'=>$transport_manager,
+							':aantal'=>$aantal,
+							':rechtsvorm'=>$rechtsvorm,
+							':vergunning'=>$vergunning,
+							':geldig_tot'=>$geldigtot,
+							':bedrijfs_email'=>$bedrijfs_email);
+		$sth = $pdo->prepare('update bedrijfgegevens 
+							  set bedrijfsnaam=:bedrijfsnaam, 
+								  beschrijving=:beschrijving,					 
+								  adres=:adres,
+								  postcode=:postcode,
+								  plaats=:plaats,
+								  provincie=:provincie,
+								  telefoon=:telefoon,
+								  specialiteit=:specialiteit,
+								  type=:type,
+								  bereik=:bereik,
+								  transport_manager=:transport_manager,
+								  aantal=:aantal,
+								  rechtsvorm=:rechtsvorm,
+								  vergunning=:vergunning,
+								  geldig_tot=:geldig_tot,
+								  bedrijfs_email=:bedrijfs_email
+								  where bedrijfs_id = :bedrijfs_id');
+		$sth->execute($parameters);
 	}
 }
 else

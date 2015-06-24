@@ -4,7 +4,7 @@
 	<table>
 		<tr>
 			<td><label for="FirstName">Bedrijfsnaam:</label></td>
-			<td><input type="text" id="bedrijf_naam" name="Bedrijfsnaam" value="<?php echo $bedrijf_naam; ?>" /></td>
+			<td><input type="text" id="bedrijf_naam" name="Bedrijfsnaam" value="<?php echo $bedrijfs_naam; ?>" /></td>
 			<td><?php echo $NameErr; ?></td>
 		</tr>
 		<tr>
@@ -23,8 +23,8 @@
 			<td><?php echo $CityErr; ?></td>
 		</tr>
 		<tr>		
-			<td><label for="provincies">provincies:</label></td>
-			<td><input type="text" id="provincies" name="provincies" value="<?php echo $provincies; ?>"  /></td>
+			<td><label for="provincies">provincie:</label></td>
+			<td><input type="text" id="provincie" name="provincie" value="<?php echo $provincie; ?>"  /></td>
 		</tr>
 		<tr>		
 			<td><label for="Telefoon">Telefoon:</label></td>
@@ -50,7 +50,7 @@
 		</tr>
 		<tr>
 			<td><label for="transportmanager">Transport-manager:</label></td>
-			<td><input type="text" id="transport_manager" name="transportmanager" value="<?php echo $transportmanager; ?>"  /></td>
+			<td><input type="text" id="transport_manager" name="transportmanager" value="<?php echo $transport_manager; ?>"  /></td>
 			<td><?php echo $TransportErr; ?></td>
 		</tr>
 		<tr>
@@ -72,12 +72,12 @@
 		</tr>
 		<tr>
 			<td><label for="Email">Bedrijfs E-mail:</label></td>
-			<td><input type="text" id="bedrijf_email" name="bedrijf_email" value="<?php echo $bedrijfs_email ?>" /></td>
+			<td><input type="text" id="bedrijfs_email" name="bedrijfs_email" value="<?php echo $bedrijfs_email ?>" /></td>
 			<td><?php echo $MailErr; ?></td>
 		</tr>
 		<tr>
 			<td><label for="beschrijving">Beschrijving:</label></td>
-			<td><textarea id="beschrijving" name="beschrijving" value="<?php echo $beschijving; ?>" rows="4" cols="50" /></td>
+			<td><textarea id="beschrijving" name="beschrijving" rows="4" cols="50" ><?php echo $beschrijving; ?></textarea></td>
 		<tr>			
 		<td><input type="submit" name="Wijzigenbedrijf" value="Wijzigen!" /></td>
 		</tr>
