@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.0.4
 -- http://www.phpmyadmin.net
 --
--- Machine: 127.0.0.1
--- Gegenereerd op: 13 jun 2015 om 10:37
--- Serverversie: 5.6.17
--- PHP-versie: 5.5.12
+-- Machine: localhost
+-- Genereertijd: 24 jun 2015 om 07:44
+-- Serverversie: 5.6.12-log
+-- PHP-versie: 5.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -65,15 +65,16 @@ CREATE TABLE IF NOT EXISTS `bedrijfgegevens` (
   `geldig_tot` varchar(8) NOT NULL,
   `bedrijfs_email` varchar(50) NOT NULL,
   PRIMARY KEY (`bedrijfs_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
--- Gegevens worden geëxporteerd voor tabel `bedrijfgegevens`
+-- Gegevens worden uitgevoerd voor tabel `bedrijfgegevens`
 --
 
 INSERT INTO `bedrijfgegevens` (`bedrijfs_id`, `bedrijfsnaam`, `beschrijving`, `adres`, `postcode`, `plaats`, `provincie`, `telefoon`, `fax`, `specialiteit`, `type`, `bereik`, `transport_manager`, `aantal`, `rechtsvorm`, `vergunning`, `geldig_tot`, `bedrijfs_email`) VALUES
-(9, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 1, '1', '1', '1', '1'),
-(10, '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', 3, '3', '3', '3', '3');
+(9, 'Koller Transport BV', 'Transportbedrijf in Amersfoort\r\nKoller Transport is gevestigd in Amersfoort, de perfecte uitvalsbasis om uw goederen te bezorgen overal in Nederland en België. Wij zijn een middelgroot familiebedrijf met 16 vrachtauto’s, 20 personeelsleden en een warehouse van 5500 m2 waarin wij opslagfaciliteiten aanbieden.\r\nEigen wagenpark\r\nOns wagenpark bestaat uit bakwagens, aanhangers, trekkers en opleggers waaronder ook city-opleggers. Al onze voertuigen zijn voorzien van laad- en loskleppen zodat onze chauffeurs op iedere locatie zelfstandig kunnen laden en lossen. Een aantal vrachtauto’s en opleggers is voorzien van schuifzeilen en schuifdaken, waardoor ook grotere ladingen van opzij en van boven geladen en gelost kunnen worden. Voor vervoer van pallets, complete ladingen tot ondeelbare ladingen kunt u bij ons terecht. ', 'Kryptonweg 3', '3812 RZ', 'Amersfoort', 'Utrecht', '033 - 463 74 44', 'nvt', 'Opslag en warehousing', 'Veilig en snel vervoer', 'Transport binnen de Benelux', 'onbekend', 100, 'BV', 'eur', '1-1-2099', 'info@koller-transport.nl'),
+(10, 'CP Benelux BV | ADR transport', 'Transport: meer dan ladingen vervoeren\r\n\r\nCP Benelux is specialist in het transport, de opslag en distributie van ADR-goederen. Onze opslagloodsen zijn volledig toegerust op veilige en verantwoorde op- en overslag van ADR-goederen. Ook onze medewerkers beschikken over de juiste kennis, ervaring en certificaten om met ADR-goederen te werken.\r\n \r\nTransport binnen Europa\r\nMet CP Benelux is elke Europese bestemming binnen handbereik. Of u nu een spoedlevering heeft, ADR goederen wilt vervoeren of een speciale lading wilt transporteren. Over de weg, over water of door de lucht. \r\n\r\nBetrouwbare partner in transport\r\nKwaliteit voert bij ons de boventoon. De regie over het transport houden wij daarom geheel in eigen hand. Wij beschikken over eigen trucks, die volledig zijn toegerust op het vervoer van ADR goederen en het lossen en laden aan boord van schepen. Daarnaast hebben we een zorgvuldig netwerk opgebouwd met vervoerders in heel Europa. Dit in combinatie met onze jarenlange marktkennis en expertise binnen de CP Group maakt van ons een betrouwbare partner voor multimodaal transport in heel Europa.', 'G.Burgerlaan 33', '3131 KZ', 'Vlaardingen', 'Zuid-Holland', '+31 (0)10 - 299 49 99', 'nvt', 'Transport van ADR goederen Vervoer van vloeistoff', 'Speciaal transporten.', 'Europa', 'onbekend', 50, 'BV.', 'eur', '1-1-2099', 'order@cpgroup.nl'),
+(11, 'Veldwerk Transport B.V.', 'Het begin\r\n\r\nHet was ergens in het voorjaar van 1988 toen Koos van Velden, indertijd taxichauffeur, een passagier veilig en snel naar een opgegeven adres had gebracht en een toekomstplan kreeg: “Ik ken het Westland op m’n duimpje, vind autorijden leuk (het was toen ook nog niet zo druk in het verkeer) en service verlenen zit me in het bloed, weet je wat? Ik ga een koeriersbedrijfje beginnen!”\r\n\r\nDus zo gezegd, zo gedaan. Na grondig overleg met zijn vrouw Ella en de zaakjes berekend te hebben, bleek dat het haalbaar zou kunnen zijn. In mei van dat jaar kwam de eerste auto, een Volkswagen Golf.\r\n\r\nHet was een tweedehandsje en toen ze in juli 1992 met pensioen ging had ze er 292.000 kilometer op zitten. Natuurlijk kwamen er meer auto’s bij, ook combo’s en  bussen en er werd zelfs naar vrachtauto’s gekeken, want de klanten kwamen en ieder met eigen wensen. Veldwerk Koerier begon echt te groeien, dus verstandig investeren in mens en materieel was het credo.', 'De Hondert Margen 16', '2678 AC', 'De Lier', 'Zuid-holland', '0174 - 44 10 77', 'nvt', 'Charter rijden', 'Contract vervoer', '(Inter)nationale sneltransporten', 'onbekend', 30, 'BV.', 'eur', '1-1-2099', 'planning@veldwerk.info');
 
 -- --------------------------------------------------------
 
@@ -94,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `gebruikers` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Gegevens worden geëxporteerd voor tabel `gebruikers`
+-- Gegevens worden uitgevoerd voor tabel `gebruikers`
 --
 
 INSERT INTO `gebruikers` (`gebruiker_id`, `bedrijfs_id`, `inlognaam`, `email`, `wachtwoord`, `salt`, `level`) VALUES
@@ -117,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `menu`
+-- Gegevens worden uitgevoerd voor tabel `menu`
 --
 
 INSERT INTO `menu` (`paginanr`, `tekst`, `level`) VALUES
