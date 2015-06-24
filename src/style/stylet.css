@@ -75,7 +75,7 @@ nav > ul > li > a:hover
 {
 	border: 1px white;
 	background-color: #DBDBDB;
-	font-size: 22px;
+	font-size: 17px;
 	border-top-left-radius: 10px;
 	border-bottom-left-radius: 10px;
 	padding: 5px;
@@ -86,11 +86,11 @@ nav > ul > li > a:hover
 {
 	border: 1px solid white;
 	background-color: #4A4A4A;
-	font-size: 22px;
+	font-size: 17px;
 	color: white;
 	margin-left: -6px;
-	height: 41px;
-	width: 100px;
+	height: 36px;
+	width: 70px;
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
 	
@@ -102,6 +102,25 @@ nav > ul > li > a:hover
 	vertical-align: text-top;
 }
 
+.search-container
+{
+	width: 200px;
+	height: 200px;
+	background-color: blue;
+	float: left;
+	margin: 20px;
+}
+
+.search-image
+{
+	height: 140px;
+	background-color: green;
+}
+
+.search-naam
+{
+	height: 60px;
+}
 
 
 

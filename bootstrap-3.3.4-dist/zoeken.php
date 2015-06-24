@@ -32,16 +32,55 @@ $pdo = ConnectDB();
 				<div class="col-xs-9"></div>
 			</div>
 			<div class="row">
-			  <div class="col-xs-12">
-				<nav class="navbar navbar-default">
-					<ul class="nav nav-pills">
-						<li role="presentation" class="active"><a href="#">Home</a></li>
-						<li role="presentation"><a href="#">Gids</a></li>
-						<li role="presentation"><a href="#">Zoeken</a></li>
-					</ul>
-				</nav>
-			  </div><!-- /.col-lg-6 -->
-			</div><!-- /.row -->
+				<div class="col-xs-12">
+					<nav class="navbar navbar-default navbar-collapse">
+						<ul class="nav nav-pills">
+							<li role="presentation"><a href="index.php">Home</a></li>
+							<li role="presentation"><a href="#">Gids</a></li>
+							<li role="presentation" class="active"><a href="Zoeken.php">Zoeken</a></li>	
+							<?php
+							if(LoginCheck($pdo))
+							{
+							?>
+								<span class="login"><a href="uitloggen.php">Logout</a></span>
+							<?php
+							}
+							else
+							{
+							?>
+								<span class="login"><a href="login.php">Login</a></span>
+							<?php
+							}
+							?>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<?php
+			if(LoginCheck($pdo))
+			{
+			?>
+			<div class="row">
+				<div class="col-xs-12">
+					<nav class="navbar navbar-default navbar-collapse">
+						<ul class="nav nav-pills">
+							<li role="presentation"><a href="#">test</a></li>
+							<li role="presentation"><a href="#">test</a></li>
+							<li role="presentation"><a href="#">test</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<?php
+			}
+			?>
+			<div class="row">
+				<div class="col-xs-12">
+				<?php
+					require('./controllers/zoeken.php');
+				?>
+				</div>
+			</div>
 		</div>
 	</div>
 
