@@ -48,9 +48,31 @@ $NameErr = $AdresErr = $ZipErr = $CityErr = $TelErr = $FaxErr = $MailErr = NULL;
 {
 	$CheckOnErrors = false;
 	
-	$gebruikersnaam = $_POST["gebruikersnaam"];
-	$wachtwoord = $_POST["wachtwoord"];
-	$email = $_POST["email"];
+	$bedrijf_naam = $_POST["bedrijfsnaam"];
+	$adres = $_POST["adres"];
+	$postcode = $_POST["postcode"];
+	$plaats = $_POST['plaats'];
+	$provincie = $_POST['provincie'];
+	$telefoon = $_POST['telefoon'];
+	$fax = $_POST['fax'];
+	$specialiteit = $_POST['specialitiet'];
+	$type = $_POST['type'];
+	$bereik = $_POST['bereik'];
+	$transport_manager = $_POST['transportmanager'];
+	$aantal = $_POST['aantal'];
+	$rechtsvorm = $_POST['rechtsvorm'];
+	$vergunning = $_POST['vergunning'];
+	$geldigtot = $_POST['geldigtot'];
+	$bedrijfs_email = $_POST['bedrijf_mail'];
+	$beschrijving = $_POST['beschrijving'];
+	
+	//begin controlles
+	if(!isset($bedrijf_naam))
+	{
+		$NameErr = 'U moet een naam van uw bedrijf invullen';
+		$CheckOnErrors = true;
+	}
+	if(!isset
 	
 	if($CheckOnErrors == true) 
 	{
