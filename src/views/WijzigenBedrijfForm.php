@@ -3,7 +3,7 @@
 	<form name="WijzigenFormulier" action="" method="post">
 	<table>
 		<tr>
-			<td><label for="FirstName">Bedrijfsnaam:</label></td>
+			<td><label for="Bedrijfsnaam">Bedrijfsnaam:</label></td>
 			<td><input type="text" id="bedrijf_naam" name="Bedrijfsnaam" value="<?php echo $bedrijfs_naam; ?>" /></td>
 			<td><?php echo $NameErr; ?></td>
 		</tr>

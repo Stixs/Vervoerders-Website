@@ -1,6 +1,6 @@
 <?php
 //init fields
-$bedrijfsnaam = $beschrijving = $adres = $postcode = $plaats = $provincie = $telefoon = $fax = $bedrijfs_email = $specialiteit = $type = $bereik = $transport_manager = $aantal = $rechtsvorm = $vergunning = $geldig_tot = NULL;
+$bedrijfs_naam = $beschrijving = $adres = $postcode = $plaats = $provincie = $telefoon = $fax = $bedrijfs_email = $specialiteit = $type = $bereik = $transport_manager = $aantal = $rechtsvorm = $vergunning = $geldig_tot = NULL;
 
 //init error fields
 $NameErr = $AdresErr = $ZipErr = $CityErr = $TelErr = $FaxErr = $MailErr = $TransportErr = $GeldigErr = NULL;
@@ -22,7 +22,7 @@ $NameErr = $AdresErr = $ZipErr = $CityErr = $TelErr = $FaxErr = $MailErr = $Tran
 	$sth->execute($parameters);
 	$row = $sth->fetch();
 	
-	$bedrijf_naam = $row['bedrijfsnaam'];
+	$bedrijfs_naam = $row['bedrijfsnaam'];
 	$beschrijving = $row['beschrijving'];
 	$adres = $row['adres'];
 	$postcode = $row['postcode'];
@@ -40,7 +40,6 @@ $NameErr = $AdresErr = $ZipErr = $CityErr = $TelErr = $FaxErr = $MailErr = $Tran
 	$geldigtot = $row['geldig_tot'];
 	$bedrijfs_email = $row['bedrijfs_email'];
 	
-	echo $row['adres'];
 
 	
 	
@@ -48,14 +47,14 @@ $NameErr = $AdresErr = $ZipErr = $CityErr = $TelErr = $FaxErr = $MailErr = $Tran
 {
 	$CheckOnErrors = false;
 	
-	$bedrijf_naam = $_POST["bedrijfsnaam"];
+	$bedrijfs_naam = $_POST["Bedrijfsnaam"];
 	$adres = $_POST["adres"];
 	$postcode = $_POST["postcode"];
 	$plaats = $_POST['plaats'];
 	$provincie = $_POST['provincie'];
 	$telefoon = $_POST['telefoon'];
 	$fax = $_POST['fax'];
-	$specialiteit = $_POST['specialitiet'];
+	$specialiteit = $_POST['specialiteit'];
 	$type = $_POST['type'];
 	$bereik = $_POST['bereik'];
 	$transport_manager = $_POST['transportmanager'];
@@ -63,11 +62,11 @@ $NameErr = $AdresErr = $ZipErr = $CityErr = $TelErr = $FaxErr = $MailErr = $Tran
 	$rechtsvorm = $_POST['rechtsvorm'];
 	$vergunning = $_POST['vergunning'];
 	$geldigtot = $_POST['geldigtot'];
-	$bedrijfs_email = $_POST['bedrijfs_mail'];
+	$bedrijfs_email = $_POST['bedrijfs_email'];
 	$beschrijving = $_POST['beschrijving'];
 	
 	//begin controlles
-	if(!isset($bedrijf_naam))
+	if(!isset($bedrijfs_naam))
 	{
 		$NameErr = 'U moet een naam van uw bedrijf invullen';
 		$CheckOnErrors = true;
@@ -79,7 +78,7 @@ $NameErr = $AdresErr = $ZipErr = $CityErr = $TelErr = $FaxErr = $MailErr = $Tran
 	else
 	{
 		$parameters = array(':bedrijfs_id'=>$bedrijfs_id,
-							':bedrijfsnaam'=>$bedrijf_naam,
+							':bedrijfsnaam'=>$bedrijfs_naam,
 							':beschrijving'=>$beschrijving,
 							':adres'=>$adres,
 							':postcode'=>$postcode,
@@ -114,6 +113,9 @@ $NameErr = $AdresErr = $ZipErr = $CityErr = $TelErr = $FaxErr = $MailErr = $Tran
 								  bedrijfs_email=:bedrijfs_email
 								  where bedrijfs_id = :bedrijfs_id');
 		$sth->execute($parameters);
+		
+		echo'Uw bedrijf gegvens zijn bijgewerkt.<br />';
+		require('./views/WijzigenBedrijfForm.php');
 	}
 }
 else
