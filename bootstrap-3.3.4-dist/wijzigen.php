@@ -54,7 +54,7 @@ $pdo = ConnectDB();
 					<nav class="navbar navbar-default navbar-collapse">
 						<ul class="nav nav-pills">
 						<li role="presentation"><a href="nieuw.php">Bedrijf registreren</a></li>
-							<li role="presentation"><a href="wijzigen.php">Bedrijf wijzigen</a></li>
+							<li role="presentation" class="active"><a href="wijzigen.php">Bedrijf wijzigen</a></li>
 							<li role="presentation"><a href="#">test</a></li>
 						</ul>
 					</nav>
