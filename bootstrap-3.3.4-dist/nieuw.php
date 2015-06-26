@@ -53,8 +53,8 @@ $pdo = ConnectDB();
 				<div class="col-xs-12">
 					<nav class="navbar navbar-default navbar-collapse">
 						<ul class="nav nav-pills">
-							<li role="presentation" class="active"><a href="bedrijfregistreren.php">test</a></li>
-							<li role="presentation"><a href="bedrijfwijzigen.php">bedrijfwijzigen</a></li>
+							<li role="presentation" class="active"><a href="nieuw.php">Bedrijf registreren</a></li>
+							<li role="presentation"><a href="wijzigen.php">Bedrijf wijzigen</a></li>
 							<li role="presentation"><a href="#">test</a></li>
 						</ul>
 					</nav>
@@ -62,7 +62,7 @@ $pdo = ConnectDB();
 			</div>
 			<?php
 			}
-			require('./controllers/wijzigen.php');
+			require('./controllers/registrerenbedrijf.php');
 			?>
 		</div>
 	</div>
