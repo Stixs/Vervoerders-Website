@@ -70,7 +70,7 @@
 			
 		<div class="form-group">
 			<label for="transportmanager">Transport-manager:</label>
-			<input type="text" class="form-control" id="transport_manager" name="transportmanager" value="<?php ech $transport_manager; ?>"  />
+			<input type="text" class="form-control" id="transport_manager" name="transport_manager" value="<?php echo $transport_manager; ?>"  />
 		</div>
 		
 		<div class="form-group">

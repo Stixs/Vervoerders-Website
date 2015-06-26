@@ -60,7 +60,7 @@ if(LoginCheck($pdo))
 		$specialiteit = $_POST['specialiteit'];
 		$type = $_POST['type'];
 		$bereik = $_POST['bereik'];
-		$transport_manager = $_POST['transportmanager'];
+		$transport_manager = $_POST['transport_manager'];
 		$aantal = $_POST['aantal'];
 		$rechtsvorm = $_POST['rechtsvorm'];
 		$vergunning = $_POST['vergunning'];
@@ -166,6 +166,6 @@ if(LoginCheck($pdo))
 }
 else
 {
-	RedirectNaarPagina(50);
+	echo'U moet ingelogd zijn om deze pagina te kunnen gebruiken.';
 }
 ?>
