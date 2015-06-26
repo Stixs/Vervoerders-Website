@@ -24,7 +24,7 @@ $pdo = ConnectDB();
 				<div class="col-xs-12">
 					<nav class="navbar navbar-default navbar-collapse">
 						<ul class="nav nav-pills">
-							<li role="presentation" class="active"><a href="index.php">Home</a></li>
+							<li role="presentation"><a href="index.php">Home</a></li>
 							<li role="presentation"><a href="#">Gids</a></li>
 							<li role="presentation"><a href="Zoeken.php">Zoeken</a></li>	
 							<?php
@@ -53,8 +53,8 @@ $pdo = ConnectDB();
 				<div class="col-xs-12">
 					<nav class="navbar navbar-default navbar-collapse">
 						<ul class="nav nav-pills">
-							<li role="presentation"><a href="bedrijfregistreren.php">bedrijf registreren</a></li>
-							<li role="presentation"><a href="bedrijfwijzigen.php">bedrijf wijzigen</a></li>
+							<li role="presentation" class="active"><a href="bedrijfregistreren.php">test</a></li>
+							<li role="presentation"><a href="bedrijfwijzigen.php">bedrijfwijzigen</a></li>
 							<li role="presentation"><a href="#">test</a></li>
 						</ul>
 					</nav>
@@ -62,6 +62,7 @@ $pdo = ConnectDB();
 			</div>
 			<?php
 			}
+			require('./controllers/wijzigen.php');
 			?>
 		</div>
 	</div>

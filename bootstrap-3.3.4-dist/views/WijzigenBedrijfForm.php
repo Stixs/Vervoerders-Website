@@ -1,57 +1,100 @@
-	<div id="register">
-	<h1>Wijzigen</h1>
-	<form name="WijzigenFormulier" action="" method="post">
-	<table>
-		<tr>
-		<td><label for="FirstName">Bedrijfsnaam:</label></td><td><input type="text" id="bedrijf_naam" name="Bedrijfsnaam" value="<?php echo $bedrijf_naam; ?>" size="30"/></td>
-		</tr>
-		<tr>
-		<td><label for="Adres">Adres:</label></td><td><input type="text" id="Adres" name="adres" value="<?php echo $adres; ?>"  size="30"/></td>
-		</tr>
-		<tr>
-		<td><label for="Postcode">Postcode:</label></td><td><input type="text" id="Postcode" name="postcode" value="<?php echo $postcode; ?>"  size="30"/></td>
-		</tr>
-		<tr>		
-		<td><label for="Plaats">Plaats:</label></td><td><input type="text" id="Plaats" name="plaats" value="<?php echo $plaats; ?>"  size="30"/></td>
-		</tr>
-		<tr>		
-		<td><label for="provincies">provincies:</label></td><td><input type="text" id="provincies" name="provincies" value="<?php echo $provincies; ?>"  size="30"/></td>
-		</tr>
-		<tr>		
-		<td><label for="Telefoon">Telefoon:</label></td><td><input type="text" id="Telefoon" name="telefoon" value="<?php echo $telefoon; ?>"  size="30"/></td>
-		</tr>
-		<tr>		
-		<td><label for="Fax">Fax:</label></td><td><input type="text" id="Fax" name="fax" value="<?php echo $fax; ?>"  size="30"/></td>
-		</tr>
-		<tr>		
-		<td><label for="specialiteit">Specialiteit:</label></td><td><input type="text" id="specialiteit" name="specialiteit" value="<?php echo $specialiteit; ?>"  size="30"/></td>
-		</tr>
-		<tr>		
-		<td><label for="type">Type:</label></td><td><input type="text" id="type" name="type" value="<?php echo $type; ?>"  size="30"/></td>
-		</tr>
-		<tr>		
-		<td><label for="bereik">Bereik:</label></td><td><input type="text" id="bereik" name="bereik" value="<?php echo $bereik; ?>"  size="30"/></td>
-		</tr>
-		<tr>
-		<td><label for="transportmanager">Transport-manager:</label></td><td><input type="text" id="transportmanager" name="transportmanager" value="<?php echo $transportmanager; ?>"  size="30"/></td>
-		</tr>
-		<tr>
-		<td><label for="aantal">Aantal:</label></td><td><input type="text" id="aantal" name="aantal" value="<?php echo $aantal; ?>"  size="30"/></td><td>
-		</tr>
-		<tr>
-		<td><label for="rechtsvorm">Rechtsvorm:</label></td><td><input type="text" id="rechtsvorm" name="rechtsvorm" value="<?php echo $rechtsvorm; ?>"  size="30"/></td>
-		</tr>
-		<tr>
-		<td><label for="vergunning">Vergunning:</label></td><td><input type="text" id="vergunning" name="vergunning" value="<?php echo $vergunning; ?>" size="30"/></td><td>
-		</tr>
-		<tr>
-		<td><label for="geldigtot">Geldig tot:</label></td><td><input type="text" id="geldigtot" name="geldigtot" value="<?php echo $geldigtot; ?>" size="30"/></td>
-		</tr>
-		<tr>
-		<td><label for="Email">Bedrijfs E-mail:</label></td><td><input type="text" id="bedrijf_email" name="bedrijf_email" value="<?php echo $bedrijf_email ?>" size="30"/></td>
-		<tr>		
-		<td><input type="submit" name="Wijzigenbedrijf" value="Wijzigen!" /></td>
-		</tr>
-	</table>
-	</form>
+<h1>Wijzigen</h1>
+<form name="WijzigenFormulier" class="wijzigen" action="" method="post">
+	<div class="col-xs-12 col-md-6">
+		<div class="form-group">
+			<label for="Bedrijfsnaam">Bedrijfsnaam:</label>
+			<input type="text" class="form-control" id="bedrijf_naam" name="Bedrijfsnaam" value="<?php echo $bedrijfs_naam; ?>" />
+			<?php echo $NameErr; ?>
+		</div>
+			
+		<div class="form-group">
+			<label for="Adres">Adres:</label>
+			<input type="text" class="form-control" id="Adres" name="adres" value="<?php echo $adres; ?>"  />
+		</div>
+			
+		<div class="form-group">
+			<label for="Postcode">Postcode:</label>
+			<input type="text" class="form-control" id="Postcode" name="postcode" value="<?php echo $postcode; ?>"  />
+			<?php echo $ZipErr; ?>
+		</div>
+			
+		<div class="form-group">
+			<label for="Plaats">Plaats:</label>
+			<input type="text" class="form-control" id="Plaats" name="plaats" value="<?php echo $plaats; ?>"  />
+			<?php echo $CityErr; ?>
+		</div>
+			
+		<div class="form-group">
+			<label for="provincies">provincie:</label>
+			<input type="text" class="form-control" id="provincie" name="provincie" value="<?php echo $provincie; ?>"  />
+		</div>
+			
+		<div class="form-group">
+			<label for="Telefoon">Telefoon:</label>
+			<input type="text" class="form-control" id="Telefoon" name="telefoon" value="<?php echo $telefoon; ?>"  />
+			<?php echo $TelErr; ?>
+		</div>
+			
+		<div class="form-group">
+			<label for="Fax">Fax:</label>
+			<input type="text" class="form-control" id="Fax" name="fax" value="<?php echo $fax; ?>"  />
+		</div>
+			
+		<div class="form-group">
+			<label for="Email">Bedrijfs E-mail:</label>
+			<input type="text" class="form-control" id="bedrijfs_email" name="bedrijfs_email" value="<?php echo $bedrijfs_email ?>" />
+			<?php echo $MailErr; ?>
+		</div>
 	</div>
+		
+	<div class="col-xs-12 col-md-6">
+		<div class="form-group">
+			<label for="specialiteit">Specialiteit:</label>
+			<input type="text" class="form-control" id="specialiteit" name="specialiteit" value="<?php echo $specialiteit; ?>"  />
+		</div>
+			
+		<div class="form-group">
+			<label for="type">Type:</label>
+			<input type="text" class="form-control" id="type" name="type" value="<?php echo $type; ?>"  />
+		</div>
+			
+		<div class="form-group">
+			<label for="bereik">Bereik:</label>
+			<input type="text" class="form-control" id="bereik" name="bereik" value="<?php echo $bereik; ?>"  />
+		</div>
+			
+		<div class="form-group">
+			<label for="aantal">Aantal:</label>
+			<input type="number" class="form-control" id="aantal" name="aantal" value="<?php echo $aantal; ?>"  />
+		</div>
+			
+		<div class="form-group">
+			<label for="transportmanager">Transport-manager:</label>
+			<input type="text" class="form-control" id="transport_manager" name="transportmanager" value="<?php ech $transport_manager; ?>"  />
+		</div>
+		
+		<div class="form-group">
+			<label for="rechtsvorm">Rechtsvorm:</label>
+			<input type="text" class="form-control" id="rechtsvorm" name="rechtsvorm" value="<?php echo $rechtsvorm; ?>"  />
+		</div>
+		
+		<div class="form-group">
+			<label for="vergunning">Vergunning:</label>
+			<input type="text" class="form-control" id="vergunning" name="vergunning" value="<?php echo $vergunning ?>" />
+		</div>
+		
+		<div class="form-group">
+			<label for="geldigtot">Geldig tot:</label>
+			<input type="text" class="form-control" id="geldigtot" name="geldigtot" value="<?php echo $geldigtot; ?>" />
+		</div>
+	</div>
+	<div class="col-xs-12">
+		<div class="form-group">
+			<label for="beschrijving">Beschrijving:</label>
+			<textarea id="beschrijving" class="form-control" name="beschrijving" rows="5" ><?php echo $beschrijving; ?></textarea>
+		</div>
+	</div>
+	<div class="col-xs-12">
+		<button class="btn btn-default" type="submit" name="Wijzigenbedrijf" value="Wijzigen!" />Wijzigen</button>
+	</div>
+</form>
