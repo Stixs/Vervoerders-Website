@@ -2,10 +2,12 @@
 if(isset($_POST['Zoek']))
 {
 	$trefwoord = NULL;
-	if(!empty($_POST['specialiteit'])){$trefwoord.=''.$_POST['specialiteit'];}
+	if(!empty($_POST['specialiteit'])){$trefwoord.=' '.$_POST['specialiteit'];}
 	if(!empty($_POST['type'])){$trefwoord.=' '.$_POST['type'];}
 	if(!empty($_POST['bereik'])){$trefwoord.=' '.$_POST['bereik'];}
 	if(!empty($_POST['trefwoord'])){$trefwoord.=' '.$_POST['trefwoord'];}
+	
+	$trefwoord = ltrim($trefwoord);
 	
 	//var_dump($trefwoord);
 	
@@ -96,10 +98,8 @@ if(isset($_POST['Zoek']))
 	
 	if(!empty($trefwoord))
 		{
-		$loop = 0;
 		$trefwoorden = (explode(" ",$trefwoord));
-		unset($trefwoorden['0']);
-	//	var_dump($trefwoorden);
+		//var_dump($trefwoorden);
 		
 		foreach ($trefwoorden as $value)
 			{
@@ -110,7 +110,7 @@ if(isset($_POST['Zoek']))
 	
 	//echo $search;
 	
-	if(!empty($search))
+	if($search != NULL)
 	{
 	$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens WHERE MATCH (bedrijfsnaam, beschrijving, postcode, plaats, provincie, telefoon, fax, transport_manager, rechtsvorm,vergunning, geldig_tot, bedrijfs_email, specialiteit, type, bereik) AGAINST ("'.$search.'" IN BOOLEAN MODE)');
 	}
@@ -119,10 +119,7 @@ if(isset($_POST['Zoek']))
 	$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens');
 	}
 	$sth->execute();
-	
-	
-	while($row = $sth->fetch())
-	{
+
 		echo '<div class="row search-result">';
 		echo '<div class="col-xs-12">';
 			while($row = $sth->fetch())
@@ -161,7 +158,6 @@ if(isset($_POST['Zoek']))
 			}
 		echo '</div>';
 	echo '</div>';
-	}
 	
 }
 else
