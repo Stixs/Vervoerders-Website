@@ -112,11 +112,11 @@ if(isset($_POST['Zoek']))
 	
 	if($search != NULL)
 	{
-	$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens WHERE MATCH (bedrijfsnaam, beschrijving, postcode, plaats, provincie, telefoon, fax, transport_manager, rechtsvorm,vergunning, geldig_tot, bedrijfs_email, specialiteit, type, bereik) AGAINST ("'.$search.'" IN BOOLEAN MODE)');
+	$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens WHERE MATCH (bedrijfsnaam, beschrijving, postcode, plaats, provincie, telefoon, fax, transport_manager, rechtsvorm,vergunning, geldig_tot, bedrijfs_email, specialiteit, type, bereik) AGAINST ("'.$search.'" IN BOOLEAN MODE) ORDER BY premium ASC');
 	}
 	else
 	{
-	$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens');
+	$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens ORDER BY premium ASC');
 	}
 	$sth->execute();
 
