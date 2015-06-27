@@ -37,7 +37,7 @@ $pdo = ConnectDB();
 			<div class="row">
 				<div class="col-xs-12">
 					<?php
-						require('./controllers/inloggen.php');
+						require('/controllers/inloggen.php');
 					?>
 				</div>
 			</div>
