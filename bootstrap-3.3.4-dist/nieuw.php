@@ -26,7 +26,7 @@ $pdo = ConnectDB();
 						<ul class="nav nav-pills">
 							<li role="presentation"><a href="index.php">Home</a></li>
 							<li role="presentation"><a href="#">Gids</a></li>
-							<li role="presentation"><a href="Zoeken.php">Zoeken</a></li>	
+							<li role="presentation"><a href="zoeken.php">Zoeken</a></li>	
 							<?php
 							if(LoginCheck($pdo))
 							{

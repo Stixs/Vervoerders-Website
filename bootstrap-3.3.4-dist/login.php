@@ -26,7 +26,7 @@ $pdo = ConnectDB();
 						<ul class="nav nav-pills">
 							<li role="presentation" class="active"><a href="#">Home</a></li>
 							<li role="presentation"><a href="#">Gids</a></li>
-							<li role="presentation"><a href="#">Zoeken</a></li>	
+							<li role="presentation"><a href="zoeken.php">Zoeken</a></li>	
 							<span class="login"><a href="login.php">Login</a><span>
 						</ul>
 					</nav>					
