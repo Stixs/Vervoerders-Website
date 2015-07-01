@@ -77,7 +77,7 @@ if(LoginCheck($pdo))
 		}
 		if($CheckOnErrors == true) 
 		{
-		require('./views/RegistrerenBedrijfForm.php');
+		require('./views/ToevoegenBedrijfForm.php');
 		}
 		else
 		{
@@ -100,13 +100,13 @@ if(LoginCheck($pdo))
 			$sth = $pdo->prepare('insert into bedrijfgegevens (bedrijfsnaam, beschrijving, adres, postcode, plaats, provincie, telefoon, specialiteit, type, bereik, transport_manager, aantal, rechtsvorm, vergunning, geldig_tot, bedrijfs_email) values(:bedrijfsnaam, beschrijving,	adres, :postcode, :plaats, :provincie, :telefoon, :specialiteit, :type, :bereik, :transport_manager, :aantal, :rechtsvorm, :vergunning, :geldig_tot, :bedrijfs_email');
 			$sth->execute($parameters);
 			
-			echo'Uw bedrijf gegvens zijn Geregistreerd.<br />';
-			require('./views/RegistrerenBedrijfForm.php');
+			echo'Uw bedrijf gegevens zijn Geregistreerd.<br />';
+			require('./views/ToevoegenBedrijfForm.php');
 		}
 	}
 	else
 	{
-		require('./views/RegistrerenBedrijfForm.php');
+		require('./views/ToevoegenBedrijfForm.php');
 	}
 }
 else

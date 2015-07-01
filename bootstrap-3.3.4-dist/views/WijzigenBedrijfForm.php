@@ -46,6 +46,11 @@
 				<input type="text" class="form-control" id="bedrijfs_email" name="bedrijfs_email" value="<?php echo $bedrijfs_email ?>" />
 				<?php echo $MailErr; ?>
 			</div>
+			
+			<div class="form-group">
+				<label for="Weblink">Web link:</label>
+				<input input="text" class="form-control" id="weblink" name="weblink" value="<?php echo $weblink; ?>" />
+			</div>
 		</div>
 			
 		<div class="col-xs-12 col-md-6">
@@ -87,6 +92,20 @@
 			<div class="form-group">
 				<label for="geldigtot">Geldig tot:</label>
 				<input type="text" class="form-control" id="geldigtot" name="geldigtot" value="<?php echo $geldigtot; ?>" />
+			</div>
+			
+			<div class="form-group">
+				<label for="premium">Premium</label>
+				<div class="radio">
+					<label class="radio-inline">
+						<input type="radio" name="premium" id="premium_ja"  value="ja" />
+						ja
+					</label>
+					<label class="radio-inline">
+						<input type="radio" name="premium" id="premium_nee" value="nee" />
+						nee
+					</label>
+				</div>
 			</div>
 		</div>
 		<div class="col-xs-12">

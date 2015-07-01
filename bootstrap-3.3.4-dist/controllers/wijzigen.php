@@ -33,6 +33,7 @@ if(LoginCheck($pdo))
 		$postcode = $row['postcode'];
 		$plaats = $row['plaats'];
 		$provincie = $row['provincie'];
+		$weblink = $row['weblink'];
 		$telefoon = $row['telefoon'];
 		$fax = $row['fax'];
 		$specialiteit = $row['specialiteit'];
@@ -44,6 +45,7 @@ if(LoginCheck($pdo))
 		$vergunning = $row['vergunning'];
 		$geldigtot = $row['geldig_tot'];
 		$bedrijfs_email = $row['bedrijfs_email'];
+		$premium = $row['premium'];
 		
 		
 		if(isset($_POST['Wijzigenbedrijf']))
@@ -55,6 +57,7 @@ if(LoginCheck($pdo))
 		$postcode = $_POST["postcode"];
 		$plaats = $_POST['plaats'];
 		$provincie = $_POST['provincie'];
+		$weblink = $_POST['weblink'];
 		$telefoon = $_POST['telefoon'];
 		$fax = $_POST['fax'];
 		$specialiteit = $_POST['specialiteit'];
@@ -67,6 +70,7 @@ if(LoginCheck($pdo))
 		$geldigtot = $_POST['geldigtot'];
 		$bedrijfs_email = $_POST['bedrijfs_email'];
 		$beschrijving = $_POST['beschrijving'];
+		$premium = $_POST['premium'];
 		
 		//begin controlles
 		
@@ -125,6 +129,7 @@ if(LoginCheck($pdo))
 								':postcode'=>$postcode,
 								':plaats'=>$plaats,
 								':provincie'=>$provincie,
+								':weblink'=>$weblink,
 								':telefoon'=>$telefoon,
 								':specialiteit'=>$specialiteit,
 								':type'=>$type,
@@ -134,7 +139,8 @@ if(LoginCheck($pdo))
 								':rechtsvorm'=>$rechtsvorm,
 								':vergunning'=>$vergunning,
 								':geldig_tot'=>$geldigtot,
-								':bedrijfs_email'=>$bedrijfs_email);
+								':bedrijfs_email'=>$bedrijfs_email,
+								':premium'=>$premium,);
 			$sth = $pdo->prepare('update bedrijfgegevens 
 								  set bedrijfsnaam=:bedrijfsnaam, 
 									  beschrijving=:beschrijving,					 
@@ -142,6 +148,7 @@ if(LoginCheck($pdo))
 									  postcode=:postcode,
 									  plaats=:plaats,
 									  provincie=:provincie,
+									  weblink=:weblink,
 									  telefoon=:telefoon,
 									  specialiteit=:specialiteit,
 									  type=:type,
@@ -152,7 +159,8 @@ if(LoginCheck($pdo))
 									  vergunning=:vergunning,
 									  geldig_tot=:geldig_tot,
 									  bedrijfs_email=:bedrijfs_email
-									  where bedrijfs_id = :bedrijfs_id');
+									  where bedrijfs_id = :bedrijfs_id,
+									  premium=:premium');
 			$sth->execute($parameters);
 			
 			echo'Uw bedrijf gegvens zijn bijgewerkt.<br />';
