@@ -124,8 +124,10 @@ if(isset($_POST['Zoek']))
 		echo '<div class="col-xs-12">';
 			while($row = $sth->fetch())
 			{
-				if($row['premium'] == 'nee')
+				if($row['premium'] == 'ja')
 				{
+					$link = str_replace(" ", "-", $row['bedrijfsnaam']);
+					echo '<a href="bedrijven.php?bedrijf='.$link.'">';
 				?>
 					<div class="search-container">
 						<div class="search-image">
@@ -138,23 +140,22 @@ if(isset($_POST['Zoek']))
 						</div>
 					</div>
 				<?php
+				echo '</a>';
 				}
 				else
 				{
-					$link = str_replace(" ", "-", $row['bedrijfsnaam']);
-				echo '<a href="bedrijven/'.$link.'.php">';
+				
 				?>
 					<div class="search-container">
 						<div class="search-image">
 							<span class="glyphicon glyphicon-search no-premium"></span>
-							<img src="images/truck.jpg">lll
+							<img src="images/truck.jpg">
 						</div>
 						<div class="search-naam">
 							<?php echo $row['bedrijfsnaam']; ?>
 						</div>
 					</div>
 				<?php
-				echo '</a>';
 				}
 				 
 			}
@@ -173,6 +174,9 @@ else
 			{
 				if($row['premium'] == 'ja')
 				{
+					//$link = str_replace(" ", "-", $row['bedrijfsnaam']);
+					$link = $row['bedrijfsnaam'];
+					echo '<a class="greylink" href="bedrijven.php?bedrijf='.$link.'">';
 				?>
 					<div class="search-container">
 						<div class="search-image">
@@ -185,10 +189,11 @@ else
 						</div>
 					</div>
 				<?php
+				echo '</a>';
 				}
 				else
 				{
-					$link = str_replace(" ", "-", $row['bedrijfsnaam']);
+				
 				?>
 					<div class="search-container">
 						<div class="search-image">
