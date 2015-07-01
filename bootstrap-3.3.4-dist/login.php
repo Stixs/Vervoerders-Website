@@ -14,13 +14,6 @@ $pdo = ConnectDB();
 	<div class="container">
 		<div class="row box-shadow">
 			<div class="row">
-				<div class="col-xs-3">
-					<br><br><br><br><br><br><br>
-				</div>
-				<div class="col-xs-9">
-				</div>
-			</div>
-			<div class="row">
 				<div class="col-xs-12">
 					<nav class="navbar navbar-default navbar-collapse">
 						<ul class="nav nav-pills">
@@ -32,6 +25,13 @@ $pdo = ConnectDB();
 					</nav>					
 				</div>
 				<div class="col-xs-12">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-3">
+					<br><br><br><br><br><br><br>
+				</div>
+				<div class="col-xs-9">
 				</div>
 			</div>
 			<div class="row">

@@ -124,7 +124,7 @@ if(isset($_POST['Zoek']))
 		echo '<div class="col-xs-12">';
 			while($row = $sth->fetch())
 			{
-				if($row['premium'] == 'ja')
+				if($row['premium'] == 'nee')
 				{
 				?>
 					<div class="search-container">
@@ -142,17 +142,19 @@ if(isset($_POST['Zoek']))
 				else
 				{
 					$link = str_replace(" ", "-", $row['bedrijfsnaam']);
+				echo '<a href="bedrijven/'.$link.'.php">';
 				?>
 					<div class="search-container">
 						<div class="search-image">
 							<span class="glyphicon glyphicon-search no-premium"></span>
-							<img src="images/truck.jpg">
+							<img src="images/truck.jpg">lll
 						</div>
 						<div class="search-naam">
 							<?php echo $row['bedrijfsnaam']; ?>
 						</div>
 					</div>
 				<?php
+				echo '</a>';
 				}
 				 
 			}
