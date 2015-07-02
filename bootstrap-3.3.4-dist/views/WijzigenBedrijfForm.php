@@ -48,8 +48,8 @@
 			</div>
 			
 			<div class="form-group">
-				<label for="Weblink">Web link:</label>
-				<input input="text" class="form-control" id="weblink" name="weblink" value="<?php echo $weblink; ?>" />
+				<label for="Weblink">Website:</label>
+				<input input="text" class="form-control" id="website" name="website" value="<?php echo $website; ?>" />
 			</div>
 		</div>
 			
