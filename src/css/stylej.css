@@ -19,7 +19,7 @@
 	border-radius:3px;
 	padding:10px;
 }
-.contact  tr  td
+.contact, tr, td
 {
 	padding-right:15px;
 }
