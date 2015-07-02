@@ -4,7 +4,7 @@
 if(LoginCheck($pdo))
 {
 	//init fields
-	$bedrijfs_naam = $beschrijving = $adres = $postcode = $plaats = $provincie = $telefoon = $fax = $bedrijfs_email = $specialiteit = $type = $bereik = $transport_manager = $aantal = $rechtsvorm = $vergunning = $geldig_tot = NULL;
+	$bedrijfs_naam = $beschrijving = $adres = $postcode = $plaats = $provincie = $telefoon = $fax = $bedrijfs_email = $specialiteit = $type = $bereik = $transport_manager = $aantal = $rechtsvorm = $vergunning = $geldig_tot = $website = NULL;
 
 	//init error fields
 	$NameErr = $ZipErr = $CityErr = $TelErr = $MailErr = NULL;
@@ -18,6 +18,7 @@ if(LoginCheck($pdo))
 		$postcode = $_POST["postcode"];
 		$plaats = $_POST['plaats'];
 		$provincie = $_POST['provincie'];
+		$website = $_POST['website'];
 		$telefoon = $_POST['telefoon'];
 		$fax = $_POST['fax'];
 		$specialiteit = $_POST['specialiteit'];
