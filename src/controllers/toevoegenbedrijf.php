@@ -102,7 +102,7 @@ if(LoginCheck($pdo))
 								':bedrijfs_email'=>$bedrijfs_email,
 								':premium'=>$premium);
 								
-			$sth = $pdo->prepare('insert into bedrijfgegevens (bedrijfsnaam, beschrijving, adres, postcode, plaats, provincie, website, telefoon, specialiteit, type, bereik, transport_manager, aantal, rechtsvorm, vergunning, geldig_tot, bedrijfs_email, premium) values(:bedrijfsnaam, :beschrijving, :adres, :postcode, :plaats, :provincie, :website, :telefoon, :specialiteit, :type, :bereik, :transport_manager, :aantal, :rechtsvorm, :vergunning, :geldig_tot, :bedrijfs_email, :premium');
+			$sth = $pdo->prepare('INSERT INTO bedrijfgegevens (bedrijfsnaam, beschrijving, adres, postcode, plaats, provincie, website, telefoon, specialiteit, type, bereik, transport_manager, aantal, rechtsvorm, vergunning, geldig_tot, bedrijfs_email, premium) VALUES(:bedrijfsnaam, :beschrijving, :adres, :postcode, :plaats, :provincie, :website, :telefoon, :specialiteit, :type, :bereik, :transport_manager, :aantal, :rechtsvorm, :vergunning, :geldig_tot, :bedrijfs_email, :premium');
 			$sth->execute($parameters);
 			
 			echo'Uw bedrijf gegevens zijn Geregistreerd.<br />';

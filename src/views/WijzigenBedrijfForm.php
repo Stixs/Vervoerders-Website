@@ -53,12 +53,43 @@
 			</div>
 		</div>
 			
-		<div class="col-xs-12 col-md-6">
+		<div class="col-xs-2">
 			<div class="form-group">
 				<label for="specialiteit">Specialiteit:</label>
-				<input type="text" class="form-control" id="specialiteit" name="specialiteit" value="<?php echo $specialiteit; ?>"  />
+				<input type="text" class="form-control special" id="specialiteit" name="specialiteit" value="<?php echo $specialiteit; ?>"  />
 			</div>
-				
+		</div>
+		<div class="col-xs-2">
+			<div class="form-group">
+				<label for="specialiteit">Specialiteit:</label>
+				<input type="text" class="form-control special" id="specialiteit" name="specialiteit" value="<?php echo $specialiteit; ?>"  />
+			</div>
+		</div>
+		<div class="col-xs-2">
+			<div class="form-group">
+				<label for="specialiteit">Specialiteit:</label>
+				<input type="text" class="form-control special" id="specialiteit" name="specialiteit" value="<?php echo $specialiteit; ?>"  />
+			</div>
+		</div>
+		<div class="col-xs-2">
+			<div class="form-group">
+				<label for="specialiteit">Specialiteit:</label>
+				<input type="text" class="form-control special" id="specialiteit" name="specialiteit" value="<?php echo $specialiteit; ?>"  />
+			</div>
+		</div>
+		<div class="col-xs-2">
+			<div class="form-group">
+				<label for="specialiteit">Specialiteit:</label>
+				<input type="text" class="form-control special" id="specialiteit" name="specialiteit" value="<?php echo $specialiteit; ?>"  />
+			</div>
+		</div>
+		<div class="col-xs-2">
+			<div class="form-group">
+				<label for="specialiteit">Specialiteit:</label>
+				<input type="text" class="form-control special" id="specialiteit" name="specialiteit" value="<?php echo $specialiteit; ?>"  />
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-6">
 			<div class="form-group">
 				<label for="type">Type:</label>
 				<input type="text" class="form-control" id="type" name="type" value="<?php echo $type; ?>"  />
