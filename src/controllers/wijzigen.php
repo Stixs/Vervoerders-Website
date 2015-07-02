@@ -8,16 +8,20 @@ if(LoginCheck($pdo))
 
 	//init error fields
 	$NameErr = $ZipErr = $CityErr = $TelErr = $MailErr = NULL;
-
+	
+	//controleert of de knop aanpassen of verwijderen is ingedurkt.
 	if(isset($_GET['action']))
 	{
+		//haalt gegevens uit de link via Get om tekijken of het wijzigen of verwijderen is en om welk bedrijf het gaat.
 		$action = $_GET['action'];
 		$bedrijfs_id = $_GET['bedrijfs_id'];
 		
+		//Kijkt of het wijzigen of verwijderen is.
 		switch($action)
 		{
 			case'edit':
-
+					
+					//SQL query om de gegevens van het juiste bedrijf uit de database halen
 					$parameters = array(':bedrijfs_id'=>$bedrijfs_id);
 					$sth = $pdo->prepare('select * from bedrijfgegevens where bedrijfs_id = :bedrijfs_id');
 					$sth->execute($parameters);
@@ -44,11 +48,12 @@ if(LoginCheck($pdo))
 					$bedrijfs_email = $row['bedrijfs_email'];
 					$premium = $row['premium'];
 					
-					
+					//controleert of de submit knop wijzigenbedrijf in het formulier is ingedurkt.
 					if(isset($_POST['Wijzigenbedrijf']))
 				{
 					$CheckOnErrors = false;
 					
+					//Gegevens uit het formulier halen
 					$bedrijfs_naam = $_POST["Bedrijfsnaam"];
 					$adres = $_POST["adres"];
 					$postcode = $_POST["postcode"];
@@ -106,17 +111,20 @@ if(LoginCheck($pdo))
 							$TelErr = 'Dit is geen geldig telefoon nummer.';
 						}
 					}
+					//Controleert plaats
 					if(!isset($plaats))
 					{
 						$CheckOnErrors = true;
 						$CityErr = 'U moet een dorp/stad invullen.';
 					}
+					//als er fouten zijn dan wordt je terug gestuurd naar het formulier met wat er verbeterd moet worden.
 					if($CheckOnErrors == true) 
 					{
-					require('./views/WijzigenBedrijfForm.php');
+					require('../views/WijzigenBedrijfForm.php');
 					}
 					else
 					{
+						//De gegevens die uit het formulier komen en die correct zijn worden in de array parameters gezet
 						$parameters = array(':bedrijfs_id'=>$bedrijfs_id,
 											':bedrijfsnaam'=>$bedrijfs_naam,
 											':beschrijving'=>$beschrijving,
@@ -135,7 +143,8 @@ if(LoginCheck($pdo))
 											':vergunning'=>$vergunning,
 											':geldig_tot'=>$geldigtot,
 											':bedrijfs_email'=>$bedrijfs_email,
-											':premium'=>$premium,);
+											':premium'=>$premium);
+						//de SQL query om de gegevens in de database te veranderen.
 						$sth = $pdo->prepare('update bedrijfgegevens 
 											  set bedrijfsnaam=:bedrijfsnaam, 
 												  beschrijving=:beschrijving,					 
@@ -153,9 +162,10 @@ if(LoginCheck($pdo))
 												  rechtsvorm=:rechtsvorm,
 												  vergunning=:vergunning,
 												  geldig_tot=:geldig_tot,
-												  bedrijfs_email=:bedrijfs_email
-												  where bedrijfs_id = :bedrijfs_id,
-												  premium=:premium');
+												  bedrijfs_email=:bedrijfs_email,
+												  premium=:premium
+												  where bedrijfs_id = :bedrijfs_id,');
+						//De variabele parameters wordt uitgevoerd
 						$sth->execute($parameters);
 						
 						echo'De gegvens van '. $row['bedrijfsnaam'].' zijn bijgewerkt.<br />';
@@ -164,6 +174,7 @@ if(LoginCheck($pdo))
 				}
 				else
 				{
+					//laat het formulier WijzigenBedrijfForm zien als de knop wijzigenbedrijf nog niet is ingedurkt.
 					require('./views/WijzigenBedrijfForm.php');
 				}
 				break;
@@ -174,8 +185,9 @@ if(LoginCheck($pdo))
 	}
 	else
 	{
-		require('./views/AanpassenTabel.php');
+	require('./views/AanpassenTabel.php');
 	}
+
 }
 else
 {
