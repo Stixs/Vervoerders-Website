@@ -116,7 +116,7 @@ if(isset($_POST['Zoek']))
 	}
 	else
 	{
-	$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens ORDER BY premium ASC');
+	$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens ORDER BY premium DESC');
 	}
 	$sth->execute();
 
@@ -166,7 +166,7 @@ if(isset($_POST['Zoek']))
 else
 {
 	
-	$sth = $pdo->prepare('select * from bedrijfgegevens order by premium');
+	$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens ORDER BY premium DESC');
 	$sth->execute();
 	echo '<div class="row search-result">';
 		echo '<div class="col-xs-12">';
