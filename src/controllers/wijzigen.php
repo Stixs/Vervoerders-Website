@@ -120,7 +120,7 @@ if(LoginCheck($pdo))
 					//als er fouten zijn dan wordt je terug gestuurd naar het formulier met wat er verbeterd moet worden.
 					if($CheckOnErrors == true) 
 					{
-					require('../views/WijzigenBedrijfForm.php');
+					require('./views/WijzigenBedrijfForm.php');
 					}
 					else
 					{
@@ -145,9 +145,9 @@ if(LoginCheck($pdo))
 											':bedrijfs_email'=>$bedrijfs_email,
 											':premium'=>$premium);
 						//de SQL query om de gegevens in de database te veranderen.
-						$sth = $pdo->prepare('update bedrijfgegevens 
-											  set bedrijfsnaam=:bedrijfsnaam, 
-												  beschrijving=:beschrijving,					 
+						$sth = $pdo->prepare('UPDATE bedrijfgegevens 
+											  SET bedrijfsnaam=:bedrijfsnaam,
+												  beschrijving=:beschrijving,
 												  adres=:adres,
 												  postcode=:postcode,
 												  plaats=:plaats,
@@ -164,9 +164,10 @@ if(LoginCheck($pdo))
 												  geldig_tot=:geldig_tot,
 												  bedrijfs_email=:bedrijfs_email,
 												  premium=:premium
-												  where bedrijfs_id = :bedrijfs_id,');
+												  WHERE bedrijfs_id = :bedrijfs_id');
 						//De variabele parameters wordt uitgevoerd
 						$sth->execute($parameters);
+						
 						
 						echo'De gegvens van '. $row['bedrijfsnaam'].' zijn bijgewerkt.<br />';
 						require('./views/AanpassenTabel.php');

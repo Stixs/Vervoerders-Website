@@ -1,5 +1,5 @@
 <?php 
-$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens');
+$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens LIMIT 10');
 $sth->execute();
  ?>
 <div class="col-xs-12">
