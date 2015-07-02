@@ -62,7 +62,7 @@ $pdo = ConnectDB();
 			</div>
 			<?php
 			}
-				$bedrijf = $_GET['bedrijf'];			
+				$bedrijf = $_GET['bedrijf'];	
 				$parameters = array(':bedrijf'=>$bedrijf);
 				$sth = $pdo->prepare('select * from bedrijfgegevens where bedrijfsnaam = :bedrijf');
 				$sth->execute($parameters);
@@ -73,7 +73,7 @@ $pdo = ConnectDB();
 				<?php echo $row['bedrijfsnaam']; ?>
 				</div>
 				
-				<div class="col-xs-6">
+				<div class="col-xs-6 beschrijving">
 				<?php echo $row['beschrijving']; ?>
 				</div>
 				Adres: <?php echo $row['adres']; ?>
