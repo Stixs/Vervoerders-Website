@@ -31,6 +31,7 @@ if(LoginCheck($pdo))
 		$geldigtot = $_POST['geldigtot'];
 		$bedrijfs_email = $_POST['bedrijfs_email'];
 		$beschrijving = $_POST['beschrijving'];
+		$premium = $_POST['premium'];
 		
 		//begin controlles
 		
@@ -88,6 +89,7 @@ if(LoginCheck($pdo))
 								':postcode'=>$postcode,
 								':plaats'=>$plaats,
 								':provincie'=>$provincie,
+								':website'=>$website,
 								':telefoon'=>$telefoon,
 								':specialiteit'=>$specialiteit,
 								':type'=>$type,
@@ -97,12 +99,13 @@ if(LoginCheck($pdo))
 								':rechtsvorm'=>$rechtsvorm,
 								':vergunning'=>$vergunning,
 								':geldig_tot'=>$geldigtot,
-								':bedrijfs_email'=>$bedrijfs_email);
+								':bedrijfs_email'=>$bedrijfs_email,
+								':premium'=>$premium);
 			$sth = $pdo->prepare('insert into bedrijfgegevens (bedrijfsnaam, beschrijving, adres, postcode, plaats, provincie, telefoon, specialiteit, type, bereik, transport_manager, aantal, rechtsvorm, vergunning, geldig_tot, bedrijfs_email) values(:bedrijfsnaam, beschrijving,	adres, :postcode, :plaats, :provincie, :telefoon, :specialiteit, :type, :bereik, :transport_manager, :aantal, :rechtsvorm, :vergunning, :geldig_tot, :bedrijfs_email');
 			$sth->execute($parameters);
 			
 			echo'Uw bedrijf gegevens zijn Geregistreerd.<br />';
-			require('./views/ToevoegenBedrijfForm.php');
+			RedirectNaarPagina()
 		}
 	}
 	else

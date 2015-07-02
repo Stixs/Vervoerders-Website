@@ -169,8 +169,8 @@ if(LoginCheck($pdo))
 						$sth->execute($parameters);
 						
 						
-						echo'De gegvens van '. $row['bedrijfsnaam'].' zijn bijgewerkt.<br />';
-						require('./views/AanpassenTabel.php');
+						echo'De gegvens van '. $bedrijfs_naam.' zijn bijgewerkt.<br />';
+						RedirectNaarPagina(4);
 					}
 				}
 				else
