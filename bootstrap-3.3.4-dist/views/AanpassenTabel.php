@@ -3,7 +3,7 @@ $sth = $pdo->prepare('select * form bedrijfgegevens');
 $row = $sth->fetch();
  ?>
 <div class="col-xs-12">
-	<table class="table table-bordered">
+	<table class="table table-bordered aanpassen">
 		<tr>
 			<th>Bedrijfs id</th>
 			<th>Bedrijfs naam</th>

@@ -28,3 +28,7 @@
 	float:left;
 	width:65%;
 }
+table, th, td
+{
+	width:25%;
+}
