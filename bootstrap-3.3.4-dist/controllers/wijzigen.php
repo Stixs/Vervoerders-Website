@@ -158,7 +158,7 @@ if(LoginCheck($pdo))
 												  premium=:premium');
 						$sth->execute($parameters);
 						
-						echo'Uw bedrijf gegvens zijn bijgewerkt.<br />';
+						echo'De gegvens van '. $row['bedrijfsnaam'].' zijn bijgewerkt.<br />';
 						require('./views/AanpassenTabel.php');
 					}
 				}

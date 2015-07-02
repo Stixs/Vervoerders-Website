@@ -97,14 +97,33 @@
 			<div class="form-group">
 				<label for="premium">Premium</label>
 				<div class="radio">
+					<?php if($premium == 'ja')
+					{
+					?>
 					<label class="radio-inline">
-						<input type="radio" name="premium" id="premium_ja"  value="ja" />
+						<input type="radio" name="premium" id="premium_ja"  value="ja" checked />
 						ja
 					</label>
 					<label class="radio-inline">
 						<input type="radio" name="premium" id="premium_nee" value="nee" />
 						nee
 					</label>
+					<?php
+					}
+					else
+					{
+					?>
+					<label class="radio-inline">
+						<input type="radio" name="premium" id="premium_ja"  value="ja" />
+						ja
+					</label>
+					<label class="radio-inline">
+						<input type="radio" name="premium" id="premium_nee" value="nee"  checked />
+						nee
+					</label>
+					<?php
+					}
+					?>
 				</div>
 			</div>
 		</div>
