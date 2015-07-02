@@ -1,5 +1,6 @@
 <?php 
-$sth = $pdo->prepare('select * form bedrijfgegevens');
+$sth = $pdo->prepare('select * from bedrijfgegevens');
+$sth->execute();
 $row = $sth->fetch();
  ?>
 <div class="col-xs-12">
