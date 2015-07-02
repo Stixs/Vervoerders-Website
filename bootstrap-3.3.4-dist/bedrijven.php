@@ -68,7 +68,7 @@ $pdo = ConnectDB();
 				$sth->execute($parameters);
 				$row = $sth->fetch();
 			?>
-			<div class="advert row">
+			<div class="rand row">
 				<div class="col-xs-12 naam-bedrijf">
 				<?php echo $row['bedrijfsnaam']; ?>
 				</div>
