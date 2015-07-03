@@ -54,39 +54,45 @@
 		</div>
 			
 		<div class="col-xs-2">
-			<div class="form-group">
-				<label for="specialiteit">Specialiteit:</label>
-				<input type="text" class="form-control special" id="specialiteit" name="specialiteit[]" value="<?php echo $specialarr[0]; ?>"  />
+			 <div class="form-group">
+				<?php 
+				echo Pre_Select('specialiteit[]', $Specialiteiten, $specialarr[0], 1); 
+				?>
 			</div>
 		</div>
 		<div class="col-xs-2">
 			<div class="form-group">
-				<label for="specialiteit">Specialiteit:</label>
-				<input type="text" class="form-control special" id="specialiteit" name="specialiteit[]" value="<?php echo $specialarr[1]; ?>"  />
+				<?php 
+				echo Pre_Select('specialiteit[]', $Specialiteiten, $specialarr[1], 2); 
+				?>
 			</div>
 		</div>
 		<div class="col-xs-2">
 			<div class="form-group">
-				<label for="specialiteit">Specialiteit:</label>
-				<input type="text" class="form-control special" id="specialiteit" name="specialiteit[]" value="<?php echo $specialarr[2]; ?>"  />
+				<?php 
+				echo Pre_Select('specialiteit[]', $Specialiteiten, $specialarr[2], 3); 
+				?>
 			</div>
 		</div>
 		<div class="col-xs-2">
 			<div class="form-group">
-				<label for="specialiteit">Specialiteit:</label>
-				<input type="text" class="form-control special" id="specialiteit" name="specialiteit[]" value="<?php echo $specialarr[3]; ?>"  />
+				<?php 
+				echo Pre_Select('specialiteit[]', $Specialiteiten, $specialarr[3], 4); 
+				?>
 			</div>
 		</div>
 		<div class="col-xs-2">
 			<div class="form-group">
-				<label for="specialiteit">Specialiteit:</label>
-				<input type="text" class="form-control special" id="specialiteit" name="specialiteit[]" value="<?php echo $specialarr[4]; ?>"  />
+				<?php 
+				echo Pre_Select('specialiteit[]', $Specialiteiten, $specialarr[4], 5); 
+				?>
 			</div>
 		</div>
 		<div class="col-xs-2">
 			<div class="form-group">
-				<label for="specialiteit">Specialiteit:</label>
-				<input type="text" class="form-control special" id="specialiteit" name="specialiteit[]" value="<?php echo $specialarr[5]; ?>"  />
+				<?php 
+				echo Pre_Select('specialiteit[]', $Specialiteiten, $specialarr[5], 6); 
+				?>
 			</div>
 		</div>
 		<div class="col-xs-12 col-md-6">

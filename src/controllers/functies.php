@@ -122,8 +122,9 @@ function LoginCheck($pdo)
 		return true;//username komt niet voor
   }
 
-function Pre_Select($name, $options, $optionToSelect) {
-    $html = '<select name="'.$name.'">';
+function Pre_Select($name, $options, $optionToSelect, $id) {
+	$html = '<label for="sel'.$id.'">Specialiteiten:</label>';
+    $html .= '<select class="form-control" id="sel'.$id.'" name="'.$name.'">';
     foreach ($options as $option => $value) {
         if($value == $optionToSelect)
             $html .= '<option value="'.$value.'" selected="selected">'.$value.'</option>';

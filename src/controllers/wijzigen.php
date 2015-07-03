@@ -3,6 +3,8 @@
 //Controleert of je wel bent ingelogd.
 if(LoginCheck($pdo))
 {
+	
+	$Specialiteiten = array('','Koeltransport','Autotransport','Afvaltransport');
 	//init fields
 	$bedrijfs_naam = $beschrijving = $adres = $postcode = $plaats = $provincie = $telefoon = $fax = $bedrijfs_email = $specialiteit = $type = $bereik = $transport_manager = $aantal = $rechtsvorm = $vergunning = $geldig_tot = $website = NULL;
 
@@ -62,9 +64,12 @@ if(LoginCheck($pdo))
 						{$specialarr[4] = NULL;}
 					if(!isset($specialarr[5]))
 						{$specialarr[5] = NULL;}
+					
 					//controleert of de submit knop wijzigenbedrijf in het formulier is ingedurkt.
+					
+					
 					if(isset($_POST['Wijzigenbedrijf']))
-				{
+					{
 					$CheckOnErrors = false;
 					
 					//Gegevens uit het formulier halen
@@ -196,7 +201,6 @@ if(LoginCheck($pdo))
 						//De variabele parameters wordt uitgevoerd
 						$sth->execute($parameters);
 						
-						echo $special;
 						echo'De gegvens van '. $bedrijfs_naam.' zijn bijgewerkt.<br />';
 						RedirectNaarPagina(4);
 					}
