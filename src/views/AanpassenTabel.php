@@ -1,7 +1,28 @@
 <?php 
-$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens LIMIT 10');
-$sth->execute();
+$zoeken = NULL;
+
+if(isset($_POST['submit']))
+{
+	$zoeken = $_POST['zoekbedrijf'];
+	$parameters = array(':zoeken'=>$zoeken);
+	$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens WHERE bedrijfsnaam LIKE %:zoeken%');
+	$sth->execute($parameters);
+}
+else
+{
+	$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens LIMIT 10');
+	$sth->execute();
+}
  ?>
+	<div class="col-xs-6">
+		<form class="form-inline" method="post" action="" >
+			<div class="form-group">
+				<label for="zoeken">Zoeken</label>
+				<input type="text" class="form-control" name="zoekbedrijf" value="<?php echo $zoeken; ?>" />
+				<button type="submit" name="submit" class="btn btn-default">Zoeken</button>
+			</div>
+		</form>
+	</div>
 <div class="col-xs-12">
 	<table class="table table-bordered aanpassen">
 		<tr>
