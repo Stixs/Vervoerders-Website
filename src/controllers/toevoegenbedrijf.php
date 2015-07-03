@@ -4,7 +4,7 @@
 if(LoginCheck($pdo))
 {
 	//init fields
-	$bedrijfs_naam = $beschrijving = $adres = $postcode = $plaats = $provincie = $telefoon = $fax = $bedrijfs_email = $specialiteit = $type = $bereik = $transport_manager = $aantal = $rechtsvorm = $vergunning = $geldig_tot = $website = NULL;
+	$bedrijfs_naam = $beschrijving = $adres = $postcode = $plaats = $provincie = $telefoon = $fax = $bedrijfs_email = $specialiteit = $type = $bereik = $transport_manager = $aantal = $rechtsvorm = $vergunning = $geldigtot = $website = $premium = NULL;
 
 	//init error fields
 	$NameErr = $ZipErr = $CityErr = $TelErr = $MailErr = NULL;
@@ -67,11 +67,12 @@ if(LoginCheck($pdo))
 			$CheckOnErrors = true;
 			$TelErr = 'U moet een telefoon nummer invullen.';
 		}
-		elseif(!is_NL_Telnr($telefoon))
+		elseif(!is_minlength($telefoon, 10))
 		{
 			$CheckOnErrors = true;
 			$TelErr = 'Dit is geen geldig telefoon nummer.';
 		}
+		//Controlleert plaats
 		if(!isset($plaats))
 		{
 			$CheckOnErrors = true;
@@ -102,11 +103,48 @@ if(LoginCheck($pdo))
 								':bedrijfs_email'=>$bedrijfs_email,
 								':premium'=>$premium);
 								
-			$sth = $pdo->prepare('INSERT INTO bedrijfgegevens (bedrijfsnaam, beschrijving, adres, postcode, plaats, provincie, website, telefoon, specialiteit, type, bereik, transport_manager, aantal, rechtsvorm, vergunning, geldig_tot, bedrijfs_email, premium) VALUES(:bedrijfsnaam, :beschrijving, :adres, :postcode, :plaats, :provincie, :website, :telefoon, :specialiteit, :type, :bereik, :transport_manager, :aantal, :rechtsvorm, :vergunning, :geldig_tot, :bedrijfs_email, :premium');
+			$sth = $pdo->prepare('INSERT INTO bedrijfgegevens (
+								bedrijfsnaam, 
+								beschrijving, 
+								adres, 
+								postcode, 
+								plaats, 
+								provincie, 
+								website, 
+								telefoon, 
+								specialiteit, 
+								type, 
+								bereik, 
+								transport_manager, 
+								aantal, 
+								rechtsvorm, 
+								vergunning, 
+								geldig_tot, 
+								bedrijfs_email, 
+								premium) 
+								VALUES(
+								:bedrijfsnaam, 
+								:beschrijving, 
+								:adres, 
+								:postcode, 
+								:plaats, 
+								:provincie, 
+								:website, 
+								:telefoon, 
+								:specialiteit, 
+								:type, 
+								:bereik, 
+								:transport_manager, 
+								:aantal, 
+								:rechtsvorm, 
+								:vergunning, 
+								:geldig_tot, 
+								:bedrijfs_email, 
+								:premium)');
 			$sth->execute($parameters);
 			
 			echo'Uw bedrijf gegevens zijn Geregistreerd.<br />';
-			//RedirectNaarPagina();
+			RedirectNaarPagina(5);
 		}
 	}
 	else

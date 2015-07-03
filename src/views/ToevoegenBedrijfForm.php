@@ -91,7 +91,7 @@
 			
 			<div class="form-group">
 				<label for="geldigtot">Geldig tot:</label>
-				<input type="text" class="form-control" id="geldigtot" name="geldigtot" value="<?php echo $geldig_tot; ?>" />
+				<input type="text" class="form-control" id="geldigtot" name="geldigtot" value="<?php echo $geldigtot; ?>" />
 			</div>
 			
 			<div class="form-group">
