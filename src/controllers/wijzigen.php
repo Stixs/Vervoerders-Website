@@ -4,7 +4,6 @@
 if(LoginCheck($pdo))
 {
 	
-	$Specialiteiten = array('','Koeltransport','Autotransport','Afvaltransport');
 	//init fields
 	$bedrijfs_naam = $beschrijving = $adres = $postcode = $plaats = $provincie = $telefoon = $fax = $bedrijfs_email = $specialiteit = $type = $bereik = $transport_manager = $aantal = $rechtsvorm = $vergunning = $geldig_tot = $website = NULL;
 

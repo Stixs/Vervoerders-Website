@@ -53,12 +53,49 @@
 			</div>
 		</div>
 			
-		<div class="col-xs-12 col-md-6">
-			<div class="form-group">
-				<label for="specialiteit">Specialiteit:</label>
-				<input type="text" class="form-control" id="specialiteit" name="specialiteit" value="<?php echo $specialiteit; ?>"  />
+			<div class="col-xs-2">
+			 <div class="form-group">
+				<?php 
+				echo Dropdown('specialiteit[]', $Specialiteiten, 1); 
+				?>
 			</div>
-				
+		</div>
+		<div class="col-xs-2">
+			<div class="form-group">
+				<?php 
+				echo Dropdown('specialiteit[]', $Specialiteiten, 2); 
+				?>
+			</div>
+		</div>
+		<div class="col-xs-2">
+			<div class="form-group">
+				<?php 
+				echo Dropdown('specialiteit[]', $Specialiteiten, 3); 
+				?>
+			</div>
+		</div>
+		<div class="col-xs-2">
+			<div class="form-group">
+				<?php 
+				echo Dropdown('specialiteit[]', $Specialiteiten, 4); 
+				?>
+			</div>
+		</div>
+		<div class="col-xs-2">
+			<div class="form-group">
+				<?php 
+				echo Dropdown('specialiteit[]', $Specialiteiten, 5); 
+				?>
+			</div>
+		</div>
+		<div class="col-xs-2">
+			<div class="form-group">
+				<?php 
+				echo Dropdown('specialiteit[]', $Specialiteiten, 6); 
+				?>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-6">
 			<div class="form-group">
 				<label for="type">Type:</label>
 				<input type="text" class="form-control" id="type" name="type" value="<?php echo $type; ?>"  />

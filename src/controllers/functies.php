@@ -134,5 +134,15 @@ function Pre_Select($name, $options, $optionToSelect, $id) {
     $html .= '</select>';
     return $html;
 }
+
+function Dropdown($name, $options, $id) {
+	$html = '<label for="sel'.$id.'">Specialiteiten:</label>';
+    $html .= '<select class="form-control" id="sel'.$id.'" name="'.$name.'">';
+    foreach ($options as $option => $value) {
+            $html .= '<option value="'.$value.'">'.$value.'</option>';
+    }
+    $html .= '</select>';
+    return $html;
+}
   
 ?>

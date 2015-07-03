@@ -2,6 +2,7 @@
 session_start();
 require('./controllers/functies.php');
 
+	$Specialiteiten = array('','Koeltransport','Autotransport','Afvaltransport');
 $pdo = ConnectDB();
 
 if(isset($_GET['paginanr']))
