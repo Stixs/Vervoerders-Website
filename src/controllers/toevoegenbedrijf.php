@@ -32,20 +32,19 @@ if(LoginCheck($pdo))
 		$bedrijfs_email = $_POST['bedrijfs_email'];
 		$beschrijving = $_POST['beschrijving'];
 		$premium = $_POST['premium'];
+		$special = NULL;
 		
-		$specialarr = (explode(",",$specialiteit));
-					if(!isset($specialarr[0]))
-						{$specialarr[0] = NULL;}
-					if(!isset($specialarr[1]))
-						{$specialarr[1] = NULL;}
-					if(!isset($specialarr[2]))
-						{$specialarr[2] = NULL;}
-					if(!isset($specialarr[3]))
-						{$specialarr[3] = NULL;}
-					if(!isset($specialarr[4]))
-						{$specialarr[4] = NULL;}
-					if(!isset($specialarr[5]))
-						{$specialarr[5] = NULL;}
+		foreach($specialiteit as $value) 
+					{
+						if(!next($specialiteit)) 
+						{
+							$special.= $value;
+						}
+						else
+						{
+							$special.= $value.',';
+						}
+					}
 		
 		//begin controlles
 		
@@ -106,7 +105,7 @@ if(LoginCheck($pdo))
 								':provincie'=>$provincie,
 								':website'=>$website,
 								':telefoon'=>$telefoon,
-								':specialiteit'=>$specialiteit,
+								':specialiteit'=>$special,
 								':type'=>$type,
 								':bereik'=>$bereik,
 								':transport_manager'=>$transport_manager,
