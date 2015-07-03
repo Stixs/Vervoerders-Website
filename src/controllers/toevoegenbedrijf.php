@@ -33,6 +33,20 @@ if(LoginCheck($pdo))
 		$beschrijving = $_POST['beschrijving'];
 		$premium = $_POST['premium'];
 		
+		$specialarr = (explode(",",$specialiteit));
+					if(!isset($specialarr[0]))
+						{$specialarr[0] = NULL;}
+					if(!isset($specialarr[1]))
+						{$specialarr[1] = NULL;}
+					if(!isset($specialarr[2]))
+						{$specialarr[2] = NULL;}
+					if(!isset($specialarr[3]))
+						{$specialarr[3] = NULL;}
+					if(!isset($specialarr[4]))
+						{$specialarr[4] = NULL;}
+					if(!isset($specialarr[5]))
+						{$specialarr[5] = NULL;}
+		
 		//begin controlles
 		
 		//Controleert bedrijs naam
