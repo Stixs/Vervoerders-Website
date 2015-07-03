@@ -166,7 +166,7 @@ if(isset($_POST['Zoek']))
 else
 {
 	
-	$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens ORDER BY premium DESC');
+	$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens ORDER BY premium DESC LIMIT 10');
 	$sth->execute();
 	echo '<div class="row search-result">';
 		echo '<div class="col-xs-12">';
@@ -176,7 +176,7 @@ else
 				{
 					//$link = str_replace(" ", "-", $row['bedrijfsnaam']);
 					$link = $row['bedrijfsnaam'];
-					echo '<a class="greylink" href="bedrijven.php?bedrijf='.$link.'">';
+					echo '<a class="greylink" href="index.php?paginanr=6&bedrijf='.$link.'">';
 				?>
 					<div class="search-container">
 						<div class="search-image">

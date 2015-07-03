@@ -106,7 +106,7 @@ else
 					require('./controllers/toevoegenbedrijf.php');
 					break;
 					case 6:
-					require('./controllers/bedrijfen.php');
+					require('./controllers/bedrijven.php');
 					break;
 					case 51:
 					require('./controllers/inloggen.php');

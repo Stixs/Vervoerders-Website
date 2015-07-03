@@ -48,12 +48,28 @@ if(LoginCheck($pdo))
 					$bedrijfs_email = $row['bedrijfs_email'];
 					$premium = $row['premium'];
 					
+					
+					$specialarr = (explode(",",$specialiteit));
+					if(!isset($specialarr[0]))
+						{$specialarr[0] = NULL;}
+					if(!isset($specialarr[1]))
+						{$specialarr[1] = NULL;}
+					if(!isset($specialarr[2]))
+						{$specialarr[2] = NULL;}
+					if(!isset($specialarr[3]))
+						{$specialarr[3] = NULL;}
+					if(!isset($specialarr[4]))
+						{$specialarr[4] = NULL;}
+					if(!isset($specialarr[5]))
+						{$specialarr[5] = NULL;}
 					//controleert of de submit knop wijzigenbedrijf in het formulier is ingedurkt.
 					if(isset($_POST['Wijzigenbedrijf']))
 				{
 					$CheckOnErrors = false;
 					
 					//Gegevens uit het formulier halen
+					$special = NULL;
+					
 					$bedrijfs_naam = $_POST["Bedrijfsnaam"];
 					$adres = $_POST["adres"];
 					$postcode = $_POST["postcode"];
@@ -73,6 +89,18 @@ if(LoginCheck($pdo))
 					$bedrijfs_email = $_POST['bedrijfs_email'];
 					$beschrijving = $_POST['beschrijving'];
 					$premium = $_POST['premium'];
+					
+					foreach($specialiteit as $value) 
+					{
+						if(!next($specialiteit)) 
+						{
+							$special.= $value;
+						}
+						else
+						{
+							$special.= $value.',';
+						}
+					}
 					
 					//begin controlles
 					
@@ -134,7 +162,7 @@ if(LoginCheck($pdo))
 											':provincie'=>$provincie,
 											':website'=>$website,
 											':telefoon'=>$telefoon,
-											':specialiteit'=>$specialiteit,
+											':specialiteit'=>$special,
 											':type'=>$type,
 											':bereik'=>$bereik,
 											':transport_manager'=>$transport_manager,
@@ -168,7 +196,7 @@ if(LoginCheck($pdo))
 						//De variabele parameters wordt uitgevoerd
 						$sth->execute($parameters);
 						
-						
+						echo $special;
 						echo'De gegvens van '. $bedrijfs_naam.' zijn bijgewerkt.<br />';
 						RedirectNaarPagina(4);
 					}

@@ -56,37 +56,37 @@
 		<div class="col-xs-2">
 			<div class="form-group">
 				<label for="specialiteit">Specialiteit:</label>
-				<input type="text" class="form-control special" id="specialiteit" name="specialiteit" value="<?php echo $specialiteit; ?>"  />
+				<input type="text" class="form-control special" id="specialiteit" name="specialiteit[]" value="<?php echo $specialarr[0]; ?>"  />
 			</div>
 		</div>
 		<div class="col-xs-2">
 			<div class="form-group">
 				<label for="specialiteit">Specialiteit:</label>
-				<input type="text" class="form-control special" id="specialiteit" name="specialiteit" value="<?php echo $specialiteit; ?>"  />
+				<input type="text" class="form-control special" id="specialiteit" name="specialiteit[]" value="<?php echo $specialarr[1]; ?>"  />
 			</div>
 		</div>
 		<div class="col-xs-2">
 			<div class="form-group">
 				<label for="specialiteit">Specialiteit:</label>
-				<input type="text" class="form-control special" id="specialiteit" name="specialiteit" value="<?php echo $specialiteit; ?>"  />
+				<input type="text" class="form-control special" id="specialiteit" name="specialiteit[]" value="<?php echo $specialarr[2]; ?>"  />
 			</div>
 		</div>
 		<div class="col-xs-2">
 			<div class="form-group">
 				<label for="specialiteit">Specialiteit:</label>
-				<input type="text" class="form-control special" id="specialiteit" name="specialiteit" value="<?php echo $specialiteit; ?>"  />
+				<input type="text" class="form-control special" id="specialiteit" name="specialiteit[]" value="<?php echo $specialarr[3]; ?>"  />
 			</div>
 		</div>
 		<div class="col-xs-2">
 			<div class="form-group">
 				<label for="specialiteit">Specialiteit:</label>
-				<input type="text" class="form-control special" id="specialiteit" name="specialiteit" value="<?php echo $specialiteit; ?>"  />
+				<input type="text" class="form-control special" id="specialiteit" name="specialiteit[]" value="<?php echo $specialarr[4]; ?>"  />
 			</div>
 		</div>
 		<div class="col-xs-2">
 			<div class="form-group">
 				<label for="specialiteit">Specialiteit:</label>
-				<input type="text" class="form-control special" id="specialiteit" name="specialiteit" value="<?php echo $specialiteit; ?>"  />
+				<input type="text" class="form-control special" id="specialiteit" name="specialiteit[]" value="<?php echo $specialarr[5]; ?>"  />
 			</div>
 		</div>
 		<div class="col-xs-12 col-md-6">
