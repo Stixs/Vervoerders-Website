@@ -107,7 +107,7 @@ if(LoginCheck($pdo))
 					}
 					
 					//begin controlles
-					
+					/*
 					//Controleert bedrijs naam
 					if(!isset($bedrijfs_naam))
 					{
@@ -149,6 +149,7 @@ if(LoginCheck($pdo))
 						$CheckOnErrors = true;
 						$CityErr = 'U moet een dorp/stad invullen.';
 					}
+					*/
 					//als er fouten zijn dan wordt je terug gestuurd naar het formulier met wat er verbeterd moet worden.
 					if($CheckOnErrors == true) 
 					{

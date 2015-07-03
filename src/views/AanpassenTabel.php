@@ -14,11 +14,12 @@ else
 	$sth->execute();
 }
  ?>
+<div class="row">
 	<div class="col-xs-6">
 		<form class="form-inline" method="post" action="" >
 			<div class="form-group">
 				<label for="zoeken">Zoeken</label>
-				<input type="text" class="form-control" name="zoekbedrijf" value="<?php echo $zoeken; ?>" />
+				<input class="form-control" id="zoekbedrijf" name="zoekbedrijf" value="<?php echo $zoeken; ?>">
 				<button type="submit" name="submit" class="btn btn-default">Zoeken</button>
 			</div>
 		</form>
@@ -49,4 +50,5 @@ else
 		} 
 		?>
 	</table>
+</div>
 </div>

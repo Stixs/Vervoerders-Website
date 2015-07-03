@@ -40,7 +40,7 @@ else
   </head>
   <body>
 	<div class="container">
-		<div class="row box-shadow">
+		<div class="box-shadow">
 			<div class="row">
 				<div class="col-xs-12">
 					<nav class="navbar navbar-default navbar-collapse">
@@ -83,6 +83,7 @@ else
 						<ul class="nav nav-pills">
 							<li role="presentation"><a href="index.php?paginanr=5">Bedrijf toevoegen</a></li>
 							<li role="presentation"><a href="index.php?paginanr=4">Bedrijf wijzigen</a></li>
+							<li role="presentation"><a href="index.php?paginanr=7">Beheer</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -108,6 +109,9 @@ else
 					break;
 					case 6:
 					require('./controllers/bedrijven.php');
+					break;
+					case 7:
+					require('./controllers/beheer.php');
 					break;
 					case 51:
 					require('./controllers/inloggen.php');

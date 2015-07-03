@@ -11,7 +11,8 @@
 	</div>
 	
 	<div class="col-xs-6 beschrijving">
-	<img src="images/truck.jpg">
+	<img src="images/truck.jpg"><br>
+	^ logo functie placeholder ^
 	<?php echo $row['beschrijving']; ?>
 	</div>
 	<div class="col-xs-1">
