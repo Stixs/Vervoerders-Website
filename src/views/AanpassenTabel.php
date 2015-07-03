@@ -1,11 +1,11 @@
 <?php 
 $zoeken = NULL;
 
-if(isset($_POST['submit']))
+if(isset($_POST['submit']) and !empty($_POST['zoekbedrijf']))
 {
 	$zoeken = $_POST['zoekbedrijf'];
 	$parameters = array(':zoeken'=>$zoeken);
-	$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens WHERE bedrijfsnaam LIKE %:zoeken%');
+	$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens WHERE bedrijfsnaam REGEXP :zoeken');
 	$sth->execute($parameters);
 }
 else
