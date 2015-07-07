@@ -5,6 +5,11 @@
 	$sth->execute($parameters);
 	$row = $sth->fetch();
 ?>
+<div class="row">
+	<div class="col-xs-12">
+		<img src="images/#" role="banner" />
+	</div>
+</div>
 <div class="rand row">
 	<div class="col-xs-12 naam-bedrijf">
 	<?php echo $row['bedrijfsnaam']; ?>
@@ -13,7 +18,8 @@
 	<div class="col-xs-6 beschrijving">
 	<img src="images/truck.jpg"><br>
 	^ logo functie placeholder ^
-	<?php echo $row['beschrijving']; ?>
+	<?php echo $row['beschrijving']; ?><br />
+	<img src="images/#" /><br />
 	</div>
 	<div class="col-xs-1">
 	</div>
