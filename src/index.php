@@ -76,6 +76,7 @@ else
 							<li role="presentation"><a href="index.php?paginanr=5">Bedrijf toevoegen</a></li>
 							<li role="presentation"><a href="index.php?paginanr=4">Bedrijf wijzigen</a></li>
 							<li role="presentation"><a href="index.php?paginanr=7">Beheer</a></li>
+							<li role="presentation"><a href="index.php?paginanr=8">Beheer Advertenties</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -104,6 +105,9 @@ else
 					break;
 					case 7:
 					require('./controllers/beheer.php');
+					break;
+					case 8:
+					require('./controllers/advertentieswijzigen.php');
 					break;
 					case 51:
 					require('./controllers/inloggen.php');

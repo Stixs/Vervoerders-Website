@@ -4,22 +4,20 @@ Met klant bespreken of het logo of een afbeelding moet zijn. (logo)
 
 foto's in de database.
 
-foto/reclame blak onder het hoofd menu.
+foto/reclame blak onder het hoofd menu. 
 
 bedrijven kunnen banner/foto/logo invoeren.
 
-Telefoon nummer is altijd zichtbaar.
-
-non-premium klanten laten hun telefoon nummer, mail en een link naar informatie pagina.
-
-twee soorten premium: Premium en brons, Premium laten alles te zien op een andere pagina. Brons members laten alleen bedrijfsnaam telefoon nummer en e-mail adres.
+twee soorten premium: Premium en brons, Premium laten alles te zien op een andere pagina. Brons members hebben alleen bedrijfsnaam en telefoon nummer. non-premium niets.
 
 Banners mogen niet te groot worden.
 
-Bij premium klanten krijgen geen reclame op hun informatie pagina maar dan wel 2 foto's en logo.
+informatie pagina maar dan wel 2 foto's en logo.
 
 als het kan een banner generator.
 
 aan de linker kant een menu om het uiterlijk van de site kunt aanpassen en aan de rechter kant een menu om de advertentie kunt beheren.
 
-advertentie title, afbeelding, datum van en datum tot, url of pagina die website zelf genereed en of het de hoofd banner of een kleine is.
+advertentie title, afbeelding, datum van en datum tot, url of pagina die website zelf genereed en of het de hoofd banner of een kleine is. 
+
+onzichtbaar maken: bereik, aantal, rechtsvorm, vergunning, geldig_tot.
