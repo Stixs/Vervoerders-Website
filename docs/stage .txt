@@ -1,6 +1,6 @@
-bedrijfs-pagina Specialiteit kolom: max letters per regel 30, woorden die afgebroken worden op de volgende regel zetten. x
+bedrijfs-pagina Specialiteit kolom: max letters per regel 30, woorden die afgebroken worden op de volgende regel zetten. (x)
 
-Met klant bespreken of het logo of een afbeelding moet zijn.
+Met klant bespreken of het logo of een afbeelding moet zijn. (logo)
 
 foto's in de database.
 
