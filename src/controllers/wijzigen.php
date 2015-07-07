@@ -53,7 +53,7 @@ if(LoginCheck($pdo))
 					$premium = $row['premium'];
 					
 					
-					$specialarr = (explode(",",$specialiteit));
+					$specialarr = (explode(", ",$specialiteit));
 					if(!isset($specialarr[0]))
 						{$specialarr[0] = NULL;}
 					if(!isset($specialarr[1]))
@@ -105,7 +105,7 @@ if(LoginCheck($pdo))
 						}
 						else
 						{
-							$special.= $value.',';
+							$special.= $value.', ';
 						}
 					}
 					

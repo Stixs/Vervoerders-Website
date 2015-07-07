@@ -1,4 +1,4 @@
-bedrijfs-pagina Specialiteit kolom: max letters per regel 30, woorden die afgebroken worden op de volgende regel zetten.
+bedrijfs-pagina Specialiteit kolom: max letters per regel 30, woorden die afgebroken worden op de volgende regel zetten. x
 
 Met klant bespreken of het logo of een afbeelding moet zijn.
 
@@ -8,8 +8,6 @@ foto/reclame blak onder het hoofd menu.
 
 bedrijven kunnen banner/foto/logo invoeren.
 
-bedrijven die niet premium zijn kunnen hun informatie inzin in een kleine manier via uitschuiven en daar staat dan het telefoon nummer.
-of
 Telefoon nummer is altijd zichtbaar.
 
 non-premium klanten laten hun telefoon nummer, mail en een link naar informatie pagina.
@@ -23,7 +21,5 @@ Bij premium klanten krijgen geen reclame op hun informatie pagina maar dan wel 2
 als het kan een banner generator.
 
 aan de linker kant een menu om het uiterlijk van de site kunt aanpassen en aan de rechter kant een menu om de advertentie kunt beheren.
-
-per lokatie per unieke user elkeer kom er een andere advertentie.
 
 advertentie title, afbeelding, datum van en datum tot, url of pagina die website zelf genereed en of het de hoofd banner of een kleine is.
