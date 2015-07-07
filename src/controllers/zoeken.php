@@ -83,7 +83,7 @@ if(isset($_POST['Zoek']))
 		<div class="col-xs-5">
 			<input type="text" name="trefwoord" placeholder="Trefwoord" autofocus size="20">
 			<input type="submit" name="Zoek" value="Zoek"/>
-			 <a href="zoeken.php">Reset</a><br><br>
+			 <a href="?paginanr=3">Reset</a><br><br>
 		</div>
 	</div>
 </form>

@@ -21,6 +21,7 @@ else
 				<label for="zoeken">Zoeken</label>
 				<input class="form-control" id="zoekbedrijf" name="zoekbedrijf" value="<?php echo $zoeken; ?>">
 				<button type="submit" name="submit" class="btn btn-default">Zoeken</button>
+				<a href="?paginanr=4" class="btn btn-default" role="button">Reset</a>
 			</div>
 		</form>
 	</div>
