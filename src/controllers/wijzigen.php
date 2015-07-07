@@ -9,6 +9,9 @@ if(LoginCheck($pdo))
 
 	//init error fields
 	$NameErr = $ZipErr = $CityErr = $TelErr = $MailErr = NULL;
+
+	$Specialiteiten = specialiteitenlijst($pdo);
+
 	
 	//controleert of de knop aanpassen of verwijderen is ingedurkt.
 	if(isset($_GET['action']))

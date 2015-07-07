@@ -144,5 +144,15 @@ function Dropdown($name, $options, $id) {
     $html .= '</select>';
     return $html;
 }
+
+function specialiteitenlijst($pdo) {
+	$specialiteiten = array("");
+	$sth = $pdo->prepare('select specialiteit from specialiteiten');
+		$sth->execute();
+		$result = $sth->fetchAll(PDO::FETCH_COLUMN, 0);
+		
+	$specialiteiten = array_merge($specialiteiten, $result);
+	return $specialiteiten;
+}
   
 ?>

@@ -9,6 +9,8 @@ if(LoginCheck($pdo))
 	//init error fields
 	$NameErr = $ZipErr = $CityErr = $TelErr = $MailErr = NULL;
 	
+	$Specialiteiten = specialiteitenlijst($pdo);
+	
 		if(isset($_POST['Registrerenbedrijf']))
 	{
 		$CheckOnErrors = false;

@@ -2,7 +2,7 @@
 	<div class="col-xs-12">
 		<h1>Wijzigen</h1>
 		<form name="WijzigenFormulier" class="wijzigen" action="" method="post">
-			<div class="col-xs-12">
+			<div class="col-xs-6">
 				<div class="form-group">
 					<label for="Bedrijfsnaam">Bedrijfsnaam:</label>
 					<input type="text" class="form-control" id="bedrijf_naam" name="Bedrijfsnaam" value="<?php echo $bedrijfs_naam; ?>" />
