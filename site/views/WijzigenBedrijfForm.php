@@ -135,24 +135,8 @@
 				<div class="form-group">
 					<label for="premium">Premium</label>
 					<div class="radio">
-						<?php if($premium == 'nee')
-						{
-						?>
-						<label class="radio-inline">
-							<input type="radio" name="premium" id="premium_nee"  value="0" checked />
-							nee
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="premium" id="premium_brons" value="brons" />
-							brons
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="premium" id="premium_gold" value="gold" />
-							gold
-						</label>
 						<?php
-						}
-						elseif($premium == 'brons')
+						if($premium == 'brons')
 						{
 						?>
 						<label class="radio-inline">
@@ -182,6 +166,23 @@
 						</label>
 						<label class="radio-inline">
 							<input type="radio" name="premium" id="premium_gold" value="gold" checked />
+							gold
+						</label>
+						<?php
+						} 
+						else
+						{
+						?>
+						<label class="radio-inline">
+							<input type="radio" name="premium" id="premium_nee"  value="0" checked />
+							nee
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="premium" id="premium_brons" value="brons" />
+							brons
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="premium" id="premium_gold" value="gold" />
 							gold
 						</label>
 						<?php

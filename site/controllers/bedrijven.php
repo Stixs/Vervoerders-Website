@@ -71,12 +71,14 @@
 				
 				$sth = $pdo->prepare('SELECT * FROM specialiteiten WHERE specialiteit_id REGEXP '.$special);
 				$sth->execute($parameters);
+				$specialiteiten = NULL;
 				while($row = $sth->fetch())
 				{
-				echo $row['specialiteit'].', '; 
-				
+				$specialiteiten .= $row['specialiteit'].', '; 
 				}
-				
+				$specialiteiten = substr($specialiteiten, 2);
+				$specialiteiten = substr($specialiteiten, 0, -2);
+				echo $specialiteiten;
 				
 				?></td>
 			</tr>

@@ -4,7 +4,7 @@ Met klant bespreken of het logo of een afbeelding moet zijn. (logo)
 
 foto's in de database.
 
-foto/reclame blak onder het hoofd menu. 
+foto/reclame blak onder het hoofd menu.  (x)
 
 bedrijven kunnen banner/foto/logo invoeren.
 
@@ -12,7 +12,7 @@ twee soorten premium: Premium en brons, Premium laten alles te zien op een ander
 
 Banners mogen niet te groot worden.
 
-informatie pagina maar dan wel 2 foto's en logo.
+informatie pagina maar dan wel 2 foto's en logo. (x)
 
 als het kan een banner generator.
 
@@ -20,4 +20,4 @@ aan de linker kant een menu om het uiterlijk van de site kunt aanpassen en aan d
 
 advertentie title, afbeelding, datum van en datum tot, url of pagina die website zelf genereed en of het de hoofd banner of een kleine is. 
 
-onzichtbaar maken: bereik, aantal, rechtsvorm, vergunning, geldig_tot.
+onzichtbaar maken: bereik, aantal, rechtsvorm, vergunning, geldig_tot. (x)
