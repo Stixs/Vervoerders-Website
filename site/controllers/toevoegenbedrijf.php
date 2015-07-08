@@ -35,18 +35,30 @@ if(LoginCheck($pdo))
 		$beschrijving = $_POST['beschrijving'];
 		$premium = $_POST['premium'];
 		$special = NULL;
+		$special = "'";
 		
 		foreach($specialiteit as $value) 
-					{
-						if(!next($specialiteit)) 
-						{
-							$special.= $value;
-						}
-						else
-						{
-							$special.= $value.',';
-						}
-					}
+		{
+			if(!next($specialiteit)) 
+			{
+				$special.= $value;
+				$specialZ.= "[[:<:]]".$value."[[:>:]]'";
+			}
+			else
+			{
+				$special.= $value.', ';
+				$specialZ.= "[[:<:]]".$value."[[:>:]]|";
+			}
+		}
+		
+		$sth = $pdo->prepare('SELECT * FROM specialiteiten WHERE specialiteit_id REGEXP '.$specialZ);
+		$sth->execute($parameters);
+		while($row = $sth->fetch())
+		{
+			$specialname.= $row['specialiteit'].', ';
+		}
+		$specialname = substr($specialname, 2);
+		$specialname = substr($specialname, 0, -2);
 		
 		//begin controlles
 		
@@ -108,6 +120,7 @@ if(LoginCheck($pdo))
 								':website'=>$website,
 								':telefoon'=>$telefoon,
 								':specialiteit'=>$special,
+								':specialiteitnaam'=>$specialname,
 								':type'=>$type,
 								':bereik'=>$bereik,
 								':transport_manager'=>$transport_manager,
@@ -127,7 +140,7 @@ if(LoginCheck($pdo))
 								provincie, 
 								website, 
 								telefoon, 
-								specialiteit, 
+								specialiteitnaam, 
 								type, 
 								bereik, 
 								transport_manager, 
@@ -146,7 +159,7 @@ if(LoginCheck($pdo))
 								:provincie, 
 								:website, 
 								:telefoon, 
-								:specialiteit, 
+								:specialiteitnaam, 
 								:type, 
 								:bereik, 
 								:transport_manager, 

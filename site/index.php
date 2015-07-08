@@ -18,7 +18,7 @@ else
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="ISO-8859-1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -87,6 +87,9 @@ else
 						<form id="TitleOpnaam" method="post" action="index.php?paginanr=3">
 							<div>
 								<input class="col-xs-9" type="text" name="trefwoord" placeholder="zoek hier op bedrijfsnaam of specialisme">
+								<input type="hidden" name="type"  value="">
+								<input type="hidden" name="bereik"  value="">
+								<input type="hidden" name="trefwoord"  value="">
 								<input class="col-xs-3" type="submit" name="Zoek" value="zoeken"/>
 							</div>
 							<?php 
@@ -120,17 +123,31 @@ else
 				</div>
 			</div>
 			<?php
-			if($_GET['paginanr'] <= 3)
-			{
-			?>
-			<div class="row">
-				<div class="col-xs-12">
-					<img src="images/Reclame-1.jpg"/>
-				</div>
-			</div>
-			<?php
 			}
-			}
+
+			if(isset($_GET['paginanr']))
+				{
+					if($_GET['paginanr'] <= 3)
+					{
+					?>
+					<div class="row">
+						<div class="col-xs-12">
+							<img src="images/Reclame-1.jpg"/>
+						</div>
+					</div>
+					<?php
+					}
+				}
+				else
+				{
+					?>
+					<div class="row">
+						<div class="col-xs-12">
+							<img src="images/Reclame-1.jpg"/>
+						</div>
+					</div>
+					<?php
+				}
 			switch($paginanr)
 				{
 					case 1:

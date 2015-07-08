@@ -153,6 +153,43 @@ function specialiteitenlijst($pdo) {
 		
 	$specialiteiten = array_merge($specialiteiten, $result);
 	return $specialiteiten;
+}  
+
+
+
+function specialiteitkeuze($pdo, $name, $id, $keuze = NULL) {
+	$html = '<label for="sel'.$id.'">Specialiteiten:</label>';
+    $html .= '<select class="form-control" id="sel'.$id.'" name="'.$name.'">';	
+	$sth = $pdo->prepare('select * from specialiteiten');
+		$sth->execute();
+			
+			while($row = $sth->fetch())
+				{
+					
+					if($row['specialiteit_id'] == $keuze)
+					{
+						$html .= '<option value="'.$row['specialiteit_id'].'" selected="selected">'.$row['specialiteit'].'</option>';
+					}
+					else
+					{
+						$html .= '<option value="'.$row['specialiteit_id'].'">'.$row['specialiteit'].'</option>';
+					}
+				}
+	$html .= '</select>';
+    return $html;
 }
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ?>

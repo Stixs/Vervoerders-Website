@@ -126,7 +126,7 @@ if(isset($_POST['Zoek']))
 		echo '<div class="col-xs-12">';
 			while($row = $sth->fetch())
 			{
-				if($row['premium'] == 'ja')
+				if($row['premium'] == 'gold')
 				{
 					$link = str_replace(" ", "-", $row['bedrijfsnaam']);
 					echo '<a class="greylink" href="index.php?paginanr=6&bedrijf='.$link.'">';
@@ -139,12 +139,13 @@ if(isset($_POST['Zoek']))
 						</div>
 						<div class="search-naam">
 							<?php echo $row['bedrijfsnaam']; ?>
+							<?php echo $row['telefoon']; ?>
 						</div>
 					</div>
 				<?php
 				echo '</a>';
 				}
-				else
+				elseif($row['premium'] == 'nee')
 				{
 				
 				?>
@@ -158,6 +159,23 @@ if(isset($_POST['Zoek']))
 						</div>
 					</div>
 				<?php
+				}
+				elseif($row['premium'] == 'brons')
+				{
+				?>
+					<div class="search-container">
+						<div class="search-image">
+						
+							<span class="glyphicon glyphicon-search premium"></span>
+							<img src="images/truck.jpg">
+						</div>
+						<div class="search-naam">
+							<?php echo $row['bedrijfsnaam']; ?>
+							<?php echo $row['telefoon']; ?>
+						</div>
+					</div>
+				<?php
+				echo '</a>';
 				}
 				 
 			}

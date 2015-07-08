@@ -57,42 +57,42 @@
 				<div class="col-xs-2">
 				 <div class="form-group">
 					<?php 
-					echo Dropdown('specialiteit[]', $Specialiteiten, 1); 
+					echo specialiteitkeuze($pdo, 'specialiteit[]', 1); 
 					?>
 				</div>
 			</div>
 			<div class="col-xs-2">
 				<div class="form-group">
 					<?php 
-					echo Dropdown('specialiteit[]', $Specialiteiten, 2); 
+					echo specialiteitkeuze($pdo, 'specialiteit[]', 2);
 					?>
 				</div>
 			</div>
 			<div class="col-xs-2">
 				<div class="form-group">
 					<?php 
-					echo Dropdown('specialiteit[]', $Specialiteiten, 3); 
+					echo specialiteitkeuze($pdo, 'specialiteit[]', 3);
 					?>
 				</div>
 			</div>
 			<div class="col-xs-2">
 				<div class="form-group">
 					<?php 
-					echo Dropdown('specialiteit[]', $Specialiteiten, 4); 
+					echo specialiteitkeuze($pdo, 'specialiteit[]', 4); 
 					?>
 				</div>
 			</div>
 			<div class="col-xs-2">
 				<div class="form-group">
 					<?php 
-					echo Dropdown('specialiteit[]', $Specialiteiten, 5); 
+					echo specialiteitkeuze($pdo, 'specialiteit[]', 5); 
 					?>
 				</div>
 			</div>
 			<div class="col-xs-2">
 				<div class="form-group">
 					<?php 
-					echo Dropdown('specialiteit[]', $Specialiteiten, 6); 
+					echo specialiteitkeuze($pdo, 'specialiteit[]', 6);
 					?>
 				</div>
 			</div>
@@ -136,12 +136,16 @@
 					<label for="premium">Premium</label>
 					<div class="radio">
 						<label class="radio-inline">
-							<input type="radio" name="premium" id="premium_ja"  value="ja" />
-							ja
+							<input type="radio" name="premium" id="premium_nee"  value="0" />
+							nee
 						</label>
 						<label class="radio-inline">
-							<input type="radio" name="premium" id="premium_nee" value="nee" />
-							nee
+							<input type="radio" name="premium" id="premium_brons" value="brons" />
+							brons
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="premium" id="premium_gold" value="gold" />
+							gold
 						</label>
 					</div>
 				</div>

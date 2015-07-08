@@ -2,7 +2,7 @@
 	<div class="col-xs-12">
 		<h1>Wijzigen</h1>
 		<form name="WijzigenFormulier" class="wijzigen" action="" method="post">
-			<div class="col-xs-6">
+			<div class="col-xs-12 col-md-6">
 				<div class="form-group">
 					<label for="Bedrijfsnaam">Bedrijfsnaam:</label>
 					<input type="text" class="form-control" id="bedrijf_naam" name="Bedrijfsnaam" value="<?php echo $bedrijfs_naam; ?>" />
@@ -53,46 +53,46 @@
 					<input input="text" class="form-control" id="website" name="website" value="<?php echo $website; ?>" />
 				</div>
 			</div>
-				
+			
 			<div class="col-xs-2">
-				 <div class="form-group">
+				<div class="form-group">
 					<?php 
-					echo Pre_Select('specialiteit[]', $Specialiteiten, $specialarr[0], 1); 
+					echo specialiteitkeuze($pdo, 'specialiteit[]', 1, $specialarr[0]);
 					?>
 				</div>
 			</div>
 			<div class="col-xs-2">
 				<div class="form-group">
 					<?php 
-					echo Pre_Select('specialiteit[]', $Specialiteiten, $specialarr[1], 2); 
+					echo specialiteitkeuze($pdo, 'specialiteit[]', 2, $specialarr[1]);
 					?>
 				</div>
 			</div>
 			<div class="col-xs-2">
 				<div class="form-group">
 					<?php 
-					echo Pre_Select('specialiteit[]', $Specialiteiten, $specialarr[2], 3); 
+					echo specialiteitkeuze($pdo, 'specialiteit[]', 3, $specialarr[2]);
 					?>
 				</div>
 			</div>
 			<div class="col-xs-2">
 				<div class="form-group">
 					<?php 
-					echo Pre_Select('specialiteit[]', $Specialiteiten, $specialarr[3], 4); 
+					echo specialiteitkeuze($pdo, 'specialiteit[]', 4, $specialarr[3]); 
 					?>
 				</div>
 			</div>
 			<div class="col-xs-2">
 				<div class="form-group">
 					<?php 
-					echo Pre_Select('specialiteit[]', $Specialiteiten, $specialarr[4], 5); 
+					echo specialiteitkeuze($pdo, 'specialiteit[]', 5, $specialarr[4]); 
 					?>
 				</div>
 			</div>
 			<div class="col-xs-2">
 				<div class="form-group">
 					<?php 
-					echo Pre_Select('specialiteit[]', $Specialiteiten, $specialarr[5], 6); 
+					echo specialiteitkeuze($pdo, 'specialiteit[]', 6, $specialarr[5]);
 					?>
 				</div>
 			</div>
@@ -135,29 +135,54 @@
 				<div class="form-group">
 					<label for="premium">Premium</label>
 					<div class="radio">
-						<?php if($premium == 'ja')
+						<?php if($premium == 'nee')
 						{
 						?>
 						<label class="radio-inline">
-							<input type="radio" name="premium" id="premium_ja"  value="ja" checked />
-							ja
+							<input type="radio" name="premium" id="premium_nee"  value="0" checked />
+							nee
 						</label>
 						<label class="radio-inline">
-							<input type="radio" name="premium" id="premium_nee" value="nee" />
-							nee
+							<input type="radio" name="premium" id="premium_brons" value="brons" />
+							brons
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="premium" id="premium_gold" value="gold" />
+							gold
 						</label>
 						<?php
 						}
-						else
+						elseif($premium == 'brons')
 						{
 						?>
 						<label class="radio-inline">
-							<input type="radio" name="premium" id="premium_ja"  value="ja" />
-							ja
+							<input type="radio" name="premium" id="premium_nee"  value="0" />
+							nee
 						</label>
 						<label class="radio-inline">
-							<input type="radio" name="premium" id="premium_nee" value="nee"  checked />
+							<input type="radio" name="premium" id="premium_brons" value="brons" checked />
+							brons
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="premium" id="premium_gold" value="gold" />
+							gold
+						</label>
+						<?php
+						}
+						elseif($premium == 'gold')
+						{
+						?>
+						<label class="radio-inline">
+							<input type="radio" name="premium" id="premium_nee"  value="0" />
 							nee
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="premium" id="premium_brons" value="brons" checked />
+							brons
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="premium" id="premium_gold" value="gold" checked />
+							gold
 						</label>
 						<?php
 						}

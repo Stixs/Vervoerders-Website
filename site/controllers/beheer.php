@@ -41,18 +41,26 @@ $sth->execute($parameters);
 			<?php
 			$sth = $pdo->prepare('select * from specialiteiten');
 			$sth->execute();
+			$first = true;
 			while($row = $sth->fetch())
 			{
-			?>
-			
-				<div class="form-group">
-				<label for="specialiteit">Specialiteit</label>
-				<input type="text" class="form-control" name="specialiteit[<?php echo $row['specialiteit_id'] ?>]" value="<?php echo $row['specialiteit']; ?>">
-				<button type="submit" value="<?php echo $row['specialiteit_id'] ?>" name="edit_spec" class="btn btn-default">Wijzig</button>
-				<button type="submit" value="<?php echo $row['specialiteit_id'] ?>" name="del_spec" class="btn btn-default">Verwijder</button>
-				</div>
-				<br>
-			<?php
+				if($first == true)
+				{
+					$first = false;
+				}
+				else
+				{
+				?>
+				
+					<div class="form-group">
+					<label for="specialiteit">Specialiteit</label>
+					<input type="text" class="form-control" name="specialiteit[<?php echo $row['specialiteit_id'] ?>]" value="<?php echo $row['specialiteit']; ?>">
+					<button type="submit" value="<?php echo $row['specialiteit_id'] ?>" name="edit_spec" class="btn btn-default">Wijzig</button>
+					<button type="submit" value="<?php echo $row['specialiteit_id'] ?>" name="del_spec" class="btn btn-default">Verwijder</button>
+					</div>
+					<br>
+				<?php
+				}
 			}
 			?> 
 		</form>

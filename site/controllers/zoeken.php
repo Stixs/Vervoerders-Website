@@ -22,7 +22,7 @@ if(isset($_POST['Zoek']))
 			<select class="form-control search-select" id="sel1" name="specialiteit">
 				<?php
 				
-				$sth = $pdo->prepare('select distinct specialiteit from bedrijfgegevens');
+				$sth = $pdo->prepare('select * from specialiteiten');
 				$sth->execute();
 				
 				echo '<option value="" selected style="display:none;">Specialiteit</option>';
@@ -122,47 +122,6 @@ if(isset($_POST['Zoek']))
 	}
 	$sth->execute();
 
-		echo '<div class="row search-result">';
-		echo '<div class="col-xs-12">';
-			while($row = $sth->fetch())
-			{
-				if($row['premium'] == 'ja')
-				{
-					$link = str_replace(" ", "-", $row['bedrijfsnaam']);
-					echo '<a class="greylink" href="index.php?paginanr=6&bedrijf='.$link.'">';
-				?>
-					<div class="search-container">
-						<div class="search-image">
-						
-							<span class="glyphicon glyphicon-search premium"></span>
-							<img src="images/truck.jpg">
-						</div>
-						<div class="search-naam">
-							<?php echo $row['bedrijfsnaam']; ?>
-						</div>
-					</div>
-				<?php
-				echo '</a>';
-				}
-				else
-				{
-				
-				?>
-					<div class="search-container">
-						<div class="search-image">
-							<span class="glyphicon glyphicon-search no-premium"></span>
-							<img src="images/truck.jpg">
-						</div>
-						<div class="search-naam">
-							<?php echo $row['bedrijfsnaam']; ?>
-						</div>
-					</div>
-				<?php
-				}
-				 
-			}
-		echo '</div>';
-	echo '</div>';
 	
 }
 else
@@ -170,14 +129,15 @@ else
 	
 	$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens ORDER BY premium DESC LIMIT 10');
 	$sth->execute();
+}
+
 	echo '<div class="row search-result">';
 		echo '<div class="col-xs-12">';
 			while($row = $sth->fetch())
 			{
-				if($row['premium'] == 'ja')
+				if($row['premium'] == 'gold')
 				{
-					//$link = str_replace(" ", "-", $row['bedrijfsnaam']);
-					$link = $row['bedrijfsnaam'];
+					$link = str_replace(" ", " ", $row['bedrijfsnaam']);
 					echo '<a class="greylink" href="index.php?paginanr=6&bedrijf='.$link.'">';
 				?>
 					<div class="search-container">
@@ -187,18 +147,34 @@ else
 							<img src="images/truck.jpg">
 						</div>
 						<div class="search-naam">
-							<?php echo $row['bedrijfsnaam']; ?>
+							<?php echo $row['bedrijfsnaam']. '<br>' .$row['telefoon']; ?>
 						</div>
 					</div>
 				<?php
 				echo '</a>';
 				}
-				else
+				elseif($row['premium'] == 'brons')
 				{
 				
 				?>
 					<div class="search-container">
 						<div class="search-image">
+						
+							<span class="glyphicon glyphicon-search no-premium"></span>
+							<img src="images/truck.jpg">
+						</div>
+						<div class="search-naam">
+							<?php echo $row['bedrijfsnaam']. '<br>' .$row['telefoon']; ?>
+						</div>
+					</div>
+				<?php
+				}
+				else
+				{
+				?>
+					<div class="search-container">
+						<div class="search-image">
+						
 							<span class="glyphicon glyphicon-search no-premium"></span>
 							<img src="images/truck.jpg">
 						</div>
@@ -212,5 +188,5 @@ else
 			}
 		echo '</div>';
 	echo '</div>';
-}
+
 ?>

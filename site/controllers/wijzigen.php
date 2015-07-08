@@ -53,7 +53,7 @@ if(LoginCheck($pdo))
 					$premium = $row['premium'];
 					
 					
-					$specialarr = (explode(",",$specialiteit));
+					$specialarr = (explode(", ",$specialiteit));
 					if(!isset($specialarr[0]))
 						{$specialarr[0] = NULL;}
 					if(!isset($specialarr[1]))
@@ -67,6 +67,8 @@ if(LoginCheck($pdo))
 					if(!isset($specialarr[5]))
 						{$specialarr[5] = NULL;}
 					
+					
+					
 					//controleert of de submit knop wijzigenbedrijf in het formulier is ingedurkt.
 					
 					
@@ -76,6 +78,8 @@ if(LoginCheck($pdo))
 					
 					//Gegevens uit het formulier halen
 					$special = NULL;
+					$specialZ = "'";
+					$specialname = NULL;
 					
 					$bedrijfs_naam = $_POST["Bedrijfsnaam"];
 					$adres = $_POST["adres"];
@@ -102,12 +106,26 @@ if(LoginCheck($pdo))
 						if(!next($specialiteit)) 
 						{
 							$special.= $value;
+							$specialZ.= "[[:<:]]".$value."[[:>:]]'";
 						}
 						else
 						{
-							$special.= $value.',';
+							$special.= $value.', ';
+							$specialZ.= "[[:<:]]".$value."[[:>:]]|";
 						}
 					}
+					
+					$sth = $pdo->prepare('SELECT * FROM specialiteiten WHERE specialiteit_id REGEXP '.$specialZ);
+					$sth->execute($parameters);
+					while($row = $sth->fetch())
+					{
+						$specialname.= $row['specialiteit'].', ';
+					}
+					
+					
+					$specialname = substr($specialname, 2);
+					$specialname = substr($specialname, 0, -2);
+					
 					
 					//begin controlles
 					/*
@@ -171,6 +189,7 @@ if(LoginCheck($pdo))
 											':website'=>$website,
 											':telefoon'=>$telefoon,
 											':specialiteit'=>$special,
+											':specialiteitnaam'=>$specialname,
 											':type'=>$type,
 											':bereik'=>$bereik,
 											':transport_manager'=>$transport_manager,
@@ -191,6 +210,7 @@ if(LoginCheck($pdo))
 												  website=:website,
 												  telefoon=:telefoon,
 												  specialiteit=:specialiteit,
+												  specialiteitnaam=:specialiteitnaam,
 												  type=:type,
 												  bereik=:bereik,
 												  transport_manager=:transport_manager,

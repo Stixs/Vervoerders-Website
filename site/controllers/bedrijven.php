@@ -4,6 +4,15 @@
 	$sth = $pdo->prepare('select * from bedrijfgegevens where bedrijfsnaam = :bedrijf');
 	$sth->execute($parameters);
 	$row = $sth->fetch();
+	
+	$specialarr = (explode(", ",$row['specialiteit']));
+					
+	$special = "'[[:<:]]".$specialarr[0]."[[:>:]]|";
+	$special .= "[[:<:]]".$specialarr[1]."[[:>:]]|";
+	$special .= "[[:<:]]".$specialarr[2]."[[:>:]]|";
+	$special .= "[[:<:]]".$specialarr[3]."[[:>:]]|";
+	$special .= "[[:<:]]".$specialarr[4]."[[:>:]]|";
+	$special .= "[[:<:]]".$specialarr[5]."[[:>:]]'";
 ?>
 <div class="row">
 	<div class="col-xs-12">
@@ -52,38 +61,45 @@
 			<tr>
 				<td>Website:</td><td><?php echo $row['website']; ?></td>
 			</tr>
-		</table>
-		<table class="table table-bordered">
-			<tr>
-				<td colspan="2" class="titel">Soort Transport</td>
-			</tr>
-			<tr>
-				<td>Bereik:</td><td><?php echo $row['bereik']; ?></td>
-			</tr>
-			<tr>
-				<td>specialiteit:</td><td><?php echo $row['specialiteit']; ?></td>
-			</tr>
-			<tr>
-				<td>type:</td><td><?php echo $row['type']; ?></td>
-			</tr>
-		</table>
-		<table class="table table-bordered">
-			<tr>
-				<td colspan="2" class="titel">Bedrijfs Gegevens</td>
-			</tr>
 			<tr>
 				<td>Transport Manager:</td><td><?php echo $row['transport_manager']; ?></td>
 			</tr>
 			<tr>
-				<td>Rechtsvorm:</td><td><?php echo $row['rechtsvorm']; ?></td>
-			</tr>
-			<tr>
-				<td>Vergunning:</td><td><?php echo $row['vergunning']; ?></td>
-			</tr>
-			<tr>
-				<td>Geldig tot:</td><td><?php echo $row['geldig_tot']; ?></td>
+				<td>specialiteit:</td><td>
+				<?php 
+				
+				
+				$sth = $pdo->prepare('SELECT * FROM specialiteiten WHERE specialiteit_id REGEXP '.$special);
+				$sth->execute($parameters);
+				while($row = $sth->fetch())
+				{
+				echo $row['specialiteit'].', '; 
+				
+				}
+				
+				
+				?></td>
 			</tr>
 		</table>
+
 				
 	</div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
