@@ -187,7 +187,7 @@ textarea {
 }
 
 #TPE_Logo a {
-	background: url('../images/CourierPlazaEurope-logo.jpg') top center no-repeat #fff;
+	background: url('../images/.jpg') top center no-repeat #fff;
 	height: 130px;
 	display: block;
 }
@@ -272,7 +272,7 @@ textarea {
 		width:729px;
 	}
 	#TPE_Logo div a {
-		background: url('../images/CourierPlazaEurope-sm-logo.jpg') center no-repeat #fff;
+		background: url('../images/.jpg') center no-repeat #fff;
 		height: 130px;
 		display: block;
 	}
@@ -292,7 +292,7 @@ textarea {
 		width:100%;
 	}
 	#TPE_Logo div a {
-		background: url('../images/CourierPlazaEurope-sm-logo.jpg') center no-repeat #fff;
+		background: url('../images/.jpg') center no-repeat #fff;
 		height: 95px;
 		display: block;
 	}

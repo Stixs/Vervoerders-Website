@@ -96,12 +96,10 @@ else
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-xs-12">
-					<img src="images/Reclame-1.jpg"/>
-				</div>
-			</div>
 			<?php
+			
+			
+			
 			if(LoginCheck($pdo))
 			{
 			?>
@@ -109,16 +107,29 @@ else
 				<div class="col-xs-12">
 					<div class="navbar navbar-default collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<nav>
-							<ul class="nav navbar-nav col-xs-12">
-								<li role="presentation"><a href="index.php?paginanr=5">Bedrijf toevoegen</a></li>
-								<li role="presentation"><a href="index.php?paginanr=4">Bedrijf wijzigen</a></li>
-								<li role="presentation"><a href="index.php?paginanr=7">Beheer</a></li>
-							</ul>
+							<ul class="nav navbar-nav pull-left">
+							<li role="presentation"><a href="index.php?paginanr=5">Bedrijf toevoegen</a></li>
+							<li role="presentation"><a href="index.php?paginanr=4">Bedrijf wijzigen</a></li>
+						</ul>
+						<ul class="nav navbar-nav pull-right">
+							<li role="presentation"><a href="index.php?paginanr=7">Beheer</a></li>
+							<li role="presentation"><a href="index.php?paginanr=8">Beheer Advertenties</a></li>
+						</ul>
 						</nav>
 					</div>
 				</div>
 			</div>
 			<?php
+			if($_GET['paginanr'] <= 3)
+			{
+			?>
+			<div class="row">
+				<div class="col-xs-12">
+					<img src="images/Reclame-1.jpg"/>
+				</div>
+			</div>
+			<?php
+			}
 			}
 			switch($paginanr)
 				{
