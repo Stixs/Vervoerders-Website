@@ -81,9 +81,11 @@ if(isset($_POST['Zoek']))
 			</select>
 		</div>
 		<div class="col-xs-5">
-			<input type="text" name="trefwoord" placeholder="Trefwoord" autofocus size="20">
-			<input type="submit" name="Zoek" value="Zoek"/>
-			 <a href="zoeken.php">Reset</a><br><br>
+			<div class="form-inline">
+			<input class="form-control" type="text" name="trefwoord" placeholder="Trefwoord" autofocus size="20">
+			<button class="btn btn-default" type="submit" name="Zoek" value="Zoek">Zoek</button>
+			<a class="btn btn-default" href="?paginanr=3">Reset</a><br><br>
+			</div>
 		</div>
 	</div>
 </form>
@@ -127,7 +129,7 @@ if(isset($_POST['Zoek']))
 				if($row['premium'] == 'ja')
 				{
 					$link = str_replace(" ", "-", $row['bedrijfsnaam']);
-					echo '<a href="bedrijven.php?bedrijf='.$link.'">';
+					echo '<a class="greylink" href="index.php?paginanr=6&bedrijf='.$link.'">';
 				?>
 					<div class="search-container">
 						<div class="search-image">
