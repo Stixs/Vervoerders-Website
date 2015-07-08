@@ -90,7 +90,7 @@ else
 								<input class="col-xs-3" type="submit" name="Zoek" value="zoeken"/>
 							</div>
 							<?php 
-								include 'controllers/ZoekVeld.php';
+								//include 'controllers/ZoekVeld.php';
 							?>
 						</form>
 					</div>
