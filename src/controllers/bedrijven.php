@@ -7,7 +7,7 @@
 ?>
 <div class="row">
 	<div class="col-xs-12">
-		<img src="images/#" role="banner" />
+		<img src="images/banner.png" width="1000px" role="banner" />
 	</div>
 </div>
 <div class="rand row">
@@ -16,7 +16,7 @@
 	</div>
 	
 	<div class="col-xs-6 beschrijving">
-	<img src="images/truck.jpg"><br>
+	<img src="images/logo.png" width="200px"><br>
 	^ logo functie placeholder ^
 	<?php echo $row['beschrijving']; ?><br />
 	<img src="images/#" /><br />

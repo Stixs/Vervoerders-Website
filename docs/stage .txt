@@ -16,7 +16,7 @@ informatie pagina maar dan wel 2 foto's en logo.
 
 als het kan een banner generator.
 
-aan de linker kant een menu om het uiterlijk van de site kunt aanpassen en aan de rechter kant een menu om de advertentie kunt beheren.
+aan de linker kant een menu om het uiterlijk van de site kunt aanpassen en aan de rechter kant een menu om de advertentie kunt beheren. (x)
 
 advertentie title, afbeelding, datum van en datum tot, url of pagina die website zelf genereed en of het de hoofd banner of een kleine is. 
 

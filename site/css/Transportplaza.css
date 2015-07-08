@@ -1,0 +1,310 @@
+body {
+	color: #262626;
+    font-family: "Trebuchet MS",sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+	background-color: #BFCCE7;
+}
+.h1, .h2, .h3, h1, h2, h3 {
+	margin:0;
+}
+h1 {
+	font-family: Century Gothic,Verdana;
+	font-size: 1.667em;
+	padding-bottom: 15px;
+}
+h2 {
+	font-family: Century Gothic,Verdana;
+	font-size: 1.385em;
+	padding-bottom: 15px;
+}
+select.input-sm[multiple] {
+	height:30px;
+}
+input {
+	height:30px;
+	border:1px solid #e4e4e4;
+}
+textarea {
+	resize: none;
+	border:1px solid #e4e4e4;
+}
+.TEMPCLASS {margin-top:45px;}
+.weight-normal {
+	font-weight:400;
+}
+.lightbold {
+	font-weight:600;
+}
+.bold {
+	font-weight:700;
+}
+.pull-center {
+	text-align:center;
+}
+.align-right {
+	text-align:right !important;
+}
+.vert-align-bottom {
+	padding-top:8px;
+}
+.spacer {
+	margin-bottom:20px;
+}
+.btn-group-lg > .btn, .btn-lg {
+	font-size:1em;
+	font-weight: 600;
+	padding: 10px 26px;
+}
+.btn-success {
+	background:#A3DD49;
+	border-color:#8bbc3e;
+}
+.btn-success.active, .btn-success.focus, .btn-success:active, .btn-success:focus, .btn-success:hover, .open > .dropdown-toggle.btn-success {
+	background:#8bbc3e;
+}
+.containers {
+	max-width: 1200px;
+}
+.box-shadow {
+	background-color: white;
+	box-shadow: 0px 0px 6px 6px #B6C2DC;
+}
+
+.zoeken input[type=text] {
+	float: left;
+	border: 1px solid #4A4A4A;
+	font-size: 17px;
+	border-radius: 10px;
+	padding: 5px;
+	width: 250px;
+	margin-left: 10px;	
+}
+.zoeken input[type=submit] {
+	float: left;
+	border: none;
+	background-color: #4A4A4A;
+	font-size: 17px;
+	color: white;
+	margin-left: -4px;
+	height: 36.5px;
+	width: 70px;
+	border-radius: 10px;
+	margin-left: 10px
+	
+}
+.zoeken a {
+	display: block;
+	float: left;
+	border: none;
+	background-color: #4A4A4A;
+	font-size: 17px;
+	color: white;
+	height: 36.5px;
+	width: 70px;
+	border-radius: 10px;
+	margin-left: 10px;
+	text-align: center;
+	line-height: 34px;
+}
+.search-select {
+	width: 200px;
+	float: left;
+}
+.search-result {
+	text-align: center;
+}
+.search-container {
+	display: inline-block;
+	width: 235px;
+	height: 200px;
+	margin: 20px;
+	border: 1px solid white;
+	border-radius: 4px;
+	padding-top: 7px;
+	border: 1px solid #DFDFDF;	
+}
+.greylink a
+{
+	color: #333;
+}
+.search-container:hover {
+	border: 1px solid grey;
+	cursor: pointer;
+}
+.search-image {
+	height: 130px;
+	border-bottom: 1px solid #DFDFDF;
+}
+.search-image > img {
+	border-radius: 4px;
+	position: relative;
+	top: -55px;
+	z-index:1
+}
+.search-naam {
+	height: 60px;
+}
+.premium {
+	font-size: 50px;
+	right: 80px;
+	top: 5px;
+	position: relative;
+	z-index: 2;
+}
+.no-premium {
+	font-size: 50px;
+	right: 80px;
+	top: 10px;
+	position: relative;
+	z-index: 2;
+	opacity: 0;
+}
+.naam-bedrijf {
+	font-size: 33px;
+	text-align: center;
+	padding-bottom: 30px;
+}
+.rand {
+	margin: 0px;
+}
+.beschrijving > p {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 200;
+	font-size: 16px;
+}
+.gegevens {
+	border: 1px solid black
+}
+.titel {
+	background-color: #337AB7;
+	color: white;
+	font-weight: bold;
+}
+
+.box-shadow {
+	box-shadow: 0px 0px 6px 6px #B6C2DC;
+}
+
+#TPE_Logo a {
+	background: url('../images/CourierPlazaEurope-logo.jpg') top center no-repeat #fff;
+	height: 130px;
+	display: block;
+}
+.navbar {
+    min-height: 40px;
+	margin-bottom:0;
+	border:0;
+	background:#fff;
+}
+.navbar .nav {
+	min-height: 30px;
+	padding-top: 4px;
+	padding-right: 0;
+}
+.navbar-default {
+	border-radius: 0;
+}
+.navbar-default .navbar-nav > li > a {
+	color: #525252;
+	font-size: 1.077em;
+}
+.navbar-default .navbar-nav > li > a:hover {
+	text-decoration:underline;
+}
+.navbar-nav > li > a {
+    padding: 0 10px;
+    text-transform: lowercase;
+}
+.navbar-nav > li:last-child > a {
+	border:0;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .active > a:hover {
+	text-decoration:underline;
+	background-color:transparent;
+}
+
+.LoginLink {
+	font-size:0.9em;
+	text-transform: lowercase;
+	padding: 5px 25px 0px 0px;
+	position: absolute;
+	display: inline;
+	top: 0;
+	right: 0;
+}
+.LoginLink li {
+	list-style: none;
+}
+.LoginLink a {
+	color:#dadada;
+}
+
+#TitleOpnaam [type="text"] {
+	
+}
+#TitleOpnaam [type="submit"] {
+	
+}
+ 
+ 
+ 
+ 
+ /*  Media Queries  >  responsive   */
+
+  /*  Media Queries  :  standaard desktop   */
+@media screen and (max-width:1199px) {
+	.container {
+		width:900px;
+	}
+	
+	.invisible-md {
+		display:none;
+		visibility:hidden;
+	}
+}
+
+  /*  Media Queries  :  tablet   */
+@media screen and (max-width:991px) {
+	.container {
+		width:729px;
+	}
+	#TPE_Logo div a {
+		background: url('../images/CourierPlazaEurope-sm-logo.jpg') center no-repeat #fff;
+		height: 130px;
+		display: block;
+	}
+	.navbar-default .navbar-nav > li > a {
+		font-size: 1em;
+	}
+	
+	.invisible-sm {
+		display:none;
+		visibility:hidden;
+	}
+}
+
+  /*  Media Queries  :  mobiel   */
+ @media screen and (max-width:767px) {
+	.container {
+		width:100%;
+	}
+	#TPE_Logo div a {
+		background: url('../images/CourierPlazaEurope-sm-logo.jpg') center no-repeat #fff;
+		height: 95px;
+		display: block;
+	}
+	.nav > li {
+		padding: 5px 0;
+	}
+	.navbar-nav > li > a {
+		border: 0;
+	}
+	
+	.invisible-xs {
+		display:none;
+		visibility:hidden;
+	}
+}

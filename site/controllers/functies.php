@@ -1,0 +1,158 @@
+<?php
+function ConnectDB()
+{
+	$pdo = new PDO('mysql:host=localhost;dbname=vervoerders',"root","");
+
+	return $pdo;
+}
+
+/** De functie RedirectNaarPagina
+  * optionele parameter paginanr. Hiermee kun je de gebruiker naar
+  * iedere gewenste pagina doorsturen
+  */
+function RedirectNaarPagina($paginanr = NULL)
+{
+	if(!isset($paginanr))
+	{
+		echo "<br />U word binnen 5 seconden doorgestuurd naar de hoofdpagina.";
+		header("Refresh: 4;URL=index.php");
+	}
+	else
+		header("Refresh: 2;URL=index.php?paginanr=".$paginanr);
+}
+
+/** De functie LoginCheck
+  * controleert of de gebruiker is ingelogd
+  */
+function LoginCheck($pdo) 
+{
+    // Controleren of Sessie variabelen bestaan
+    if (isset($_SESSION['user_id'], $_SESSION['username'],                    $_SESSION['login_string'])) 
+	{
+        $gebruiker_id = $_SESSION['user_id'];
+        $Login_String = $_SESSION['login_string'];
+        $Username = $_SESSION['username'];
+ 
+        // Get the user-agent string of the user.
+        $user_browser = $_SERVER['HTTP_USER_AGENT'];
+ 
+		$parameters = array(':gebruiker_id'=>$gebruiker_id);
+		$sth = $pdo->prepare('SELECT wachtwoord FROM gebruikers WHERE gebruiker_id = :gebruiker_id LIMIT 1');
+ 
+       	$sth->execute($parameters);
+
+		// controleren of de klant voorkomt in de DB
+		if ($sth->rowCount() == 1) 
+		{
+			// Variabelen inlezen uit query
+			$row = $sth->fetch();
+
+			//check maken
+		    $Login_Check = hash('sha512', $row['wachtwoord'] . $user_browser);
+ 
+				//controleren of check overeenkomt met sessie
+                if ($Login_Check == $Login_String)
+					return true;
+                else 
+                   return false;
+         } else 
+              return false;         
+     } else 
+          return false;
+}
+
+/* Functies voor validatie van Form Fields */
+
+/** Controleert een email adres op geldigheid
+  * @return  boolean
+  */
+  function is_email($Invoer)
+  {
+	 return (bool)(preg_match("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$^",$Invoer));
+   }
+
+
+  /** Controleert of een string aan de minimum lengte voldoet
+  * @return  boolean
+  */
+  function is_minlength($Invoer, $MinLengte)
+  {
+	return (strlen($Invoer) >= (int)$MinLengte);
+  }
+
+  /** Controleert of invoer een NL postcode is
+  * @return  boolean
+  */
+  function is_NL_PostalCode($Invoer)
+  {
+	return (bool)(preg_match('#^[1-9][0-9]{3}\h*[A-Z]{2}$#i', $Invoer));
+  }
+
+  /** Controleert of invoer een NL telefoonnr is
+  * @return  boolean
+  */
+  function is_NL_Telnr($Invoer)
+  {
+	return (bool)(preg_match('#^0[1-9][0-9]{0,2}-?[1-9][0-9]{5,7}$#', $Invoer) 
+               && (strlen(str_replace(array('-', ' '), '', $Invoer)) == 10));
+  }
+
+
+/** Controleert of invoer alleen uit letters bestaat
+  * @return  boolean
+  */
+  function is_Char_Only($Invoer)
+  {
+	return (bool)(preg_match("/^[a-zA-Z ]*$/", $Invoer)) ;
+  }
+
+/** functie die controleert of een gebruikersnaam wel of niet in de database		  * voorkomt.
+  */
+  function is_Username_Unique($Invoer,$pdo)
+  {
+	$parameters = array(':Username'=>$Invoer);
+	$sth = $pdo->prepare('SELECT gebruiker_id FROM klanten WHERE Inlognaam = :Username LIMIT 1');
+
+	$sth->execute($parameters);
+
+	// controleren of de username voorkomt in de DB
+	if ($sth->rowCount() == 1) 
+		return false;//username komt voor
+	else
+		return true;//username komt niet voor
+  }
+
+function Pre_Select($name, $options, $optionToSelect, $id) {
+	$html = '<label for="sel'.$id.'">Specialiteiten:</label>';
+    $html .= '<select class="form-control" id="sel'.$id.'" name="'.$name.'">';
+    foreach ($options as $option => $value) {
+        if($value == $optionToSelect)
+            $html .= '<option value="'.$value.'" selected="selected">'.$value.'</option>';
+        else
+            $html .= '<option value="'.$value.'">'.$value.'</option>';
+    }
+    $html .= '</select>';
+    return $html;
+}
+
+function Dropdown($name, $options, $id) {
+	$html = '<label for="sel'.$id.'">Specialiteiten:</label>';
+    $html .= '<select class="form-control" id="sel'.$id.'" name="'.$name.'">';
+    foreach ($options as $option => $value) {
+            $html .= '<option value="'.$value.'">'.$value.'</option>';
+    }
+    $html .= '</select>';
+    return $html;
+}
+
+function specialiteitenlijst($pdo) {
+	$specialiteiten = array("");
+	$sth = $pdo->prepare('select specialiteit from specialiteiten');
+		$sth->execute();
+		$result = $sth->fetchAll(PDO::FETCH_COLUMN, 0);
+		
+	$specialiteiten = array_merge($specialiteiten, $result);
+	return $specialiteiten;
+}
+  
+?>

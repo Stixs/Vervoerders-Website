@@ -72,9 +72,11 @@ else
 			<div class="row">
 				<div class="col-xs-12">
 					<nav class="navbar navbar-default navbar-collapse">
-						<ul class="nav nav-pills">
+						<ul class="nav nav-pills pull-left">
 							<li role="presentation"><a href="index.php?paginanr=5">Bedrijf toevoegen</a></li>
 							<li role="presentation"><a href="index.php?paginanr=4">Bedrijf wijzigen</a></li>
+						</ul>
+						<ul class="nav nav-pills pull-right">
 							<li role="presentation"><a href="index.php?paginanr=7">Beheer</a></li>
 							<li role="presentation"><a href="index.php?paginanr=8">Beheer Advertenties</a></li>
 						</ul>
