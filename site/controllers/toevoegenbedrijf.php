@@ -4,7 +4,7 @@
 if(LoginCheck($pdo))
 {
 	//init fields
-	$bedrijfs_naam = $beschrijving = $adres = $postcode = $plaats = $provincie = $telefoon = $fax = $bedrijfs_email = $specialiteit = $type = $bereik = $transport_manager = $aantal = $rechtsvorm = $vergunning = $geldigtot = $website = $premium = NULL;
+	$bedrijfs_naam = $beschrijving = $adres = $postcode = $plaats = $provincie = $telefoon = $fax = $bedrijfs_email = $specialiteit = $type = $bereik = $transport_manager = $aantal = $rechtsvorm = $vergunning = $geldigtot = $website = $premium = $Picture = NULL;
 
 	//init error fields
 	$NameErr = $ZipErr = $CityErr = $TelErr = $MailErr = NULL;
@@ -34,9 +34,13 @@ if(LoginCheck($pdo))
 		$bedrijfs_email = $_POST['bedrijfs_email'];
 		$beschrijving = $_POST['beschrijving'];
 		$premium = $_POST['premium'];
+		$foto = basename($_FILES["foto"]["name"]);
+		$banner = basename($_FILES["banner"]["name"]);
+		$logo = basename($_FILES["logo"]["name"]);
 		$special = NULL;
 		$specialZ = "'";
 		$specialname = NULL;
+		
 		
 		foreach($specialiteit as $value) 
 		{
@@ -64,6 +68,7 @@ if(LoginCheck($pdo))
 		//begin controlles
 		
 		//Controleert bedrijs naam
+		/*
 		if(!isset($bedrijfs_naam))
 		{
 			$NameErr = 'U moet een naam van uw bedrijf invullen';
@@ -106,12 +111,41 @@ if(LoginCheck($pdo))
 			$CheckOnErrors = true;
 			$CityErr = 'U moet een dorp/stad invullen.';
 		}
+		*/
+		
+		if (file_exists($foto) or file_exists($banner) or file_exists($logo)) {
+		$CheckOnErrors = true;
+		}
+		
 		if($CheckOnErrors == true) 
 		{
 		require('./views/ToevoegenBedrijfForm.php');
 		}
 		else
 		{
+			
+		$target_dir = "Images/";
+		$target_file = $target_dir . basename($_FILES["foto"]["name"]);
+		if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)){} 
+		$target_file = $target_dir . basename($_FILES["banner"]["name"]);
+		if (move_uploaded_file($_FILES["banner"]["tmp_name"], $target_file)){} 
+		$target_file = $target_dir . basename($_FILES["logo"]["name"]);
+		if (move_uploaded_file($_FILES["logo"]["tmp_name"], $target_file)){}
+		
+		if(empty($foto))
+		{
+			$foto = 'foto.jpg';
+		}
+		if(empty($banner))
+		{
+			$banner = 'banner.png';
+		}	
+		if(empty($logo))
+		{
+			$logo = 'logo.png';
+		}			
+			
+			
 			$parameters = array(':bedrijfsnaam'=>$bedrijfs_naam,
 								':beschrijving'=>$beschrijving,
 								':adres'=>$adres,
@@ -130,7 +164,10 @@ if(LoginCheck($pdo))
 								':vergunning'=>$vergunning,
 								':geldig_tot'=>$geldigtot,
 								':bedrijfs_email'=>$bedrijfs_email,
-								':premium'=>$premium);
+								':premium'=>$premium,
+								':foto'=>$foto,
+								':banner'=>$banner,
+								':logo'=>$logo);
 								
 			$sth = $pdo->prepare('INSERT INTO bedrijfgegevens (
 								bedrijfsnaam, 
@@ -151,7 +188,10 @@ if(LoginCheck($pdo))
 								vergunning, 
 								geldig_tot, 
 								bedrijfs_email, 
-								premium) 
+								premium,
+								afbeelding,
+								banner,
+								logo) 
 								VALUES(
 								:bedrijfsnaam, 
 								:beschrijving, 
@@ -171,11 +211,14 @@ if(LoginCheck($pdo))
 								:vergunning, 
 								:geldig_tot, 
 								:bedrijfs_email, 
-								:premium)');
+								:premium,
+								:foto,
+								:banner,
+								:logo)');
 			$sth->execute($parameters);
 			
 			echo'Uw bedrijf gegevens zijn Geregistreerd.<br />';
-			RedirectNaarPagina(5);
+			//RedirectNaarPagina(5);
 		}
 	}
 	else

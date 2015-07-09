@@ -13,10 +13,13 @@
 	$special .= "[[:<:]]".$specialarr[3]."[[:>:]]|";
 	$special .= "[[:<:]]".$specialarr[4]."[[:>:]]|";
 	$special .= "[[:<:]]".$specialarr[5]."[[:>:]]'";
+
+if ($row['premium'] == 'gold')
+{	
 ?>
 <div class="row">
 	<div class="col-xs-12">
-		<img src="images/banner.png" width="100%" role="banner" />
+		<img src="images/<?php echo $row['banner']; ?>" width="100%" role="banner" />
 	</div>
 </div>
 <div class="rand row">
@@ -25,9 +28,9 @@
 	</div>
 	
 	<div class="col-xs-6 beschrijving">
-	<img src="images/logo.png" width="200px"><br>
+	<img src="images/<?php echo $row['logo']; ?>" width="200px"><br>
 	<?php echo $row['beschrijving']; ?><br />
-	<img src="images/foto.jpg" width="500px"/><br />
+	<img src="images/<?php echo $row['afbeelding']; ?>" width="500px"/><br />
 	</div>
 	<div class="col-xs-1">
 	</div>
@@ -83,12 +86,15 @@
 				?></td>
 			</tr>
 		</table>
-
-				
 	</div>
 </div>
-
-
+<?php
+}
+else
+{
+	header("Refresh: ;URL=index.php?paginanr=1");
+}
+?>
 
 
 

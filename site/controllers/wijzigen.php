@@ -101,6 +101,33 @@ if(LoginCheck($pdo))
 					$beschrijving = $_POST['beschrijving'];
 					$premium = $_POST['premium'];
 					
+					if (basename($_FILES["foto"]["name"]) == null)
+								{
+								$foto = $_SESSION['foto'];
+								}
+								else
+								{
+								$foto = basename($_FILES["foto"]["name"]);
+								}
+					if (basename($_FILES["banner"]["name"]) == null)
+								{
+								$banner = $_SESSION['banner'];
+								}
+								else
+								{
+								$banner = basename($_FILES["banner"]["name"]);
+								}
+					if (basename($_FILES["logo"]["name"]) == null)
+								{
+								$logo = $_SESSION['logo'];
+								}
+								else
+								{
+								$logo = basename($_FILES["logo"]["name"]);
+								}
+					
+					
+					
 					foreach($specialiteit as $value) 
 					{
 						if(!next($specialiteit)) 
@@ -178,6 +205,13 @@ if(LoginCheck($pdo))
 					}
 					else
 					{
+						$target_dir = "Images/";
+						$target_file = $target_dir . basename($_FILES["foto"]["name"]);
+						if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)){} 
+						$target_file = $target_dir . basename($_FILES["banner"]["name"]);
+						if (move_uploaded_file($_FILES["banner"]["tmp_name"], $target_file)){} 
+						$target_file = $target_dir . basename($_FILES["logo"]["name"]);
+						if (move_uploaded_file($_FILES["logo"]["tmp_name"], $target_file)){}
 						//De gegevens die uit het formulier komen en die correct zijn worden in de array parameters gezet
 						$parameters = array(':bedrijfs_id'=>$bedrijfs_id,
 											':bedrijfsnaam'=>$bedrijfs_naam,
@@ -198,7 +232,10 @@ if(LoginCheck($pdo))
 											':vergunning'=>$vergunning,
 											':geldig_tot'=>$geldigtot,
 											':bedrijfs_email'=>$bedrijfs_email,
-											':premium'=>$premium);
+											':premium'=>$premium,
+											':foto'=>$foto,
+											':banner'=>$banner,
+											':logo'=>$logo);
 						//de SQL query om de gegevens in de database te veranderen.
 						$sth = $pdo->prepare('UPDATE bedrijfgegevens 
 											  SET bedrijfsnaam=:bedrijfsnaam,
@@ -219,7 +256,10 @@ if(LoginCheck($pdo))
 												  vergunning=:vergunning,
 												  geldig_tot=:geldig_tot,
 												  bedrijfs_email=:bedrijfs_email,
-												  premium=:premium
+												  premium=:premium,
+												  afbeelding=:foto,
+												  logo=:logo,
+												  banner=:banner
 												  WHERE bedrijfs_id = :bedrijfs_id');
 						//De variabele parameters wordt uitgevoerd
 						$sth->execute($parameters);
@@ -230,6 +270,11 @@ if(LoginCheck($pdo))
 				}
 				else
 				{
+					
+					
+					$_SESSION['logo'] = $row['logo'];
+					$_SESSION['foto'] = $row['afbeelding'];
+					$_SESSION['banner'] = $row['banner'];
 					//laat het formulier WijzigenBedrijfForm zien als de knop wijzigenbedrijf nog niet is ingedurkt.
 					require('./views/WijzigenBedrijfForm.php');
 				}

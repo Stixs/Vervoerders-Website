@@ -21,3 +21,5 @@ aan de linker kant een menu om het uiterlijk van de site kunt aanpassen en aan d
 advertentie title, afbeelding, datum van en datum tot, url of pagina die website zelf genereed en of het de hoofd banner of een kleine is. 
 
 onzichtbaar maken: bereik, aantal, rechtsvorm, vergunning, geldig_tot. (x)
+
+tegelopslitsen telefoon: boven advertorial, onder bellen

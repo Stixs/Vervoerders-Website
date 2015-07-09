@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-xs-12">
 		<h1>Registreren</h1>
-		<form name="RegistrerenFormulier" class="registreren" action="" method="post">
+		<form name="RegistrerenFormulier" class="registreren" action="" method="post" enctype="multipart/form-data">
 			<div class="col-xs-12 col-md-6">
 				<div class="form-group">
 					<label for="Bedrijfsnaam">Bedrijfsnaam:</label>
@@ -51,6 +51,18 @@
 				<div class="form-group">
 					<label for="Weblink">Website:</label>
 					<input input="text" class="form-control" id="website" name="website" value="<?php echo $website; ?>" />
+				</div>
+				<div class="form-group">
+					<label for="foto">Foto:</label>
+					<input type="file" class="form-control" id="foto" name="foto" />
+				</div>
+				<div class="form-group">
+					<label for="banner">Banner:</label>
+					<input type="file" class="form-control" id="banner" name="banner" />
+				</div>
+				<div class="form-group">
+					<label for="logo">Logo:</label>
+					<input type="file" class="form-control" id="logo" name="logo" />
 				</div>
 			</div>
 				
@@ -136,7 +148,7 @@
 					<label for="premium">Premium</label>
 					<div class="radio">
 						<label class="radio-inline">
-							<input type="radio" name="premium" id="premium_nee"  value="0" />
+							<input type="radio" name="premium" id="premium_nee"  value="0" checked />
 							nee
 						</label>
 						<label class="radio-inline">
