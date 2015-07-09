@@ -235,7 +235,35 @@ if(LoginCheck($pdo))
 				}
 				break;
 			case'del':
-			
+					
+					//SQL query om de gegevens van het juiste bedrijf uit de database halen
+					$parameters = array(':bedrijfs_id'=>$bedrijfs_id);
+					$sth = $pdo->prepare('select * from bedrijfgegevens where bedrijfs_id = :bedrijfs_id');
+					$sth->execute($parameters);
+					$row = $sth->fetch();
+					$bedrijfsnaam = $row['bedrijfsnaam'];
+					
+					if(isset($_POST['verwijderen']))
+					{
+						$parameters = array(':bedrijfs_id'=>$bedrijfs_id);
+						$sth = $pdo->prepare('delete from bedrijfgegevens where bedrijfs_id = :bedrijfs_id');
+						$sth->execute($parameters);
+						echo $bedrijfsnaam.' is verwijderd';
+						RedirectNaarPagina(4);
+					}
+					elseif(isset($_POST['annuleren']))
+					{
+						echo'Uw opdracht is geannuleert.';
+						RedirectNaarPagina(4);
+					}
+					else
+					{
+					echo'<form action="" method="post">';
+					echo'<label>Weet u het zeker of u '.$row['bedrijfsnaam'].' wilt verwijderen</label><br />';
+					echo'<button type="submit" class="btn btn-default" name="verwijderen">Verwijderen</button>';
+					echo'<button type="submit" class="btn btn-default" name="annuleren">Annuleren</button>';
+					echo'</form>';
+					}
 				break;
 		}
 	}
