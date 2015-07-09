@@ -161,7 +161,7 @@
 							nee
 						</label>
 						<label class="radio-inline">
-							<input type="radio" name="premium" id="premium_brons" value="brons" checked />
+							<input type="radio" name="premium" id="premium_brons" value="brons" />
 							brons
 						</label>
 						<label class="radio-inline">
@@ -169,7 +169,7 @@
 							gold
 						</label>
 						<?php
-						} 
+						}
 						else
 						{
 						?>

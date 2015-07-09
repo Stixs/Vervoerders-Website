@@ -137,8 +137,7 @@ else
 			{
 				if($row['premium'] == 'gold')
 				{
-					$link = str_replace(" ", " ", $row['bedrijfsnaam']);
-					echo '<a class="greylink" href="index.php?paginanr=6&bedrijf='.$link.'">';
+					echo '<a class="greylink" href="index.php?paginanr=6&bedrijfs_id='.$row['bedrijfs_id'].'">';
 				?>
 					<div class="search-container">
 						<div class="search-image">

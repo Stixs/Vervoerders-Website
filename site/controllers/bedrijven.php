@@ -1,7 +1,7 @@
 <?php
-	$bedrijf = $_GET['bedrijf'];	
-	$parameters = array(':bedrijf'=>$bedrijf);
-	$sth = $pdo->prepare('select * from bedrijfgegevens where bedrijfsnaam = :bedrijf');
+	$bedrijfs_id = $_GET['bedrijfs_id'];	
+	$parameters = array(':bedrijfs_id'=>$bedrijfs_id);
+	$sth = $pdo->prepare('select * from bedrijfgegevens where bedrijfs_id = :bedrijfs_id');
 	$sth->execute($parameters);
 	$row = $sth->fetch();
 	

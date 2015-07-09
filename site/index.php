@@ -89,7 +89,7 @@ else
 								<input class="col-xs-9" type="text" name="trefwoord" placeholder="zoek hier op bedrijfsnaam of specialisme">
 								<input type="hidden" name="type"  value="">
 								<input type="hidden" name="bereik"  value="">
-								<input type="hidden" name="trefwoord"  value="">
+								<input type="hidden" name="specialiteit"  value="">
 								<input class="col-xs-3" type="submit" name="Zoek" value="zoeken"/>
 							</div>
 							<?php 

@@ -35,7 +35,8 @@ if(LoginCheck($pdo))
 		$beschrijving = $_POST['beschrijving'];
 		$premium = $_POST['premium'];
 		$special = NULL;
-		$special = "'";
+		$specialZ = "'";
+		$specialname = NULL;
 		
 		foreach($specialiteit as $value) 
 		{
@@ -52,7 +53,7 @@ if(LoginCheck($pdo))
 		}
 		
 		$sth = $pdo->prepare('SELECT * FROM specialiteiten WHERE specialiteit_id REGEXP '.$specialZ);
-		$sth->execute($parameters);
+		$sth->execute();
 		while($row = $sth->fetch())
 		{
 			$specialname.= $row['specialiteit'].', ';
@@ -139,7 +140,8 @@ if(LoginCheck($pdo))
 								plaats, 
 								provincie, 
 								website, 
-								telefoon, 
+								telefoon,
+								specialiteit,
 								specialiteitnaam, 
 								type, 
 								bereik, 
@@ -158,7 +160,8 @@ if(LoginCheck($pdo))
 								:plaats, 
 								:provincie, 
 								:website, 
-								:telefoon, 
+								:telefoon,
+								:specialiteit,								
 								:specialiteitnaam, 
 								:type, 
 								:bereik, 
