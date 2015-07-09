@@ -253,8 +253,7 @@ if(LoginCheck($pdo))
 					}
 					elseif(isset($_POST['annuleren']))
 					{
-						echo'Uw opdracht is geannuleert.';
-						RedirectNaarPagina(4);
+						header("Refresh: ;URL=index.php?paginanr=4");
 					}
 					else
 					{

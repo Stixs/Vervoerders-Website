@@ -19,7 +19,7 @@ else
 		<form class="form-inline" method="post" action="" >
 			<div class="form-group">
 				<label for="zoeken">Zoeken</label>
-				<input class="form-control" id="zoekbedrijf" name="zoekbedrijf" value="<?php echo $zoeken; ?>">
+				<input class="form-control" id="zoekbedrijf" name="zoekbedrijf" value="<?php echo $zoeken; ?>" placeholder="bedrijfs naam">
 				<button type="submit" name="submit" class="btn btn-default">Zoeken</button>
 			</div>
 		</form>
