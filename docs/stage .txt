@@ -23,3 +23,5 @@ advertentie title, afbeelding, datum van en datum tot, url of pagina die website
 onzichtbaar maken: bereik, aantal, rechtsvorm, vergunning, geldig_tot. (x)
 
 tegelopslitsen telefoon: boven advertorial, onder bellen
+
+Social media
