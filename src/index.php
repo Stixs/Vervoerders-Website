@@ -45,8 +45,8 @@ else
 					<nav class="navbar navbar-default navbar-collapse">
 						<ul class="nav nav-pills">
 							<li role="presentation"><a href="index.php?paginanr=1">Home</a></li>
-							<li role="presentation"><a href="#">Gids</a></li>
-							<li role="presentation"><a href="index.php?paginanr=3">Zoeken</a></li>	
+							<li role="presentation"><a href="index.php?paginanr=3">Bedrijven Gids</a></li>
+							<li role="presentation"><a href="#">Contact</a></li>
 							<?php
 							if(LoginCheck($pdo))
 							{

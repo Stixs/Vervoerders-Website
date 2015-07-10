@@ -77,9 +77,10 @@ else
 						  <ul class="nav navbar-nav col-sm-12 col-md-10">
 							<li class="active"><a href="index.php?paginanr=1">Home<span class="sr-only">(huidig scherm)</span></a></li>
 							
-							<li><a href="#">Gids</a></li>
+							<li><a href="index.php?paginanr=3">Bedrijven Gids</a></li>
 							
-							<li><a href="index.php?paginanr=3">Zoeken</a></li>
+							<li><a href="#">Contact</a></li>
+							
 						  </ul>
 						</div><!-- /.navbar-collapse -->
 					</nav>

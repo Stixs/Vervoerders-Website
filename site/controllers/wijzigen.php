@@ -149,8 +149,6 @@ if(LoginCheck($pdo))
 						$specialname.= $row['specialiteit'].', ';
 					}
 					
-					
-					$specialname = substr($specialname, 2);
 					$specialname = substr($specialname, 0, -2);
 					
 					
@@ -205,7 +203,7 @@ if(LoginCheck($pdo))
 					}
 					else
 					{
-						$target_dir = "Images/";
+						$target_dir = "images/";
 						$target_file = $target_dir . basename($_FILES["foto"]["name"]);
 						if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)){} 
 						$target_file = $target_dir . basename($_FILES["banner"]["name"]);
@@ -222,6 +220,7 @@ if(LoginCheck($pdo))
 											':provincie'=>$provincie,
 											':website'=>$website,
 											':telefoon'=>$telefoon,
+											':fax'=>$fax,
 											':specialiteit'=>$special,
 											':specialiteitnaam'=>$specialname,
 											':type'=>$type,
@@ -246,6 +245,7 @@ if(LoginCheck($pdo))
 												  provincie=:provincie,
 												  website=:website,
 												  telefoon=:telefoon,
+												  fax=:fax,
 												  specialiteit=:specialiteit,
 												  specialiteitnaam=:specialiteitnaam,
 												  type=:type,

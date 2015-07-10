@@ -68,7 +68,7 @@ if ($row['premium'] == 'gold')
 				<td>Transport Manager:</td><td><?php echo $row['transport_manager']; ?></td>
 			</tr>
 			<tr>
-				<td>specialiteit:</td><td>
+				<td>Specialiteit:</td><td>
 				<?php 
 				
 				
@@ -77,10 +77,9 @@ if ($row['premium'] == 'gold')
 				$specialiteiten = NULL;
 				while($row = $sth->fetch())
 				{
-				$specialiteiten .= $row['specialiteit'].', '; 
+				$specialiteiten .= $row['specialiteit'].'<br>'; 
 				}
-				$specialiteiten = substr($specialiteiten, 2);
-				$specialiteiten = substr($specialiteiten, 0, -2);
+				$specialiteiten = substr($specialiteiten, 0, -4);
 				echo $specialiteiten;
 				
 				?></td>
