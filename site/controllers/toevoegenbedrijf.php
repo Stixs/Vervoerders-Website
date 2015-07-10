@@ -124,7 +124,7 @@ if(LoginCheck($pdo))
 		else
 		{
 			
-		$target_dir = "images/";
+		$target_dir = "images/bedrijf_images";
 		$target_file = $target_dir . basename($_FILES["foto"]["name"]);
 		if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)){} 
 		$target_file = $target_dir . basename($_FILES["banner"]["name"]);

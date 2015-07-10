@@ -70,7 +70,18 @@ if(LoginCheck($pdo))
 					
 					
 					//controleert of de submit knop wijzigenbedrijf in het formulier is ingedurkt.
+					if(isset($_POST['Del_Image']))
+					{
+					$image = $_POST['Del_Image'];
+					$leeg = "0";
 					
+					$parameter = array(':leeg'=>$leeg, ':bedrijfs_id'=>$bedrijfs_id);
+					$sth = $pdo->prepare('UPDATE bedrijfgegevens SET '.$image.'=:leeg WHERE bedrijfs_id = :bedrijfs_id');
+					$sth->execute($parameter);
+					
+					unlink('images/bedrijf_images/'.$row[$image]);
+					header("Refresh: ;URL=index.php?paginanr=4&action=edit&bedrijfs_id=".$bedrijfs_id);
+					}
 					
 					if(isset($_POST['Wijzigenbedrijf']))
 					{
@@ -203,7 +214,7 @@ if(LoginCheck($pdo))
 					}
 					else
 					{
-						$target_dir = "images/";
+						$target_dir = "images/bedrijf_images/";
 						$target_file = $target_dir . basename($_FILES["foto"]["name"]);
 						if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)){} 
 						$target_file = $target_dir . basename($_FILES["banner"]["name"]);
