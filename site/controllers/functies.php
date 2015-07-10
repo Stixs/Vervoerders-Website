@@ -1,10 +1,4 @@
 <?php
-function ConnectDB()
-{
-	$pdo = new PDO('mysql:host=localhost;dbname=vervoerders',"root","");
-
-	return $pdo;
-}
 
 /** De functie RedirectNaarPagina
   * optionele parameter paginanr. Hiermee kun je de gebruiker naar
@@ -179,7 +173,14 @@ function specialiteitkeuze($pdo, $name, $id, $keuze = NULL) {
     return $html;
 }
 
-
+function friendly_url($string){
+    $string = str_replace(array('[\', \']'), '', $string);
+    $string = preg_replace('/\[.*\]/U', '', $string);
+    $string = preg_replace('/&(amp;)?#?[a-z0-9]+;/i', '', $string);
+    $string = preg_replace('/&([a-z])(acute|uml|circ|grave|ring|cedil|slash|tilde|caron|lig|quot|rsquo);/i', '', $string );
+    $string = preg_replace(array('/[^a-z0-9]/i', '/[-]+/') , '', $string);
+    return strtolower(trim($string, '-'));
+}
 
 
 

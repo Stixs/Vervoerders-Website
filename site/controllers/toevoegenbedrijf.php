@@ -124,7 +124,10 @@ if(LoginCheck($pdo))
 		else
 		{
 			
-		$target_dir = "images/bedrijf_images";
+		if (!file_exists('images/bedrijf_images/'.$bedrijfs_id)) {
+			mkdir('images/bedrijf_images/'.$bedrijfs_id, 0777, true);
+			}
+		$target_dir = "images/bedrijf_images/".$bedrijfs_id."/";
 		$target_file = $target_dir . basename($_FILES["foto"]["name"]);
 		if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)){} 
 		$target_file = $target_dir . basename($_FILES["banner"]["name"]);

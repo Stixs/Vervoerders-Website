@@ -1,7 +1,7 @@
 <?php
 session_start();
 require('./controllers/functies.php');
-
+require('./connection.php');
 $pdo = ConnectDB();
 
 if(isset($_GET['paginanr']))
@@ -171,6 +171,9 @@ else
 					break;
 					case 7:
 					require('./controllers/beheer.php');
+					break;
+					case 8:
+					require('./controllers/advertenties.php');
 					break;
 					case 51:
 					require('./controllers/inloggen.php');

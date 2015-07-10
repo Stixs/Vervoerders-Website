@@ -19,7 +19,7 @@ if ($row['premium'] == 'gold')
 ?>
 <div class="row">
 	<div class="col-xs-12">
-		<?php if(!empty($row['banner'])){ ?> <img src="images/bedrijf_images/<?php echo $row['banner']; ?>" width="100%" role="banner" /> <?php } ?>
+		<?php if(!empty($row['banner'])){ ?> <img src="images/bedrijf_images/<?php echo $bedrijfs_id .'/'. $row['banner']; ?>" width="100%" role="banner" /> <?php } ?>
 	</div>
 </div>
 <div class="rand row">
@@ -29,9 +29,9 @@ if ($row['premium'] == 'gold')
 	</div>
 	
 	<div class="col-xs-6 beschrijving">
-	<?php if(!empty($row['logo'])){ ?> <img src="images/bedrijf_images/<?php echo $row['logo']; ?>" width="200px"><br> <?php } ?>
+	<?php if(!empty($row['logo'])){ ?> <img src="images/bedrijf_images/<?php echo $bedrijfs_id .'/'. $row['logo']; ?>" width="200px"><br> <?php } ?>
 	<?php echo $row['beschrijving']; ?><br />
-	<?php if(!empty($row['afbeelding'])){ ?> <img src="images/bedrijf_images/<?php echo $row['afbeelding']; ?>" width="500px"/><br /> <?php } ?>
+	<?php if(!empty($row['afbeelding'])){ ?> <img src="images/bedrijf_images/<?php echo$bedrijfs_id .'/'. $row['afbeelding']; ?>" width="500px"/><br /> <?php } ?>
 	</div>
 	<div class="col-xs-1">
 	</div>
