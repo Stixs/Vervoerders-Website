@@ -3,7 +3,7 @@ if(isset($_POST['Zoek']))
 {
 	$trefwoord = NULL;
 	if(!empty($_POST['specialiteit'])){$trefwoord.=' '.$_POST['specialiteit'];}
-	if(!empty($_POST['type'])){$trefwoord.=' '.$_POST['type'];}
+	if(!empty($_POST['provincie'])){$trefwoord.=' '.$_POST['provincie'];}
 	if(!empty($_POST['bereik'])){$trefwoord.=' '.$_POST['bereik'];}
 	if(!empty($_POST['trefwoord'])){$trefwoord.=' '.$_POST['trefwoord'];}
 	
@@ -12,7 +12,7 @@ if(isset($_POST['Zoek']))
 	//var_dump($trefwoord);
 	
 	$specialiteit = $_POST['specialiteit'];
-	$type = $_POST['type'];
+	$provincie = $_POST['provincie'];
 	$bereik = $_POST['bereik'];
 }
 ?>
@@ -40,21 +40,21 @@ if(isset($_POST['Zoek']))
 				?>		
 			</select>
 			
-			<select class="form-control search-select" id="sel1" name="type">
+			<select class="form-control search-select" id="sel1" name="provincie">
 				<?php
-				$sth = $pdo->prepare('select distinct type from bedrijfgegevens');
+				$sth = $pdo->prepare('select distinct provincie from bedrijfgegevens');
 				$sth->execute();
 				
-				echo '<option value="" selected style="display:none;">Type</option>';
+				echo '<option value="" selected style="display:none;">Provincie</option>';
 				while($row = $sth->fetch())
 				{
-					if (!isset($type) or $row['type'] != $type)
+					if (!isset($provincie) or $row['provincie'] != $provincie)
 					{
-					echo '<option value="'.$row['type'].'">'.$row['type'].'</option>';
+					echo '<option value="'.$row['provincie'].'">'.$row['provincie'].'</option>';
 					}
-					elseif ($row['type'] == $type)
+					elseif ($row['provincie'] == $provincie)
 					{
-					echo '<option value="'.$row['type'].'" selected>'.$row['type'].'</option>';	
+					echo '<option value="'.$row['provincie'].'" selected>'.$row['provincie'].'</option>';	
 					}
 				}
 				?>		
