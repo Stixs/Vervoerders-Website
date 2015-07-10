@@ -53,16 +53,16 @@
 					<input input="text" class="form-control" id="website" name="website" value="<?php echo $website; ?>" />
 				</div>
 				<div class="form-group">
-					<label for="foto">Foto:</label>
-					<input type="file" class="form-control" id="foto" name="foto" />
-				</div>
-				<div class="form-group">
 					<label for="banner">Banner:</label>
 					<input type="file" class="form-control" id="banner" name="banner" />
 				</div>
 				<div class="form-group">
 					<label for="logo">Logo:</label>
 					<input type="file" class="form-control" id="logo" name="logo" />
+				</div>
+				<div class="form-group">
+					<label for="foto">Foto:</label>
+					<input type="file" class="form-control" id="foto" name="foto" />
 				</div>
 			</div>
 				
