@@ -8,7 +8,11 @@ $tot_datum = $_POST['tot_datum'];
 $url = $_POST['url'];
 $type = $_POST['type'];
 
+$vanaf_datum = STRTOTIME($vanaf_datum);
+$tot_datum = STRTOTIME($tot_datum);
+
 $friendlytitle = friendly_url($titel);
+var_dump($_POST);
 	if (!file_exists('images/advertenties/'.$friendlytitle)) {
 		mkdir('images/advertenties/'.$friendlytitle, 0777, true);
 		}
@@ -37,23 +41,53 @@ $vanaf_datum = $_POST['vanaf_datum'];
 $tot_datum = $_POST['tot_datum'];
 $url = $_POST['url'];
 $type = $_POST['type'];
+$vanaf_datum = $vanaf_datum[$keuze];
+$tot_datum = $tot_datum[$keuze];
+$vanaf_datum = STRTOTIME($vanaf_datum);
+$tot_datum = STRTOTIME($tot_datum);
+$friendlytitle = friendly_url($titel[$keuze]);
+
+if (!file_exists('images/advertenties/'.$friendlytitle))
+{
+	$tmp_titel = $_SESSION['titel'][$keuze];
+	$tmp_friendlytitle = friendly_url($tmp_titel);
+	rmdir('images/advertenties/'.$tmp_friendlytitle);
+	mkdir('images/advertenties/'.$friendlytitle);
+}
+
+
 
 	$sth = $pdo->prepare('SELECT * FROM advertenties WHERE advertentie_id = '. $keuze);
 	$sth->execute(); $row = $sth->fetch();
-	if (basename($_FILES["afbeelding"]["name"]) == null)
-	{$afbeelding = $row['afbeelding'];}
+	
+	if(empty($row['afbeelding']))
+	{
+		if (basename($_FILES["afbeelding"]["name"][$keuze]) == null)
+		{$afbeelding = $row['afbeelding'];}
+		else
+		{$afbeelding = basename($_FILES["afbeelding"]["name"][$keuze]);}
+
+
+			if (!file_exists('images/advertenties/'.$friendlytitle)) {
+			mkdir('images/advertenties/'.$friendlytitle, 0777, true);
+			}
+			
+			
+			$target_dir = "images/advertenties/".$friendlytitle."/";
+			$target_file = $target_dir . basename($_FILES["afbeelding"]["name"][$keuze]);
+			if (move_uploaded_file($_FILES["afbeelding"]["tmp_name"][$keuze], $target_file)){} 
+	}
 	else
-	{$afbeelding = basename($_FILES["afbeelding"]["name"]);}
+	{
+		$afbeelding = $row['afbeelding'];
+	}
 
-
-
-
-$parameters = array(':titel'=>$titel,
+$parameters = array(':titel'=>$titel[$keuze],
 					':afbeelding'=>$afbeelding,
 					':vanaf_datum'=>$vanaf_datum,
 					':tot_datum'=>$tot_datum,
-					':url'=>$url,
-					':type'=>$type,
+					':url'=>$url[$keuze],
+					':type'=>$type[$keuze],
 					':keuze'=>$keuze
 					);
 $sth = $pdo->prepare('UPDATE advertenties SET titel=:titel, afbeelding=:afbeelding, vanaf_datum=:vanaf_datum, tot_datum=:tot_datum, url=:url, type=:type WHERE advertentie_id = :keuze');
@@ -64,10 +98,28 @@ $sth->execute($parameters);
 if(isset($_POST['Del_advert']))
 {
 $keuze = $_POST['Del_advert'];
-	$parameters = array(':keuze'=>$keuze);
+$titel = $_POST['titel'];
+
+$friendlytitle = friendly_url($titel[$keuze]);
+$parameters = array(':keuze'=>$keuze);
 $sth = $pdo->prepare('DELETE FROM advertenties WHERE advertentie_id = :keuze');
 $sth->execute($parameters);
+rmdir('images/advertenties/'.$friendlytitle);
 }
+
+if(isset($_POST['Del_Image']))
+	{
+	$keuze = $_POST['Del_Image'];
+	$titel = $_POST['titelf'];
+	$afbeelding = $_POST['afbeelding'];
+	$leeg = "0";
+	
+	$parameter = array(':leeg'=>$leeg, ':advertentie_id'=>$keuze);
+	$sth = $pdo->prepare('UPDATE advertenties SET afbeelding=:leeg WHERE advertentie_id = :advertentie_id');
+	$sth->execute($parameter);
+	
+	unlink('images/advertenties/'. $titel[$keuze] .'/'. $afbeelding);
+	}
 ?> 
 
 <div class="row">
@@ -81,15 +133,15 @@ $sth->execute($parameters);
 	<div class="col-xs-12">
 		<form class="" action="" method="post" enctype="multipart/form-data">
 			<?php
-			$sth = $pdo->prepare('select * from advertenties');
+			$sth = $pdo->prepare('select * from advertenties ORDER BY titel');
 			$sth->execute();
 			?>
-			<form class="form-inline" action="" method="post">
 			
 			<?php
 			while($row = $sth->fetch())
 			{
 				?>
+					
 					<table class="table table-bordered aanpassen">
 					<tr>
 						<th>Titel</th>
@@ -98,10 +150,21 @@ $sth->execute($parameters);
 						<th>Tot</th>
 					</tr>
 					<tr>
-						<td><input type="text" class="form-control" name="titel" value="<?php echo $row['titel']; ?>"></td>
-						<td><input type="file" class="form-control" name="afbeelding" value="<?php echo $row['afbeelding']; ?>"></td>
-						<td><input type="text" class="form-control" name="vanaf_datum" value="<?php echo $row['vanaf_datum']; ?>"></td>
-						<td><input type="text" class="form-control" name="tot_datum" value="<?php echo $row['tot_datum']; ?>" ></td>
+						<td><input type="text" class="form-control" name="titel[<?php echo $row['advertentie_id'] ?>]" value="<?php echo $row['titel']; ?>"></td>
+						<?php $_SESSION['titel'][$row['advertentie_id']] = $row['titel'] ?>
+						<td>
+						<?php if(empty($row['afbeelding'])){ ?><input type="file" class="form-control" name="afbeelding[<?php echo $row['advertentie_id'] ?>]" /> <?php } ?>
+						
+						<?php if(!empty($row['afbeelding'])){ ?> <a href="images/advertenties/<?php echo $friendlytitle = friendly_url($row['titel']) .'/'. $row['afbeelding']; ?>">
+						<img src="images/advertenties/<?php echo $friendlytitle = friendly_url($row['titel']) .'/'. $row['afbeelding']; ?>" role="Picture" height="30px" /></a>
+						<input type="hidden" name="titelf[<?php echo $row['advertentie_id'] ?>]" value="<?php echo $friendlytitle = friendly_url($row['titel']); ?>">
+						<input type="hidden" name="afbeelding" value="<?php echo  $row['afbeelding']; ?>">
+						<button type="submit" name="Del_Image" class="btn btn-default" value="<?php echo $row['advertentie_id'] ?>" />Verwijder</button> <?php } ?>
+
+						</td>
+					
+						<td><input type="text" class="form-control" name="vanaf_datum[<?php echo $row['advertentie_id'] ?>]" value="<?php echo date('m-d-Y',$row['vanaf_datum']); ?>" placeholder="mm-dd-jjjj"></td>
+						<td><input type="text" class="form-control" name="tot_datum[<?php echo $row['advertentie_id'] ?>]" value="<?php echo date('m-d-Y',$row['tot_datum']); ?>" placeholder="mm-dd-jjjj" ></td>
 					</tr>
 					<tr>
 						<th>Url</th>
@@ -110,8 +173,8 @@ $sth->execute($parameters);
 						<th>Verwijderen</th>
 					</tr>
 					<tr>
-						<td><input type="text" class="form-control" name="url" value="<?php echo $row['url']; ?>"></td>
-						<td><input type="text" class="form-control" name="type" value="<?php echo $row['type']; ?>"></td>
+						<td><input type="text" class="form-control" name="url[<?php echo $row['advertentie_id'] ?>]" value="<?php echo $row['url']; ?>"></td>
+						<td><input type="text" class="form-control" name="type[<?php echo $row['advertentie_id'] ?>]" value="<?php echo $row['type']; ?>" size="38"></td>
 						<td><button type="submit" name="Edit_advert" class="btn btn-default" value="<?php echo $row['advertentie_id'] ?>">Aanpassen</button></td>
 						<td><button type="submit" name="Del_advert" class="btn btn-default" value="<?php echo $row['advertentie_id'] ?>">Verwijderen</button></td>
 					</tr>
@@ -135,8 +198,8 @@ $sth->execute($parameters);
 					<tr>
 						<td><input type="text" class="form-control" name="titel"></td>
 						<td><input type="file" class="form-control" name="afbeelding"></td>
-						<td><input type="text" class="form-control" name="vanaf_datum"></td>
-						<td><input type="text" class="form-control" name="tot_datum" ></td>
+						<td><input type="text" class="form-control" name="vanaf_datum" placeholder="mm-dd-jjjj"></td>
+						<td><input type="text" class="form-control" name="tot_datum" placeholder="mm-dd-jjjj" ></td>
 					</tr>
 					<tr>
 						<th>Url</th>

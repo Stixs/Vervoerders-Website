@@ -54,20 +54,24 @@
 				</div>				
 				<div class="form-group">
 					<label for="banner">Banner:</label>
-					<input type="file" class="form-control" id="banner" name="banner" />
+					
+					<?php if(empty($row['banner'])){ ?><input type="file" class="form-control" id="banner" name="banner" /><?php } ?>
+					
 					<?php if(!empty($row['banner'])){ ?> <img src="images/bedrijf_images/<?php echo $bedrijfs_id .'/'. $row['banner']; ?>" width="70px" role="banner" />
 					<button class="btn btn-default" type="submit" name="Del_Image" value="banner" />Verwijder</button> <?php } ?>
 				</div>
 				<div class="form-group">
 					<label for="logo">Logo:</label>
-					<input type="file" class="form-control" id="logo" name="logo" />
-					<?php if(!empty($row['logo'])){ ?> <img src="images/bedrijf_images/<?php echo $bedrijfs_id .'/'. $row['logo']; ?>" width="70px" role="banner" />
+					
+					<?php if(empty($row['logo'])){ ?><input type="file" class="form-control" id="logo" name="logo" /> <?php } ?>
+					
+					<?php if(!empty($row['logo'])){ ?> <img src="images/bedrijf_images/<?php echo $bedrijfs_id .'/'. $row['logo']; ?>" width="70px" role="logo" />
 					<button class="btn btn-default" type="submit" name="Del_Image" value="logo" />Verwijder</button> <?php } ?>
 				</div>
 				<div class="form-group">
 					<label for="foto">Foto:</label>
-					<input type="file" class="form-control" id="foto" name="foto" />
-					<?php if(!empty($row['afbeelding'])){ ?> <img src="images/bedrijf_images/<?php echo $bedrijfs_id .'/'. $row['afbeelding']; ?>" width="70px" role="banner" />
+					<?php if(empty($row['afbeelding'])){ ?><input type="file" class="form-control" id="foto" name="foto" /> <?php } ?>
+					<?php if(!empty($row['afbeelding'])){ ?> <img src="images/bedrijf_images/<?php echo $bedrijfs_id .'/'. $row['afbeelding']; ?>" width="70px" role="picture" />
 					<button class="btn btn-default" type="submit" name="Del_Image" value="afbeelding" />Verwijder</button> <?php } ?>
 				</div>
 			</div>
