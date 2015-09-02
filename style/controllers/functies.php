@@ -10,7 +10,7 @@ function RedirectNaarPagina($paginanr = NULL)
 	{
 		echo "<br />U word binnen 5 seconden doorgestuurd naar de hoofdpagina.";
 		header("Refresh: 4;URL=index.php");
-	}
+	} 
 	else
 		header("Refresh: 2;URL=index.php?paginanr=".$paginanr);
 }
