@@ -7,19 +7,22 @@ if(isset($_POST['Zoek']))
 	if(!empty($_POST['bereik'])){$trefwoord.=' '.$_POST['bereik'];}
 	if(!empty($_POST['trefwoord'])){$trefwoord.=' '.$_POST['trefwoord'];}
 	
+    function geoplugin_region() { return 'North Brabant'; }
+	
 	$trefwoord = ltrim($trefwoord);
 	
 	//var_dump($trefwoord);
-	$branche = $_POST['branche_'];
-	//var_dump($branche);
-	$specialiteit = $_POST['specialiteit'];
-	$provincie = $_POST['provincie'];
-	$bereik = $_POST['bereik'];
+	//$branche = $_POST['branche_'];
+	//$specialiteit = $_POST['specialiteit'];
+	//$provincie = $_POST['provincie'];
+	//$bereik = $_POST['bereik'];
 }
 ?>
+
+
 <form id="opnaam" method="post">
 	<div class="zoeken">
-		<div class="col-sm-12 col-md-6 filter1">
+		<!--<div class="col-sm-12 col-md-6 filter1">
 			<div class="row">
 				<div class="col-xs-12 col-sm-4">
 					<select class="form-control search-select col-xs-12 col-sm-4" id="sel1" name="branche_">
@@ -59,7 +62,7 @@ if(isset($_POST['Zoek']))
 							{
 							echo '<option value="'.$row['specialiteit'].'" selected>'.$row['specialiteit'].'</option>';	
 							}
-						}
+				 		}
 						?>		
 					</select>
 				</div>
@@ -106,7 +109,7 @@ if(isset($_POST['Zoek']))
 					</select>
 				</div>
 			</div>
-		</div>
+		</div> --->
 		<div class="col-sm-12 col-md-6 filter2">
 			<div class="row">
 				<div class="col-xs-12 col-sm-8 col-md-6">
@@ -147,35 +150,11 @@ if(isset($_POST['Zoek']))
 	
 	if($search != NULL)
 	{
-		if($branche != NULL)
-		{
-			$sth = $pdo->prepare('SELECT branche_id FROM branche WHERE branche_name = "'.$branche.'"');
-			$sth->execute();
-			$row = $sth->fetch();
-		
-			$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens WHERE branche_id='.$row['branche_id'].' AND MATCH (bedrijfsnaam, beschrijving, postcode, plaats, provincie, telefoon, fax, transport_manager, rechtsvorm,vergunning, geldig_tot, bedrijfs_email, specialiteit, type, bereik, branche_id) AGAINST ("'.$search.'" IN BOOLEAN MODE) ORDER BY premium ASC');
-		}
-		else
-		{
-			$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens WHERE MATCH (bedrijfsnaam, beschrijving, postcode, plaats, provincie, telefoon, fax, transport_manager, rechtsvorm,vergunning, geldig_tot, bedrijfs_email, specialiteit, type, bereik, branche_id) AGAINST ("'.$search.'" IN BOOLEAN MODE) ORDER BY premium ASC');
-		}
-		//$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens WHERE branche_id='.$row['branche_id']);
-		//var_dump($sth);
+			$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens WHERE MATCH (bedrijfsnaam, postcode, plaats, provincie, branche) AGAINST ("'.$search.'" IN BOOLEAN MODE) ORDER BY premium ASC');
 	}
 	else
 	{
-		if($branche != NULL)
-		{
-			$sth = $pdo->prepare('SELECT branche_id FROM branche WHERE branche_name = "'.$branche.'"');
-			$sth->execute();
-			$row = $sth->fetch();
-			
-			$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens WHERE branche_id='.$row['branche_id'].' ORDER BY premium DESC');
-		}
-		else
-		{
 			$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens ORDER BY premium DESC');
-		}
 	}
 	$sth->execute();
 
@@ -184,13 +163,13 @@ if(isset($_POST['Zoek']))
 else
 {
 	
-	$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens ORDER BY premium DESC LIMIT 10');
-	$sth->execute();
+	
 	
 }
 
 	echo '<div class="row search-result">';
 		echo '<div class="col-xs-12">';
+		
 			while($row = $sth->fetch())
 			{
 				if($row['premium'] == 'gold')
