@@ -19,7 +19,7 @@ foreach($xml->result->address_component as $component){
 	}
 
 }
-//var_dump($geodata);
+var_dump($geodata);
 $huisnummer = $geodata['Huis nummer']->asXML();
 $huisnummer = strip_tags($huisnummer);
 $_SESSION['huisnummer'] = $huisnummer;

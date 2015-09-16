@@ -8,6 +8,8 @@ if(!isset($_SESSION['plaats']))
 <div id="geo" class="geolocation_data"></div>
 <script type="text/JavaScript" src="./geolocation/geo.js"></script>
 <?php
+
+
 }
 
 if(isset($_POST['Zoek']))
@@ -22,7 +24,7 @@ if(isset($_POST['Zoek']))
 	//echo $_SESSION['straat'];
 	if(!empty($_SESSION['plaats'])){$trefwoord.=' '.$_SESSION['plaats'];}
 	//echo $_SESSION['postcode'];
-	
+	var_dump($_SESSION);
 	$trefwoord = ltrim($trefwoord);
 	
 	//var_dump($trefwoord);
