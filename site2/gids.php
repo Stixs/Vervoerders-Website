@@ -156,7 +156,7 @@ if(isset($_POST['Zoek']))
 		
 		foreach ($trefwoorden as $value)
 			{
-				$search.= '+'.$value.' ';
+				$search.= ''.$value.'* ';
 				
 			}
 		}
@@ -165,7 +165,7 @@ if(isset($_POST['Zoek']))
 	
 	if($search != NULL)
 	{
-			$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens WHERE MATCH (bedrijfsnaam, postcode, plaats, provincie, branche) AGAINST ("'.$search.'" IN BOOLEAN MODE) ORDER BY premium ASC');
+			$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens WHERE MATCH (bedrijfsnaam, postcode, plaats, provincie, branche) AGAINST ("'.$search.'" IN BOOLEAN MODE) ORDER BY premium DESC');
 	}
 	else
 	{
