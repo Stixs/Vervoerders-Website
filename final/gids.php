@@ -26,16 +26,12 @@ if(isset($_POST['Zoek']))
 	
 	if(!empty($_POST['trefwoord'])){$checkcity = $_POST['trefwoord'];}
 	
-	$city = NULL;
-	$checkcity = NULL;
-	
 	$checkcities = (explode(" ",$checkcity));
 		foreach ($checkcities as $value)
 			{
 				$city.= $value.' ';
 			}
-			$city = ltrim($city);
-			echo $city;
+			var_dump ($city);
 			
 			
 	$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens WHERE MATCH (plaats) AGAINST ("'.$city.'" IN BOOLEAN MODE)');
@@ -60,7 +56,7 @@ if(isset($_POST['Zoek']))
 	
 	$trefwoord = ltrim($trefwoord);
 
-	
+	echo $trefwoord;
 }
 ?>
 
@@ -191,10 +187,9 @@ if(isset($_POST['Zoek']))
 				
 			}
 		}
+	//var_dump($coords);
 	
-	//echo $search;
-	
-	if(!isset($lat) or !isset($lon) or $search = NULL)
+	if(!isset($lat) and !isset($lon) and isset($search))
 	{
 		$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens WHERE MATCH (bedrijfsnaam, postcode, plaats, provincie, branche) AGAINST ("'.$search.'" IN BOOLEAN MODE) ORDER BY premium DESC');
 		echo '1';
