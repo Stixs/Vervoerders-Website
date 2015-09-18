@@ -31,13 +31,14 @@ if(isset($_POST['Zoek']))
 			{
 				$city.= $value.' ';
 			}
-			var_dump ($city);
+		//	var_dump ($trefwoord);
 			
 			
-	$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens WHERE MATCH (plaats) AGAINST ("'.$city.'" IN BOOLEAN MODE)');
+	$sth = $pdo->prepare('SELECT DISTINCT plaats FROM bedrijfgegevens WHERE MATCH (plaats) AGAINST ("'.$city.'" IN BOOLEAN MODE)');
 	$sth->execute();
 	$row = $sth->fetch(PDO::FETCH_ASSOC);
 
+	
 	if( ! $row)
 	{
 	echo'niks gevonden';
@@ -47,16 +48,26 @@ if(isset($_POST['Zoek']))
 	}
 	else
 	{
+		
 	$coords = getCoordinates($city);
 	$coords = (explode(",",$coords));
-	echo $lat = $coords[0];
-	echo $lon = $coords[1];
+	$lat = $coords[0];
+	$lon = $coords[1];
 	}
 	
 	
 	$trefwoord = ltrim($trefwoord);
-
-	echo $trefwoord;
+	
+	$sth = $pdo->prepare('SELECT DISTINCT plaats FROM bedrijfgegevens WHERE MATCH (plaats) AGAINST ("'.$city.'" IN BOOLEAN MODE)');
+	$sth->execute();
+	
+	while($row = $sth->fetch())
+	{
+	$trefwoord = str_ireplace($row['plaats'], "", $trefwoord);
+	}
+	
+	
+	//var_dump($trefwoord);
 }
 ?>
 
@@ -182,29 +193,36 @@ if(isset($_POST['Zoek']))
 		//var_dump($trefwoorden);
 		
 		foreach ($trefwoorden as $value)
-			{
-				$search.= ''.$value.'* ';
-				
+			{	
+				if(!empty($value))
+				{
+					$search.= ''.$value.'* ';
+				}
 			}
 		}
-	//var_dump($coords);
 	
-	if(!isset($lat) and !isset($lon) and isset($search))
+	if(!isset($lat) and !isset($lon) and $search != NULL)
 	{
 		$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens WHERE MATCH (bedrijfsnaam, postcode, plaats, provincie, branche) AGAINST ("'.$search.'" IN BOOLEAN MODE) ORDER BY premium DESC');
-		echo '1';
+	
 	}
 	
-	elseif($search != NULL)
+	elseif(isset($lat) and isset($lon) and $search == NULL)
+	{
+		$sth = $pdo->prepare('SELECT *, ( 6371 * acos( cos( radians('.$lat.') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians('.$lon.') ) + sin( radians('.$lat.') ) * sin( radians( latitude ) ) ) ) AS distance FROM bedrijfgegevens HAVING distance < 2000000 ORDER BY premium DESC, distance ASC');
+	
+	}
+	
+	elseif(isset($lat) and isset($lon) and $search != NULL)
 	{
 		$sth = $pdo->prepare('SELECT *, ( 6371 * acos( cos( radians('.$lat.') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians('.$lon.') ) + sin( radians('.$lat.') ) * sin( radians( latitude ) ) ) ) AS distance FROM bedrijfgegevens WHERE MATCH (bedrijfsnaam, postcode, plaats, provincie, branche) AGAINST ("'.$search.'" IN BOOLEAN MODE) HAVING distance < 2000000 ORDER BY premium DESC, distance ASC');
-		echo '2';
+	
 	}
 
 	else
 	{
 		$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens ORDER BY premium DESC');
-		echo '3';
+	
 	}
 	$sth->execute();
 

@@ -9,7 +9,7 @@ function GEOprocess(position) {
 
 // this is used when the visitor bottles it and hits the "Don't Share" option
 function GEOdeclined(error) {
-  document.getElementById('geo').innerHTML = 'Error: ' + error.message;
+  document.getElementById('geo').innerHTML = '';
 }
 
 if (navigator.geolocation) {

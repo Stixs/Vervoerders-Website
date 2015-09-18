@@ -20,6 +20,8 @@ foreach($xml->result->address_component as $component){
 
 }
 var_dump($geodata);
+var_dump($geodata);
+var_dump($geodata);
 list($lat,$long) = explode(',',htmlentities(htmlspecialchars(strip_tags($_GET['latlng']))));
 
 $_SESSION['latitude'] = $lat;

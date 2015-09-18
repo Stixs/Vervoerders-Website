@@ -240,13 +240,13 @@ function getCoordinates($address){
  
 $address = str_replace(" ", "+", $address); // replace all the white space with "+" sign to match with google search pattern
  
-$url = "https://maps.google.com/maps/api/geocode/json?sensor=false&address=$address";
+$url = "https://maps.google.com/maps/api/geocode/json?sensor=false&address=$address&key=AIzaSyDR4VX5begZLhQfll5UrHZrklwVBMR8fd4";
  
 $response = file_get_contents($url);
  
 $json = json_decode($response,TRUE); //generate array object from the response from the web
  
-var_dump($json); 
+
  
 return ($json['results'][0]['geometry']['location']['lat'].",".$json['results'][0]['geometry']['location']['lng']);
  
