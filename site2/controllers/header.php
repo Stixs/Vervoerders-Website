@@ -38,6 +38,7 @@ else
     <![endif]-->
   </head>
   <body>
+	<?php include_once("analyticstracking.php"); ?>
 	<div class="container">
 		<div class="box-shadow">
 			<div class="row">
