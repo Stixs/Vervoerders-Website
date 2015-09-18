@@ -2,36 +2,59 @@
 require('./controllers/header.php');
 
 
-if(!isset($_SESSION['plaats']))
-{
+//if(!isset($_SESSION['plaats']))
+//{
 ?>
 <div id="geo" class="geolocation_data"></div>
 <script type="text/JavaScript" src="./geolocation/geo.js"></script>
 <?php
 
 
-}
+//}
 
 if(isset($_POST['Zoek']))
 {
-	$trefwoord = NULL;
+
 	//if(!empty($_POST['specialiteit'])){$trefwoord.=' '.$_POST['specialiteit'];}
 	//if(!empty($_POST['provincie'])){$trefwoord.=' '.$_POST['provincie'];}
 	//if(!empty($_POST['bereik'])){$trefwoord.=' '.$_POST['bereik'];}
-	if(!empty($_POST['trefwoord'])){$trefwoord.=' '.$_POST['trefwoord'];}
+	if(!empty($_POST['trefwoord'])){$trefwoord = $_POST['trefwoord'];}
 	
-   //echo $_SESSION['huisnummer'];
-	//echo $_SESSION['straat'];
-	if(!empty($_SESSION['plaats'])){$trefwoord.=' '.$_SESSION['plaats'];}
-	//echo $_SESSION['postcode'];
-	var_dump($_SESSION);
+	if(!empty($_POST['trefwoord'])){$checkcity = $_POST['trefwoord'];}
+	
+	$city = NULL;
+	$checkcities = (explode(" ",$checkcity));
+		foreach ($checkcities as $value)
+			{
+				$city.= $value.' ';
+			}
+			$city = ltrim($city);
+			echo $city;
+			
+			
+	$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens WHERE MATCH (plaats) AGAINST ("'.$city.'" IN BOOLEAN MODE)');
+	$sth->execute();
+	$row = $sth->fetch(PDO::FETCH_ASSOC);
+
+	if( ! $row)
+	{
+	echo'niks gevonden';
+    if(!empty($_SESSION['plaats'])){$trefwoord.=' '.$_SESSION['plaats'];}
+	if(!empty($_SESSION['latitude'])){$lat = $_SESSION['latitude'];}
+	if(!empty($_SESSION['longitude'])){$lon = $_SESSION['longitude'];}
+	}
+	else
+	{
+	$coords = getCoordinates($city);
+	$coords = (explode(",",$coords));
+	echo $lat = $coords[0];
+	echo $lon = $coords[1];
+	}
+	
+	
 	$trefwoord = ltrim($trefwoord);
+
 	
-	//var_dump($trefwoord);
-	//$branche = $_POST['branche_'];
-	//$specialiteit = $_POST['specialiteit'];
-	//$provincie = $_POST['provincie'];
-	//$bereik = $_POST['bereik'];
 }
 ?>
 
@@ -167,15 +190,18 @@ if(isset($_POST['Zoek']))
 	
 	if($search != NULL)
 	{
-			$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens WHERE MATCH (bedrijfsnaam, postcode, plaats, provincie, branche) AGAINST ("'.$search.'" IN BOOLEAN MODE) ORDER BY premium DESC');
+		$sth = $pdo->prepare('SELECT *, ( 6371 * acos( cos( radians('.$lat.') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians('.$lon.') ) + sin( radians('.$lat.') ) * sin( radians( latitude ) ) ) ) AS distance FROM bedrijfgegevens WHERE MATCH (bedrijfsnaam, postcode, plaats, provincie, branche) AGAINST ("'.$search.'" IN BOOLEAN MODE) HAVING distance < 2000000 ORDER BY premium DESC, distance ASC');
+	}
+	elseif(!isset($lat) or !isset($lon))
+	{
+		$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens WHERE MATCH (bedrijfsnaam, postcode, plaats, provincie, branche) AGAINST ("'.$search.'" IN BOOLEAN MODE) ORDER BY premium DESC');
 	}
 	else
 	{
-			$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens ORDER BY premium DESC');
+		$sth = $pdo->prepare('SELECT * FROM bedrijfgegevens ORDER BY premium DESC');
 	}
 	$sth->execute();
 
-	
 }
 else
 {
