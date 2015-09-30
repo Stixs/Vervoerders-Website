@@ -246,8 +246,6 @@ $response = file_get_contents($url);
  
 $json = json_decode($response,TRUE); //generate array object from the response from the web
  
-
- 
 return ($json['results'][0]['geometry']['location']['lat'].",".$json['results'][0]['geometry']['location']['lng']);
  
 }
